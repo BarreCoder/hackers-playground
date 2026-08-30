@@ -60,7 +60,7 @@ body.theme-switching .workspace{animation:worldShift .65s ease}@keyframes worldS
 .howto{position:relative;overflow:hidden;margin:10px 0 13px;border:1px dashed rgba(39,232,255,.22);background:rgba(39,232,255,.025);padding:10px 12px;border-radius:6px}.howto::after{content:"";position:absolute;top:0;bottom:0;left:-45%;width:32%;pointer-events:none;background:linear-gradient(100deg,transparent 0%,rgba(var(--theme2-rgb),0) 20%,rgba(var(--theme2-rgb),.28) 48%,rgba(255,255,255,.48) 52%,rgba(var(--theme-rgb),.18) 58%,transparent 100%);transform:skewX(-18deg);filter:blur(.4px);animation:howtoShimmer 3.8s ease-in-out infinite}@keyframes howtoShimmer{0%,56%{left:-45%;opacity:0}62%{opacity:.9}78%{left:118%;opacity:.75}100%{left:118%;opacity:0}}.howto[open]::after{animation:none;opacity:0}.howto summary{position:relative;z-index:1;cursor:pointer;color:var(--cyan);font-size:11px;font-weight:bold;letter-spacing:1px;text-shadow:0 0 9px rgba(var(--theme2-rgb),.22)}.howto:not([open]) summary{animation:howtoPulse 3.8s ease-in-out infinite}@keyframes howtoPulse{0%,55%,100%{text-shadow:0 0 7px rgba(var(--theme2-rgb),.16)}66%{text-shadow:0 0 13px rgba(var(--theme2-rgb),.72),0 0 22px rgba(var(--theme-rgb),.24)}}.howto ol{margin:9px 0 0 18px;padding:0;color:#9db9a8;font-size:11px;line-height:1.55}.howto strong{color:var(--green)}
 .controls{display:grid;grid-template-columns:1fr 1fr auto auto auto;gap:8px;margin:15px 0;align-items:end}.field label{display:block;color:var(--muted);font-size:10px;margin-bottom:5px;letter-spacing:1px}select,button,input{font:inherit}select{width:100%;min-height:42px;background:#020604;color:var(--green);border:1px solid rgba(57,255,136,.6);border-radius:5px;padding:8px 10px}button{min-height:42px;border:1px solid var(--green);border-radius:5px;padding:9px 13px;background:rgba(57,255,136,.09);color:var(--green);font-weight:bold;cursor:pointer;letter-spacing:.5px}button:hover:not(:disabled){background:var(--green);color:#001b0d;box-shadow:0 0 15px rgba(57,255,136,.35)}button:disabled{cursor:not-allowed;opacity:.38}.start-btn{background:var(--green);color:#001b0d}.stop-btn{border-color:var(--red);color:var(--red)}.stop-btn:hover:not(:disabled){background:var(--red);color:#170006;box-shadow:0 0 15px rgba(255,70,100,.3)}
 .timer-wrap{margin:12px 0}.timer-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-bottom:5px}.timer-track{height:8px;background:#03100a;border:1px solid rgba(57,255,136,.18);overflow:hidden}.timer-bar{height:100%;width:100%;background:linear-gradient(90deg,var(--green2),var(--green));transition:width .12s linear,background .2s}
-.binary-shell{position:relative;margin:15px 0;padding:16px 13px;background:#010604;border:1px solid rgba(39,232,255,.3);border-radius:6px;overflow:hidden}.binary-label{color:var(--muted);font-size:9px;letter-spacing:1.6px;margin-bottom:8px}.binary-display{color:var(--cyan);text-align:center;font-size:clamp(13px,2.7vw,18px);line-height:1.7;letter-spacing:2px;font-weight:bold;overflow-wrap:anywhere;text-shadow:0 0 10px rgba(39,232,255,.28)}.binary-display.mutate{animation:codeMutate .24s ease}@keyframes codeMutate{0%{filter:blur(2px);transform:scaleX(.97);opacity:.3}100%{filter:none;transform:none;opacity:1}}
+.binary-shell{position:relative;margin:15px 0;padding:16px 13px;background:#010604;border:1px solid rgba(39,232,255,.3);border-radius:6px;overflow:hidden}.binary-label{color:var(--muted);font-size:9px;letter-spacing:1.6px;margin-bottom:8px}.binary-display{user-select:none;-webkit-user-select:none;color:var(--cyan);text-align:center;font-size:clamp(13px,2.7vw,18px);line-height:1.7;letter-spacing:2px;font-weight:bold;overflow-wrap:anywhere;text-shadow:0 0 10px rgba(39,232,255,.28)}.binary-display.mutate{animation:codeMutate .24s ease}@keyframes codeMutate{0%{filter:blur(2px);transform:scaleX(.97);opacity:.3}100%{filter:none;transform:none;opacity:1}}
 .input-zone{position:relative;margin:18px auto 11px;width:min(680px,100%);padding:3px;border-radius:10px;background:linear-gradient(90deg,var(--green),var(--cyan),var(--green),var(--cyan),var(--green));background-size:260% 100%;animation:borderFlow 1.65s linear infinite;box-shadow:0 0 25px rgba(var(--theme-rgb),.28),0 0 10px rgba(var(--theme2-rgb),.20)}.input-zone::before{content:"▼ ENTER DECRYPTION KEY ▼";position:absolute;left:50%;top:-11px;transform:translate(-50%,-50%);z-index:2;padding:2px 10px;border:1px solid var(--cyan);border-radius:999px;background:var(--theme-bg1);color:var(--cyan);font-size:9px;font-weight:bold;letter-spacing:1.5px;white-space:nowrap;text-shadow:0 0 8px currentColor;box-shadow:0 0 12px rgba(var(--theme2-rgb),.18)}@keyframes borderFlow{to{background-position:-260% 0}}.input-inner{display:flex;gap:9px;padding:12px;background:#010403;border-radius:8px;box-shadow:inset 0 0 24px rgba(var(--theme-rgb),.06)}#decryptInput{width:100%;min-width:0;min-height:54px;background:#000;color:var(--green);border:2px solid rgba(var(--theme-rgb),.60);border-radius:6px;padding:13px 14px;font-size:21px;font-weight:bold;text-align:center;text-transform:uppercase;letter-spacing:4px;caret-color:var(--cyan);box-shadow:inset 0 0 18px rgba(var(--theme-rgb),.08)}#decryptInput::placeholder{color:color-mix(in srgb,var(--green) 55%,#334);letter-spacing:2px}#decryptInput:focus{outline:2px solid var(--cyan);outline-offset:1px;box-shadow:inset 0 0 22px rgba(var(--theme2-rgb),.10),0 0 18px rgba(var(--theme2-rgb),.25)}#decryptBtn{white-space:nowrap;min-width:140px;background:var(--green);color:#001b0d;font-size:13px;box-shadow:0 0 14px rgba(var(--theme-rgb),.18)}
 .status-wrap{position:relative;min-height:72px;display:grid;place-items:center;margin-top:6px}.status-msg{text-align:center;font-weight:bold;letter-spacing:1px;min-height:22px;z-index:2}.success{color:var(--green);text-shadow:0 0 12px rgba(57,255,136,.65)}.error{color:var(--red)}.status-wrap.success-burst::before,.status-wrap.success-burst::after{content:"";position:absolute;width:22px;height:22px;border:2px solid var(--green);border-radius:50%;animation:successRing .8s ease-out forwards}.status-wrap.success-burst::after{animation-delay:.12s;border-color:var(--cyan)}@keyframes successRing{0%{transform:scale(.2);opacity:1}100%{transform:scale(12);opacity:0}}.status-wrap.success-burst .status-msg{animation:successText .7s ease}@keyframes successText{0%{transform:scale(.7);opacity:0}50%{transform:scale(1.13)}100%{transform:scale(1);opacity:1}}
 .progress-row{display:flex;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid rgba(57,255,136,.14);border-bottom:1px solid rgba(57,255,136,.14);padding:10px 0;font-size:11px;color:var(--muted)}#gateStatus{font-weight:bold;color:var(--red)}.terminal{margin:14px 0;background:#010403;border:1px solid rgba(255,255,255,.08);padding:11px;border-radius:5px;height:106px;overflow:hidden;color:#74a286;font-size:10px;line-height:1.55}.terminal .hot{color:var(--cyan)}.terminal .warn{color:var(--amber)}
@@ -179,7 +179,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
     <main class="workspace" id="workspace">
       <header class="header">
         <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
-        <div class="subtitle">NEON CIPHER LAB // BUILD 8.4 <span class="blink">█</span></div>
+        <div class="subtitle">NEON CIPHER LAB // BUILD 8.6 <span class="blink">█</span></div>
       </header>
 
       <section class="hud" aria-label="Game stats">
@@ -464,7 +464,33 @@ function buildRails(){
   alphabet.slice(0,13).forEach(ch=>left.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${letterBits[ch]}</span></div>`));left.insertAdjacentHTML('beforeend','<div class="key-note">LETTER BLOCK = <b>010</b> + ROW</div>');
   alphabet.slice(13).forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${letterBits[ch]}</span></div>`));digits.forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${numberBits[ch]}</span></div>`));right.insertAdjacentHTML('beforeend','<div class="key-note">NUMBER BLOCK = <b>1010</b> + ROW</div>');
 }
+binaryCode.addEventListener('copy',e=>{
+  e.preventDefault();
+  status.textContent='🤖 COPY BLOCKED // YOUR AI ASSISTANT CAN SIT THIS ROUND OUT';
+  status.className='status-msg error';
+  workspace.classList.remove('glitch');void workspace.offsetWidth;workspace.classList.add('glitch');
+  log('Encrypted stream resisted extraction // eyes + brain protocol engaged 😎','warn');
+});
+binaryCode.addEventListener('contextmenu',e=>{
+  e.preventDefault();
+  status.textContent='🕵️ RIGHT-CLICK? VERY HACKER OF YOU // STILL NO COPY';
+  status.className='status-msg error';
+});
 input.addEventListener('input',()=>{input.value=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(input.value)playThemeSound('key');proAdaptiveUpdate()});
+input.addEventListener('paste',e=>{
+  e.preventDefault();
+  status.textContent='😏 NICE TRY, AGENT // CTRL+V HAS LEFT THE CHAT';
+  status.className='status-msg error';
+  workspace.classList.remove('glitch');void workspace.offsetWidth;workspace.classList.add('glitch');
+  log('AI sidekick detected at the keyboard // nice try. Use the matrix key 😎','warn');
+});
+input.addEventListener('drop',e=>{
+  e.preventDefault();
+  status.textContent='😂 SNEAKY MOVE // DRAG & DROP DENIED';
+  status.className='status-msg error';
+  workspace.classList.remove('glitch');void workspace.offsetWidth;workspace.classList.add('glitch');
+  log('That shortcut tunnel is closed // manual decoding only.','warn');
+});
 input.addEventListener('keydown',e=>{if(e.key==='Enter')decrypt()});btn.addEventListener('click',decrypt);startBtn.addEventListener('click',startGame);stopBtn.addEventListener('click',stopGame);
 $('newMission').addEventListener('click',()=>{if(!sessionRunning)prepareRound(true)});groupCount.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});difficulty.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});
 muteBtn.addEventListener('click',()=>{audioMuted=!audioMuted;if(!audioMuted){ensureAudio();if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume();switchBackgroundMusic(true);playThemeSound('theme');}else{stopBackgroundMusic();}syncAudioUI();});
