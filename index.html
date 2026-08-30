@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HPG">
-<link rel="manifest" href="./manifest.webmanifest?v=9.7">
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=9.7">
-<link rel="apple-touch-icon" href="./icon-192.png?v=9.7">
+<link rel="manifest" href="./manifest.webmanifest?v=9.8">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=9.8">
+<link rel="apple-touch-icon" href="./icon-192.png?v=9.8">
 <style>
 :root{
   --green:#39ff88;--green2:#00d96f;--cyan:#27e8ff;--amber:#ffd34d;--red:#ff4664;
@@ -158,7 +158,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media(max-width:820px){body{padding:9px}.game-layout{grid-template-columns:1fr}.key-rail{display:none}.workspace{padding:14px}.hud{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr 1fr}.controls button{grid-column:auto}.input-inner{flex-direction:column}.progress-row{align-items:flex-start;flex-direction:column}.binary-display{letter-spacing:1px}}
 @media(max-width:480px){.controls{grid-template-columns:1fr}.controls button{width:100%}}
 
-/* BUILD 9.7 // mobile landscape command-center mode */
+/* BUILD 9.8 // mobile landscape command-center mode */
 :root{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
 .rotate-device{display:none;position:fixed;inset:0;z-index:120;background:radial-gradient(circle at 50% 35%,rgba(var(--theme-rgb),.16),transparent 38%),rgba(0,4,3,.97);padding:calc(22px + var(--safe-top)) calc(22px + var(--safe-right)) calc(22px + var(--safe-bottom)) calc(22px + var(--safe-left));place-items:center;text-align:center}
 .rotate-card{max-width:390px;border:1px solid var(--cyan);border-radius:14px;padding:24px 22px;background:#020806;box-shadow:0 0 35px rgba(var(--theme2-rgb),.22),inset 0 0 28px rgba(var(--theme-rgb),.06)}.rotate-logo{width:88px;height:88px;object-fit:cover;border-radius:22%;display:block;margin:0 auto 10px;border:1px solid rgba(var(--theme2-rgb),.45);box-shadow:0 0 24px rgba(var(--theme-rgb),.26),0 0 16px rgba(var(--theme2-rgb),.16)}
@@ -225,7 +225,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media (hover:hover){.key-row:hover{background:rgba(var(--theme-rgb),.14);color:#fff;text-shadow:0 0 9px rgba(var(--theme-rgb),.7);cursor:zoom-in}}
 
 
-/* BUILD 9.7 // mobile rail readability + sliding lens */
+/* BUILD 9.8 // mobile rail readability + sliding lens */
 @media (orientation:landscape) and (pointer:coarse) and (max-height:600px){
   body.launched .key-rail{
     display:block!important;
@@ -261,7 +261,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.7 // mobile mapping rails moved inward */
+/* BUILD 9.8 // mobile mapping rails moved inward */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .game-layout{
     align-items:center;
@@ -296,7 +296,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.7 // mobile mapping-as-controller */
+/* BUILD 9.8 // mobile mapping-as-controller */
 .touch-backspace{display:none}
 @keyframes railCommitPop{
   0%{transform:scale(1)}
@@ -307,7 +307,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
   body.launched .input-zone{display:block!important}
   body.launched .input-inner{
     display:grid;
-    grid-template-columns:minmax(0,1fr) 44px auto;
+    grid-template-columns:minmax(0,1fr) 52px;
     gap:5px;
     align-items:stretch;
   }
@@ -331,19 +331,68 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
   body.launched .key-row.commit-pop{animation:railCommitPop .24s ease}
 }
 
+
+/* BUILD 9.8 // input buffer is the primary mobile action surface */
+@media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
+  body.launched .input-zone{
+    margin-top:8px!important;
+    margin-bottom:7px!important;
+    padding:8px!important;
+    border-width:2px!important;
+    border-color:var(--cyan)!important;
+    background:
+      radial-gradient(circle at 50% 0%,rgba(var(--theme2-rgb),.14),transparent 58%),
+      rgba(0,5,3,.96)!important;
+    box-shadow:
+      0 0 28px rgba(var(--theme-rgb),.38),
+      0 0 22px rgba(var(--theme2-rgb),.24),
+      inset 0 0 18px rgba(var(--theme-rgb),.10)!important;
+  }
+  body.launched .input-zone::before{
+    content:"▼ DECRYPTION BUFFER // AUTO-EXECUTES WHEN FULL ▼";
+    display:block;
+    margin:0 0 5px;
+    text-align:center;
+    color:#fff;
+    font-size:8px;
+    font-weight:bold;
+    letter-spacing:1.3px;
+    text-shadow:0 0 8px rgba(var(--theme2-rgb),.75);
+  }
+  body.launched #decryptInput{
+    min-height:42px!important;
+    font-size:20px!important;
+    font-weight:900!important;
+    letter-spacing:5px!important;
+    text-align:center!important;
+    color:#fff!important;
+    border:2px solid rgba(var(--theme-rgb),.82)!important;
+    background:#000!important;
+    box-shadow:
+      inset 0 0 14px rgba(var(--theme-rgb),.18),
+      0 0 16px rgba(var(--theme-rgb),.22)!important;
+    text-shadow:0 0 9px rgba(var(--theme-rgb),.75);
+  }
+  body.launched .touch-backspace{
+    min-width:52px!important;
+    font-size:23px!important;
+    border-width:2px!important;
+  }
+}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body class="prelaunch">
 <canvas id="matrix" aria-hidden="true"></canvas>
 <div class="rotate-device" id="rotateDevice" aria-live="polite">
-  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=9.7" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
+  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=9.8" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
 </div>
 <div class="key-magnifier" id="keyMagnifier" aria-hidden="true"><div class="key-mag-char" id="keyMagChar">A</div><div class="key-mag-bits" id="keyMagBits">01000001</div><div class="key-mag-note">MATRIX KEY // LOCAL LENS</div></div>
 <section class="landing" id="landing" aria-labelledby="landingTitle">
   <div class="landing-card">
     <div class="landing-inner">
-      <img class="landing-logo" src="./icon-192.png?v=9.7" alt="Hackers Playground HPG logo">
+      <img class="landing-logo" src="./icon-192.png?v=9.8" alt="Hackers Playground HPG logo">
       <div class="landing-kicker">// FRIEND-SAFE NEON CIPHER SIMULATION</div>
       <h1 class="landing-title" id="landingTitle">HACKERS<br>PLAYGROUND</h1>
       <div class="landing-tagline"><strong>Decode. Outsmart the trace. Own the playground.</strong><br>A browser-based cipher game with themed worlds, adaptive challenges, and a pressure-free trainee mode.</div>
@@ -366,7 +415,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
     <main class="workspace" id="workspace">
       <header class="header">
         <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
-        <div class="subtitle">NEON CIPHER LAB // BUILD 9.7 <span class="blink">█</span></div>
+        <div class="subtitle">NEON CIPHER LAB // BUILD 9.8 <span class="blink">█</span></div>
       </header>
 
       <section class="hud" aria-label="Game stats">
@@ -384,13 +433,14 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 
       <details class="howto">
         <summary>HOW TO PLAY // FIELD BRIEFING</summary>
-        <ol>
-          <li>Choose a <strong>difficulty</strong> and <strong>security complexity</strong>.</li>
-          <li>Use <strong>↻ NEW</strong> before starting to cycle through themed worlds; each world changes colors and controls. Use the theme-specific <strong>START</strong> control once to begin a session (for example LAUNCH LINK, INITIATE EVA, or INSERT COIN). Missions continue automatically until you use that world’s <strong>STOP</strong> control.</li>
-          <li>Letter blocks begin with <strong>010</strong>; number blocks begin with <strong>1010</strong>. Enter the decoded key before the trace timer reaches zero.</li>
-          <li>Press <strong>DECRYPT</strong> or Enter. Wrong keys or expired timers cost CryptoBytes; <strong>STOP GAME never costs currency</strong>. In <strong>PRO</strong>, every correct character changes the remaining cipher.</li>
-        </ol>
-      </details>
+        <div class="howto-body">
+          <p><b>DESKTOP:</b> Decode each binary group using the left/right matrix key, then type the matching characters into the decryption buffer.</p>
+          <p><b>MOBILE:</b> Touch either matrix rail, slide your finger until the magnifier is over the character you want, then <b>lift your finger to enter it</b>. Use <b>⌫</b> to remove the last entry.</p>
+          <p>You can enter correct or incorrect characters, but the buffer only accepts <b>one character per binary group</b>.</p>
+          <p><b>No UNLOCK button:</b> when the final required character is entered, the system automatically attempts the decrypt.</p>
+          <p>In <b>PRO</b> mode, a correct prefix can mutate the remaining cipher while you work.</p>
+        </div>
+</details>
 
       <section class="controls">
         <div class="field"><label for="difficulty">DIFFICULTY PROTOCOL</label><select id="difficulty"><option value="trainee">TRAINEE // NO TIMER // PRACTICE</option><option value="beginner">BEGINNER // 30 SEC</option><option value="intermediate">INTERMEDIATE // 25 SEC</option><option value="master">MASTER // 20 SEC</option><option value="pro">PRO // 35 SEC // ADAPTIVE</option></select></div>
@@ -414,7 +464,6 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
         <div class="input-inner">
           <input type="text" id="decryptInput" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PRESS START" aria-label="Decryption key" disabled>
           <button type="button" class="touch-backspace" id="touchBackspace" aria-label="Backspace" title="Backspace">⌫</button>
-          <button type="button" id="decryptBtn" disabled>DECRYPT</button>
         </div>
       </section>
 
@@ -462,7 +511,7 @@ const missions=[
  {name:'ARCADE CORE MAINFRAME',copy:'Beat the retro security core and claim the high-score packet.',tag:'ARCADE // MAGENTA-NEON',colors:{green:'#ff4fd8',green2:'#c329ff',cyan:'#58f6ff',amber:'#ffe35b',bg1:'#09020f',bg2:'#170623',rgb:'255,79,216',rgb2:'88,246,255'},labels:{start:'▶ INSERT COIN',stop:'■ QUIT ARCADE',new:'↻ NEW LEVEL',decrypt:'CRACK HIGH SCORE'},fx:{ok:['BONUS STAGE UNLOCKED','HIGH SCORE!'],fail:['GAME OVER TRACE','CORE LOCKOUT']}}
 ];
 const $=id=>document.getElementById(id);
-const difficulty=$('difficulty'), groupCount=$('groupCount'), binaryCode=$('binaryCode'), input=$('decryptInput'), btn=$('decryptBtn'), touchBackspace=$('touchBackspace');
+const difficulty=$('difficulty'), groupCount=$('groupCount'), binaryCode=$('binaryCode'), input=$('decryptInput'), touchBackspace=$('touchBackspace');
 const startBtn=$('startBtn'), stopBtn=$('stopBtn'), status=$('statusMessage'), statusWrap=$('statusWrap'), gate=$('gateStatus'), balanceEl=$('balance'), scoreEl=$('score'), streakEl=$('streak'), rankEl=$('rank');
 const workspace=$('workspace'), timerText=$('timerText'), timerBar=$('timerBar'), terminal=$('terminal'), sessionState=$('sessionState');
 const effectOverlay=$('effectOverlay'), effectKicker=$('effectKicker'), effectTitle=$('effectTitle'), effectSub=$('effectSub');
@@ -607,13 +656,13 @@ function prepareRound(newMission=true){
   gate.textContent='LOCKED';gate.style.color='var(--red)';
   timerBar.style.width='100%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';
   if(!sessionRunning){
-    const o=themeOntology();status.textContent=o.ready+' // '+o.prompt;status.className='status-msg';timerText.textContent='READY';binaryCode.textContent=o.prompt+' TO ARM CIPHER';input.placeholder=o.prompt;input.disabled=true;btn.disabled=true;
+    const o=themeOntology();status.textContent=o.ready+' // '+o.prompt;status.className='status-msg';timerText.textContent='READY';binaryCode.textContent=o.prompt+' TO ARM CIPHER';input.placeholder=o.prompt;input.disabled=true;
     log('Game standing by // wallet protected while stopped.','hot');setSessionUI();return;
   }
   startRound();
 }
 function startRound(){
-  if(!sessionRunning)return;clearInterval(timerId);resetAnimations();roundActive=true;input.disabled=false;btn.disabled=false;input.value='';input.placeholder='ENTER '+solution.length+' CHAR KEY';renderBinary(0);
+  if(!sessionRunning)return;clearInterval(timerId);resetAnimations();roundActive=true;input.disabled=false;input.value='';input.placeholder='ENTER '+solution.length+' CHAR KEY';renderBinary(0);
   const total=modes[difficulty.value];timerBar.style.width='100%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';
   status.textContent='CIPHER ARMED // DECODE NOW';status.className='status-msg';
   if(total===null){deadline=performance.now()+60000;timerText.textContent='NO LIMIT';log('Trainee mode armed // unlimited time // visual trace loop active // no rewards or penalties.','hot');tick();timerId=setInterval(tick,100);}
@@ -626,7 +675,7 @@ function startGame(){
 }
 function stopGame(){
   if(!sessionRunning)return;playThemeSound('stop');sessionRunning=false;roundActive=false;clearInterval(timerId);clearTimeout(transitionTimer);resetAnimations();
-  const o=themeOntology();input.disabled=true;btn.disabled=true;input.value='';input.placeholder=o.prompt;binaryCode.textContent=o.safe;timerText.textContent='STOPPED';timerBar.style.width='100%';
+  const o=themeOntology();input.disabled=true;input.value='';input.placeholder=o.prompt;binaryCode.textContent=o.safe;timerText.textContent='STOPPED';timerBar.style.width='100%';
   gate.textContent='LOCKED';gate.style.color='var(--red)';status.textContent=o.stopped+' // NO CRYPTOBYTES LOST';status.className='status-msg';setSessionUI();log(o.safe+' // wallet frozen at '+balance+' CryptoBytes.','hot');
 }
 function tick(){if(!sessionRunning||!roundActive)return;const total=modes[difficulty.value];if(total===null){const loop=60;let left=Math.max(0,(deadline-performance.now())/1000);if(left<=0){deadline=performance.now()+loop*1000;left=loop;timerBar.style.transition='none';timerBar.style.width='100%';void timerBar.offsetWidth;timerBar.style.transition='width .12s linear,background .2s';log('Training trace visualization recycled // no time penalty.','hot');}timerText.textContent='NO LIMIT';timerBar.style.width=(left/loop*100)+'%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';return}const left=Math.max(0,(deadline-performance.now())/1000);timerText.textContent=left.toFixed(1)+' SEC';timerBar.style.width=(left/total*100)+'%';if(left<total*.3)timerBar.style.background='var(--red)';else if(left<total*.55)timerBar.style.background='var(--amber)';if(left<=0)fail('TRACE COMPLETE // FIREWALL LOCKDOWN',true)}
@@ -654,12 +703,12 @@ function scheduleNextRound(delay,newMission){
 }
 function success(){
   if(!sessionRunning||!roundActive)return;playThemeSound('success');roundActive=false;clearInterval(timerId);const trainee=difficulty.value==='trainee';const left=trainee?0:Math.max(0,(deadline-performance.now())/1000);const reward=50+Math.min((streak+1)*5,50);const gained=trainee?0:Math.round(100+left*8+streak*20);if(!trainee){score+=gained;streak++;balance+=reward}updateStats();
-  gate.textContent='UNLOCKED';gate.style.color='var(--green)';status.textContent=trainee?'✔ ACCESS GRANTED // TRAINING COMPLETE':'✔ ACCESS GRANTED // +'+gained+' SCORE';status.className='status-msg success';input.disabled=true;btn.disabled=true;timerText.textContent=trainee?'PRACTICE':'BREACHED';
+  gate.textContent='UNLOCKED';gate.style.color='var(--green)';status.textContent=trainee?'✔ ACCESS GRANTED // TRAINING COMPLETE':'✔ ACCESS GRANTED // +'+gained+' SCORE';status.className='status-msg success';input.disabled=true;timerText.textContent=trainee?'PRACTICE':'BREACHED';
   statusWrap.classList.remove('success-burst');void statusWrap.offsetWidth;statusWrap.classList.add('success-burst');showEffect('success',currentMission?currentMission.fx.ok[0]:'FIREWALL COLLAPSED',trainee?'TRAINING COMPLETE':(currentMission?currentMission.fx.ok[1]:'ACCESS GRANTED'),trainee?'NO SCORE // NO CRYPTOBYTES // PRACTICE MODE':'+'+gained+' SCORE  //  +'+reward+' CRYPTOBYTES');
   log(trainee?'Training cipher solved // no rewards awarded.':'SYSTEM OVERRIDE COMPLETE // next mission incoming.','hot');burst();scheduleNextRound(1650,true);
 }
 function fail(message='DECRYPTION FAILED // ACCESS DENIED',timeout=false){
-  if(!sessionRunning||!roundActive)return;playThemeSound('fail');roundActive=false;clearInterval(timerId);const trainee=difficulty.value==='trainee';let penalty=0;if(!trainee){streak=0;penalty=Math.min(20,balance);balance-=penalty}updateStats();gate.textContent='LOCKED';gate.style.color='var(--red)';status.textContent='✖ '+message;status.className='status-msg error';input.disabled=true;btn.disabled=true;timerText.textContent=trainee?'TRY AGAIN':'LOCKED';
+  if(!sessionRunning||!roundActive)return;playThemeSound('fail');roundActive=false;clearInterval(timerId);const trainee=difficulty.value==='trainee';let penalty=0;if(!trainee){streak=0;penalty=Math.min(20,balance);balance-=penalty}updateStats();gate.textContent='LOCKED';gate.style.color='var(--red)';status.textContent='✖ '+message;status.className='status-msg error';input.disabled=true;timerText.textContent=trainee?'TRY AGAIN':'LOCKED';
   document.body.classList.remove('flash-fail');workspace.classList.remove('shake-fail');void workspace.offsetWidth;document.body.classList.add('flash-fail');workspace.classList.add('shake-fail');showEffect('fail',timeout?(currentMission?currentMission.fx.fail[0]:'TRACE DETECTED'):'KEY REJECTED',trainee?'TRAINING MISS':(currentMission?currentMission.fx.fail[1]:'SYSTEM LOCKDOWN'),trainee?'NO PENALTY // PRACTICE MODE':'-'+penalty+' CRYPTOBYTES  //  NEXT MISSION INCOMING');
   log(trainee?'Practice attempt missed // no CryptoBytes lost.':(timeout?'Trace completed // '+penalty+' CryptoBytes lost.':'Incorrect key // '+penalty+' CryptoBytes lost.'),'warn');scheduleNextRound(trainee?900:1550,false);
 }
@@ -728,6 +777,9 @@ function bindKeyMagnifier(){
     input.value=(input.value+ch).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,solution.length);
     activeRow.classList.remove('commit-pop');void activeRow.offsetWidth;activeRow.classList.add('commit-pop');
     playThemeSound('key');proAdaptiveUpdate();
+    if(input.value.length===solution.length){
+      setTimeout(()=>{if(roundActive&&input.value.length===solution.length)decrypt()},180);
+    }
   };
 
   [left,right].forEach(rail=>{
@@ -783,7 +835,14 @@ binaryCode.addEventListener('contextmenu',e=>{
   status.textContent='🕵️ RIGHT-CLICK? VERY HACKER OF YOU // STILL NO COPY';
   status.className='status-msg error';
 });
-input.addEventListener('input',()=>{input.value=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(input.value)playThemeSound('key');proAdaptiveUpdate()});
+input.addEventListener('input',()=>{
+  input.value=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,solution.length);
+  if(input.value)playThemeSound('key');
+  proAdaptiveUpdate();
+  if(roundActive&&input.value.length===solution.length){
+    setTimeout(()=>{if(roundActive&&input.value.length===solution.length)decrypt()},180);
+  }
+});
 input.addEventListener('paste',e=>{
   e.preventDefault();
   status.textContent='😏 NICE TRY, AGENT // CTRL+V HAS LEFT THE CHAT';
@@ -804,7 +863,7 @@ touchBackspace.addEventListener('click',()=>{
   playThemeSound('key');
   proAdaptiveUpdate();
 });
-input.addEventListener('keydown',e=>{if(e.key==='Enter')decrypt()});btn.addEventListener('click',decrypt);startBtn.addEventListener('click',startGame);stopBtn.addEventListener('click',stopGame);
+startBtn.addEventListener('click',startGame);stopBtn.addEventListener('click',stopGame);
 $('newMission').addEventListener('click',()=>{if(!sessionRunning)prepareRound(true)});groupCount.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});difficulty.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});
 muteBtn.addEventListener('click',()=>{audioMuted=!audioMuted;if(!audioMuted){ensureAudio();if(audioCtx&&audioCtx.state==='suspended')audioCtx.resume();switchBackgroundMusic(true);playThemeSound('theme');}else{stopBackgroundMusic();}syncAudioUI();});
 volumeControl.addEventListener('input',()=>{audioVolume=Math.max(0,Math.min(1,Number(volumeControl.value)/100));syncAudioUI()});
@@ -825,7 +884,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){sizeCanvas();matrix(
 buildRails();chooseMission();updateStats();setSessionUI();prepareRound(false);
 
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=9.7').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=9.8').catch(()=>{}));
 }
 
 })();
