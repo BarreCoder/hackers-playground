@@ -57,7 +57,7 @@ h1{margin:0;color:var(--green);font-size:clamp(23px,5vw,35px);letter-spacing:4px
 body.theme-switching .workspace{animation:worldShift .65s ease}@keyframes worldShift{0%{box-shadow:0 0 10px rgba(var(--theme-rgb),.05);filter:saturate(.7)}45%{box-shadow:0 0 58px rgba(var(--theme-rgb),.30),inset 0 0 55px rgba(var(--theme2-rgb),.10);filter:saturate(1.45)}100%{filter:none}}
 
 .mission-panel{border-left:3px solid var(--amber);padding:12px 14px;margin:12px 0;background:rgba(255,211,77,.035)}.mission-title{color:var(--amber);font-weight:bold;font-size:13px}.mission-copy{margin-top:5px;color:#abc5b4;font-size:12px;line-height:1.5}
-.howto{margin:10px 0 13px;border:1px dashed rgba(39,232,255,.22);background:rgba(39,232,255,.025);padding:10px 12px;border-radius:6px}.howto summary{cursor:pointer;color:var(--cyan);font-size:11px;font-weight:bold;letter-spacing:1px}.howto ol{margin:9px 0 0 18px;padding:0;color:#9db9a8;font-size:11px;line-height:1.55}.howto strong{color:var(--green)}
+.howto{position:relative;overflow:hidden;margin:10px 0 13px;border:1px dashed rgba(39,232,255,.22);background:rgba(39,232,255,.025);padding:10px 12px;border-radius:6px}.howto::after{content:"";position:absolute;top:0;bottom:0;left:-45%;width:32%;pointer-events:none;background:linear-gradient(100deg,transparent 0%,rgba(var(--theme2-rgb),0) 20%,rgba(var(--theme2-rgb),.28) 48%,rgba(255,255,255,.48) 52%,rgba(var(--theme-rgb),.18) 58%,transparent 100%);transform:skewX(-18deg);filter:blur(.4px);animation:howtoShimmer 3.8s ease-in-out infinite}@keyframes howtoShimmer{0%,56%{left:-45%;opacity:0}62%{opacity:.9}78%{left:118%;opacity:.75}100%{left:118%;opacity:0}}.howto[open]::after{animation:none;opacity:0}.howto summary{position:relative;z-index:1;cursor:pointer;color:var(--cyan);font-size:11px;font-weight:bold;letter-spacing:1px;text-shadow:0 0 9px rgba(var(--theme2-rgb),.22)}.howto:not([open]) summary{animation:howtoPulse 3.8s ease-in-out infinite}@keyframes howtoPulse{0%,55%,100%{text-shadow:0 0 7px rgba(var(--theme2-rgb),.16)}66%{text-shadow:0 0 13px rgba(var(--theme2-rgb),.72),0 0 22px rgba(var(--theme-rgb),.24)}}.howto ol{margin:9px 0 0 18px;padding:0;color:#9db9a8;font-size:11px;line-height:1.55}.howto strong{color:var(--green)}
 .controls{display:grid;grid-template-columns:1fr 1fr auto auto auto;gap:8px;margin:15px 0;align-items:end}.field label{display:block;color:var(--muted);font-size:10px;margin-bottom:5px;letter-spacing:1px}select,button,input{font:inherit}select{width:100%;min-height:42px;background:#020604;color:var(--green);border:1px solid rgba(57,255,136,.6);border-radius:5px;padding:8px 10px}button{min-height:42px;border:1px solid var(--green);border-radius:5px;padding:9px 13px;background:rgba(57,255,136,.09);color:var(--green);font-weight:bold;cursor:pointer;letter-spacing:.5px}button:hover:not(:disabled){background:var(--green);color:#001b0d;box-shadow:0 0 15px rgba(57,255,136,.35)}button:disabled{cursor:not-allowed;opacity:.38}.start-btn{background:var(--green);color:#001b0d}.stop-btn{border-color:var(--red);color:var(--red)}.stop-btn:hover:not(:disabled){background:var(--red);color:#170006;box-shadow:0 0 15px rgba(255,70,100,.3)}
 .timer-wrap{margin:12px 0}.timer-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:10px;margin-bottom:5px}.timer-track{height:8px;background:#03100a;border:1px solid rgba(57,255,136,.18);overflow:hidden}.timer-bar{height:100%;width:100%;background:linear-gradient(90deg,var(--green2),var(--green));transition:width .12s linear,background .2s}
 .binary-shell{position:relative;margin:15px 0;padding:16px 13px;background:#010604;border:1px solid rgba(39,232,255,.3);border-radius:6px;overflow:hidden}.binary-label{color:var(--muted);font-size:9px;letter-spacing:1.6px;margin-bottom:8px}.binary-display{color:var(--cyan);text-align:center;font-size:clamp(13px,2.7vw,18px);line-height:1.7;letter-spacing:2px;font-weight:bold;overflow-wrap:anywhere;text-shadow:0 0 10px rgba(39,232,255,.28)}.binary-display.mutate{animation:codeMutate .24s ease}@keyframes codeMutate{0%{filter:blur(2px);transform:scaleX(.97);opacity:.3}100%{filter:none;transform:none;opacity:1}}
@@ -179,7 +179,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
     <main class="workspace" id="workspace">
       <header class="header">
         <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
-        <div class="subtitle">NEON CIPHER LAB // BUILD 8.3 <span class="blink">█</span></div>
+        <div class="subtitle">NEON CIPHER LAB // BUILD 8.4 <span class="blink">█</span></div>
       </header>
 
       <section class="hud" aria-label="Game stats">
@@ -195,7 +195,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
         <div class="theme-tag" id="themeTag">ORBITAL // GREEN-CYAN</div>
       </section>
 
-      <details class="howto" open>
+      <details class="howto">
         <summary>HOW TO PLAY // FIELD BRIEFING</summary>
         <ol>
           <li>Choose a <strong>difficulty</strong> and <strong>security complexity</strong>.</li>
