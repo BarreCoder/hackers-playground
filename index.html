@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HPG">
-<link rel="manifest" href="./manifest.webmanifest?v=9.6">
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=9.6">
-<link rel="apple-touch-icon" href="./icon-192.png?v=9.6">
+<link rel="manifest" href="./manifest.webmanifest?v=9.7">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=9.7">
+<link rel="apple-touch-icon" href="./icon-192.png?v=9.7">
 <style>
 :root{
   --green:#39ff88;--green2:#00d96f;--cyan:#27e8ff;--amber:#ffd34d;--red:#ff4664;
@@ -158,7 +158,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media(max-width:820px){body{padding:9px}.game-layout{grid-template-columns:1fr}.key-rail{display:none}.workspace{padding:14px}.hud{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr 1fr}.controls button{grid-column:auto}.input-inner{flex-direction:column}.progress-row{align-items:flex-start;flex-direction:column}.binary-display{letter-spacing:1px}}
 @media(max-width:480px){.controls{grid-template-columns:1fr}.controls button{width:100%}}
 
-/* BUILD 9.6 // mobile landscape command-center mode */
+/* BUILD 9.7 // mobile landscape command-center mode */
 :root{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
 .rotate-device{display:none;position:fixed;inset:0;z-index:120;background:radial-gradient(circle at 50% 35%,rgba(var(--theme-rgb),.16),transparent 38%),rgba(0,4,3,.97);padding:calc(22px + var(--safe-top)) calc(22px + var(--safe-right)) calc(22px + var(--safe-bottom)) calc(22px + var(--safe-left));place-items:center;text-align:center}
 .rotate-card{max-width:390px;border:1px solid var(--cyan);border-radius:14px;padding:24px 22px;background:#020806;box-shadow:0 0 35px rgba(var(--theme2-rgb),.22),inset 0 0 28px rgba(var(--theme-rgb),.06)}.rotate-logo{width:88px;height:88px;object-fit:cover;border-radius:22%;display:block;margin:0 auto 10px;border:1px solid rgba(var(--theme2-rgb),.45);box-shadow:0 0 24px rgba(var(--theme-rgb),.26),0 0 16px rgba(var(--theme2-rgb),.16)}
@@ -225,7 +225,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media (hover:hover){.key-row:hover{background:rgba(var(--theme-rgb),.14);color:#fff;text-shadow:0 0 9px rgba(var(--theme-rgb),.7);cursor:zoom-in}}
 
 
-/* BUILD 9.6 // mobile rail readability + sliding lens */
+/* BUILD 9.7 // mobile rail readability + sliding lens */
 @media (orientation:landscape) and (pointer:coarse) and (max-height:600px){
   body.launched .key-rail{
     display:block!important;
@@ -261,72 +261,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.6 // in-game mobile keypad */
-.mobile-keypad{display:none}
-@keyframes mobileKeyPop{
-  0%{transform:scale(1)}
-  38%{transform:scale(1.32);filter:brightness(1.9);box-shadow:0 0 24px rgba(var(--theme-rgb),.68)}
-  100%{transform:scale(1)}
-}
-@keyframes answerPop{
-  0%{transform:scale(1)}
-  45%{transform:scale(1.07);text-shadow:0 0 18px rgba(var(--theme-rgb),.95),0 0 28px rgba(var(--theme2-rgb),.55)}
-  100%{transform:scale(1)}
-}
-@media (orientation:landscape) and (pointer:coarse) and (max-height:600px){
-  body.launched .input-zone{display:none!important}
-  .mobile-keypad{
-    display:block;
-    width:min(100%,760px);
-    margin:7px auto 5px;
-    padding:7px;
-    border:1px solid rgba(var(--theme-rgb),.62);
-    border-radius:9px;
-    background:linear-gradient(180deg,rgba(0,8,5,.97),rgba(0,3,2,.96));
-    box-shadow:0 0 22px rgba(var(--theme-rgb),.15),inset 0 0 18px rgba(var(--theme2-rgb),.05);
-  }
-  .mobile-answer-shell{
-    border:2px solid var(--cyan);
-    border-radius:7px;
-    padding:5px 8px;
-    margin-bottom:6px;
-    background:#000;
-    animation:inputPulse 1.45s ease-in-out infinite;
-  }
-  .mobile-answer-label{color:var(--muted);font-size:7px;letter-spacing:1.1px;text-align:center;margin-bottom:2px}
-  .mobile-answer{
-    min-height:24px;display:grid;place-items:center;color:var(--green);
-    font-size:16px;font-weight:bold;letter-spacing:3px;overflow-wrap:anywhere
-  }
-  .mobile-answer.pop{animation:answerPop .22s ease}
-  .mobile-key-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px}
-  .mobile-key{
-    min-width:0;min-height:29px;padding:3px 0;border:1px solid rgba(var(--theme-rgb),.62);
-    border-radius:5px;background:linear-gradient(180deg,rgba(var(--theme-rgb),.13),rgba(0,9,5,.96));
-    color:#fff;font-size:11px;font-weight:bold;text-align:center;
-    text-shadow:0 0 7px rgba(var(--theme-rgb),.48);touch-action:manipulation
-  }
-  .mobile-key.pop{animation:mobileKeyPop .22s ease}
-  .mobile-key-actions{display:grid;grid-template-columns:1fr 1fr 1.35fr;gap:5px;margin-top:6px}
-  .mobile-key-actions button{min-height:31px;padding:4px 6px;font-size:9px}
-  .mobile-key-action{border-color:rgba(var(--theme2-rgb),.65);color:var(--cyan)}
-  .mobile-key-submit{background:var(--green)!important;color:#001b0d!important;box-shadow:0 0 14px rgba(var(--theme-rgb),.28)}
-}
-@media (orientation:landscape) and (pointer:coarse) and (max-height:430px){
-  .mobile-key-grid{grid-template-columns:repeat(9,minmax(0,1fr))}
-  .mobile-key{min-height:27px;font-size:10px}
-}
-
-
-/* BUILD 9.6 // fallback for wide-screen phones in landscape */
-@media (orientation:landscape) and (any-pointer:coarse) and (max-height:600px){
-  body.launched .input-zone{display:none!important}
-  body.launched .mobile-keypad{display:block!important}
-  body.launched .key-rail{display:block!important}
-}
-
-
-/* BUILD 9.6 // mobile mapping rails moved inward */
+/* BUILD 9.7 // mobile mapping rails moved inward */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .game-layout{
     align-items:center;
@@ -360,19 +295,55 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
   }
 }
 
+
+/* BUILD 9.7 // mobile mapping-as-controller */
+.touch-backspace{display:none}
+@keyframes railCommitPop{
+  0%{transform:scale(1)}
+  40%{transform:scale(1.18);filter:brightness(1.8);box-shadow:inset 0 0 16px rgba(var(--theme-rgb),.45),0 0 18px rgba(var(--theme-rgb),.45)}
+  100%{transform:scale(1)}
+}
+@media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
+  body.launched .input-zone{display:block!important}
+  body.launched .input-inner{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 44px auto;
+    gap:5px;
+    align-items:stretch;
+  }
+  body.launched #decryptInput{
+    pointer-events:none;
+    caret-color:transparent;
+    user-select:none;
+  }
+  body.launched .touch-backspace{
+    display:block;
+    min-width:44px;
+    padding:0;
+    font-size:20px;
+    font-weight:bold;
+    color:var(--cyan);
+    border-color:rgba(var(--theme2-rgb),.72);
+    background:rgba(0,8,5,.94);
+    box-shadow:0 0 12px rgba(var(--theme2-rgb),.16);
+  }
+  body.launched .key-row{cursor:crosshair;touch-action:none}
+  body.launched .key-row.commit-pop{animation:railCommitPop .24s ease}
+}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body class="prelaunch">
 <canvas id="matrix" aria-hidden="true"></canvas>
 <div class="rotate-device" id="rotateDevice" aria-live="polite">
-  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=9.6" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
+  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=9.7" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
 </div>
 <div class="key-magnifier" id="keyMagnifier" aria-hidden="true"><div class="key-mag-char" id="keyMagChar">A</div><div class="key-mag-bits" id="keyMagBits">01000001</div><div class="key-mag-note">MATRIX KEY // LOCAL LENS</div></div>
 <section class="landing" id="landing" aria-labelledby="landingTitle">
   <div class="landing-card">
     <div class="landing-inner">
-      <img class="landing-logo" src="./icon-192.png?v=9.6" alt="Hackers Playground HPG logo">
+      <img class="landing-logo" src="./icon-192.png?v=9.7" alt="Hackers Playground HPG logo">
       <div class="landing-kicker">// FRIEND-SAFE NEON CIPHER SIMULATION</div>
       <h1 class="landing-title" id="landingTitle">HACKERS<br>PLAYGROUND</h1>
       <div class="landing-tagline"><strong>Decode. Outsmart the trace. Own the playground.</strong><br>A browser-based cipher game with themed worlds, adaptive challenges, and a pressure-free trainee mode.</div>
@@ -395,7 +366,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
     <main class="workspace" id="workspace">
       <header class="header">
         <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
-        <div class="subtitle">NEON CIPHER LAB // BUILD 9.6 <span class="blink">█</span></div>
+        <div class="subtitle">NEON CIPHER LAB // BUILD 9.7 <span class="blink">█</span></div>
       </header>
 
       <section class="hud" aria-label="Game stats">
@@ -442,20 +413,8 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
       <section class="input-zone" id="inputZone">
         <div class="input-inner">
           <input type="text" id="decryptInput" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PRESS START" aria-label="Decryption key" disabled>
+          <button type="button" class="touch-backspace" id="touchBackspace" aria-label="Backspace" title="Backspace">⌫</button>
           <button type="button" id="decryptBtn" disabled>DECRYPT</button>
-        </div>
-      </section>
-
-      <section class="mobile-keypad" id="mobileKeypad" aria-label="On-screen hacker keypad">
-        <div class="mobile-answer-shell">
-          <div class="mobile-answer-label">MOBILE DECRYPTION BUFFER</div>
-          <div class="mobile-answer" id="mobileAnswer" aria-live="polite">_</div>
-        </div>
-        <div class="mobile-key-grid" id="mobileKeyGrid" aria-label="Shuffled cipher keypad"></div>
-        <div class="mobile-key-actions">
-          <button type="button" class="mobile-key-action" id="mobileBackspace">⌫ DELETE</button>
-          <button type="button" class="mobile-key-action" id="mobileClear">CLEAR</button>
-          <button type="button" class="mobile-key-submit" id="mobileDecrypt">DECRYPT</button>
         </div>
       </section>
 
@@ -503,12 +462,11 @@ const missions=[
  {name:'ARCADE CORE MAINFRAME',copy:'Beat the retro security core and claim the high-score packet.',tag:'ARCADE // MAGENTA-NEON',colors:{green:'#ff4fd8',green2:'#c329ff',cyan:'#58f6ff',amber:'#ffe35b',bg1:'#09020f',bg2:'#170623',rgb:'255,79,216',rgb2:'88,246,255'},labels:{start:'▶ INSERT COIN',stop:'■ QUIT ARCADE',new:'↻ NEW LEVEL',decrypt:'CRACK HIGH SCORE'},fx:{ok:['BONUS STAGE UNLOCKED','HIGH SCORE!'],fail:['GAME OVER TRACE','CORE LOCKOUT']}}
 ];
 const $=id=>document.getElementById(id);
-const difficulty=$('difficulty'), groupCount=$('groupCount'), binaryCode=$('binaryCode'), input=$('decryptInput'), btn=$('decryptBtn');
+const difficulty=$('difficulty'), groupCount=$('groupCount'), binaryCode=$('binaryCode'), input=$('decryptInput'), btn=$('decryptBtn'), touchBackspace=$('touchBackspace');
 const startBtn=$('startBtn'), stopBtn=$('stopBtn'), status=$('statusMessage'), statusWrap=$('statusWrap'), gate=$('gateStatus'), balanceEl=$('balance'), scoreEl=$('score'), streakEl=$('streak'), rankEl=$('rank');
 const workspace=$('workspace'), timerText=$('timerText'), timerBar=$('timerBar'), terminal=$('terminal'), sessionState=$('sessionState');
 const effectOverlay=$('effectOverlay'), effectKicker=$('effectKicker'), effectTitle=$('effectTitle'), effectSub=$('effectSub');
 const muteBtn=$('muteBtn'), volumeControl=$('volumeControl'), volumeValue=$('volumeValue'), soundState=$('soundState'), musicState=$('musicState');
-const mobileKeypad=$('mobileKeypad'), mobileKeyGrid=$('mobileKeyGrid'), mobileAnswer=$('mobileAnswer'), mobileBackspace=$('mobileBackspace'), mobileClear=$('mobileClear'), mobileDecrypt=$('mobileDecrypt');
 let solution='', score=0, streak=0, balance=100, deadline=0, timerId=null, roundActive=false, sessionRunning=false, transitionTimer=null, lastProLength=0, missionIndex=-1, currentMission=null;
 let audioMuted=true, audioVolume=.45, audioCtx=null, masterGain=null, musicGain=null, compressor=null;
 const musicTracks=[
@@ -639,42 +597,13 @@ function showEffect(type,kicker,title,sub){
   workspace.classList.remove('success-takeover','fail-lockdown');void workspace.offsetWidth;workspace.classList.add(type==='success'?'success-takeover':'fail-lockdown');
 }
 
-function isMobileKeypadMode(){
+function isMobileTouchMode(){
   return window.matchMedia('(orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse))').matches;
-}
-function shuffledKeys(){
-  const a='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
-  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}
-  return a;
-}
-function syncMobileAnswer(pop=false){
-  if(!mobileAnswer)return;
-  mobileAnswer.textContent=input.value||'_';
-  if(pop){mobileAnswer.classList.remove('pop');void mobileAnswer.offsetWidth;mobileAnswer.classList.add('pop')}
-}
-function renderMobileKeypad(){
-  if(!mobileKeyGrid)return;
-  mobileKeyGrid.innerHTML='';
-  shuffledKeys().forEach(ch=>{
-    const key=document.createElement('button');
-    key.type='button';key.className='mobile-key';key.textContent=ch;key.dataset.key=ch;
-    key.setAttribute('aria-label','Enter '+ch);
-    key.addEventListener('click',()=>{
-      if(!roundActive||input.value.length>=48)return;
-      input.value=(input.value+ch).toUpperCase().replace(/[^A-Z0-9]/g,'');
-      key.classList.remove('pop');void key.offsetWidth;key.classList.add('pop');
-      syncMobileAnswer(true);playThemeSound('key');proAdaptiveUpdate();
-    });
-    mobileKeyGrid.appendChild(key);
-  });
-}
-function resetMobileKeypadForChallenge(){
-  renderMobileKeypad();syncMobileAnswer(false);
 }
 
 function prepareRound(newMission=true){
   clearInterval(timerId);roundActive=false;resetAnimations();if(newMission)chooseMission();
-  solution=makeSolution(Number(groupCount.value));input.maxLength=48;input.value='';lastProLength=0;resetMobileKeypadForChallenge();
+  solution=makeSolution(Number(groupCount.value));input.maxLength=solution.length;input.value='';lastProLength=0;
   gate.textContent='LOCKED';gate.style.color='var(--red)';
   timerBar.style.width='100%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';
   if(!sessionRunning){
@@ -690,7 +619,7 @@ function startRound(){
   if(total===null){deadline=performance.now()+60000;timerText.textContent='NO LIMIT';log('Trainee mode armed // unlimited time // visual trace loop active // no rewards or penalties.','hot');tick();timerId=setInterval(tick,100);}
   else {deadline=performance.now()+total*1000;log('Mission armed // trace timer '+total+' seconds.','warn');tick();timerId=setInterval(tick,100);}
   if(difficulty.value==='pro')log('Adaptive cipher online: correct symbols mutate the future stream.','warn');
-  if(!isMobileKeypadMode())input.focus();
+  input.readOnly=isMobileTouchMode();if(!isMobileTouchMode())input.focus();
 }
 function startGame(){
   if(sessionRunning)return;clearTimeout(transitionTimer);sessionRunning=true;setSessionUI();playThemeSound('start');log(themeOntology().started+' // CryptoBytes at '+balance+'.','hot');prepareRound(true);
@@ -751,22 +680,16 @@ function bindKeyMagnifier(){
   };
 
   const positionLens=(row,rail)=>{
-    const rr=row.getBoundingClientRect();
-    const mr=mag.getBoundingClientRect();
-    const gap=8;
+    const rr=row.getBoundingClientRect(), mr=mag.getBoundingClientRect(), gap=8;
     const fromLeft=rail===left;
     mag.classList.toggle('from-left',fromLeft);
     mag.classList.toggle('from-right',!fromLeft);
-
     let x=fromLeft ? rr.right+gap : rr.left-mr.width-gap;
     let y=rr.top+(rr.height/2)-(mr.height/2);
-
     const safe=8;
     x=Math.max(safe,Math.min(window.innerWidth-mr.width-safe,x));
     y=Math.max(safe,Math.min(window.innerHeight-mr.height-safe,y));
-
-    mag.style.left=`${x}px`;
-    mag.style.top=`${y}px`;
+    mag.style.left=`${x}px`;mag.style.top=`${y}px`;
   };
 
   const show=(row,rail)=>{
@@ -774,24 +697,19 @@ function bindKeyMagnifier(){
     const ch=row.querySelector('b')?.textContent?.trim();
     const bits=row.querySelector('span')?.textContent?.trim();
     if(!ch||!bits)return;
-
     if(activeRow!==row){
       clearActive();
       activeRow=row;
       activeRow.classList.add('lens-active');
     }
     activeRail=rail;
-    magChar.textContent=ch;
-    magBits.textContent=bits;
-    mag.classList.add('show');
-    mag.setAttribute('aria-hidden','false');
+    magChar.textContent=ch;magBits.textContent=bits;
+    mag.classList.add('show');mag.setAttribute('aria-hidden','false');
     requestAnimationFrame(()=>positionLens(row,rail));
   };
 
   const hide=()=>{
-    clearActive();
-    activeRail=null;
-    activePointer=null;
+    clearActive();activeRail=null;activePointer=null;
     mag.classList.remove('show','from-left','from-right');
     mag.setAttribute('aria-hidden','true');
   };
@@ -799,43 +717,47 @@ function bindKeyMagnifier(){
   const rowAtPoint=(x,y,rail)=>{
     const el=document.elementFromPoint(x,y);
     const row=el?.closest?.('.key-row');
-    return row && rail.contains(row) ? row : null;
+    return row&&rail.contains(row)?row:null;
+  };
+
+  const commitActive=()=>{
+    if(!isMobileTouchMode()||!roundActive||!activeRow)return;
+    if(input.value.length>=solution.length)return;
+    const ch=activeRow.querySelector('b')?.textContent?.trim();
+    if(!ch)return;
+    input.value=(input.value+ch).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,solution.length);
+    activeRow.classList.remove('commit-pop');void activeRow.offsetWidth;activeRow.classList.add('commit-pop');
+    playThemeSound('key');proAdaptiveUpdate();
   };
 
   [left,right].forEach(rail=>{
     rail.addEventListener('pointerover',e=>{
       if(e.pointerType==='mouse'){
-        const row=e.target.closest('.key-row');
-        if(row)show(row,rail);
+        const row=e.target.closest('.key-row');if(row)show(row,rail);
       }
     });
-
     rail.addEventListener('pointermove',e=>{
       if(e.pointerType==='mouse'){
-        const row=e.target.closest('.key-row');
-        if(row)show(row,rail);
-        return;
+        const row=e.target.closest('.key-row');if(row)show(row,rail);return;
       }
       if(activePointer===e.pointerId){
-        const row=rowAtPoint(e.clientX,e.clientY,rail);
-        if(row)show(row,rail);
+        const row=rowAtPoint(e.clientX,e.clientY,rail);if(row)show(row,rail);
       }
     });
-
     rail.addEventListener('pointerout',e=>{
       if(e.pointerType==='mouse'&&!e.relatedTarget?.closest?.('.key-row'))hide();
     });
-
     rail.addEventListener('pointerdown',e=>{
-      const row=e.target.closest('.key-row');
-      if(!row)return;
-      e.preventDefault();
+      const row=e.target.closest('.key-row');if(!row)return;
+      if(e.pointerType!=='mouse')e.preventDefault();
       activePointer=e.pointerId;
       try{rail.setPointerCapture(e.pointerId)}catch{}
       show(row,rail);
     });
-
-    rail.addEventListener('pointerup',hide);
+    rail.addEventListener('pointerup',e=>{
+      if(e.pointerType!=='mouse')commitActive();
+      hide();
+    });
     rail.addEventListener('pointercancel',hide);
     rail.addEventListener('lostpointercapture',hide);
     rail.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse')hide()});
@@ -846,16 +768,6 @@ function bindKeyMagnifier(){
 }
 bindKeyMagnifier();
 
-mobileBackspace?.addEventListener('click',()=>{
-  if(!roundActive)return;
-  input.value=input.value.slice(0,-1);syncMobileAnswer(true);proAdaptiveUpdate();
-});
-mobileClear?.addEventListener('click',()=>{
-  if(!roundActive)return;
-  input.value='';syncMobileAnswer(true);proAdaptiveUpdate();
-});
-mobileDecrypt?.addEventListener('click',()=>{if(roundActive)btn.click()});
-window.addEventListener('orientationchange',()=>setTimeout(()=>syncMobileAnswer(false),80));
 
 
 }
@@ -871,7 +783,7 @@ binaryCode.addEventListener('contextmenu',e=>{
   status.textContent='🕵️ RIGHT-CLICK? VERY HACKER OF YOU // STILL NO COPY';
   status.className='status-msg error';
 });
-input.addEventListener('input',()=>{input.value=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');syncMobileAnswer(true);if(input.value)playThemeSound('key');proAdaptiveUpdate()});
+input.addEventListener('input',()=>{input.value=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');if(input.value)playThemeSound('key');proAdaptiveUpdate()});
 input.addEventListener('paste',e=>{
   e.preventDefault();
   status.textContent='😏 NICE TRY, AGENT // CTRL+V HAS LEFT THE CHAT';
@@ -885,6 +797,12 @@ input.addEventListener('drop',e=>{
   status.className='status-msg error';
   workspace.classList.remove('glitch');void workspace.offsetWidth;workspace.classList.add('glitch');
   log('That shortcut tunnel is closed // manual decoding only.','warn');
+});
+touchBackspace.addEventListener('click',()=>{
+  if(!roundActive||!input.value)return;
+  input.value=input.value.slice(0,-1);
+  playThemeSound('key');
+  proAdaptiveUpdate();
 });
 input.addEventListener('keydown',e=>{if(e.key==='Enter')decrypt()});btn.addEventListener('click',decrypt);startBtn.addEventListener('click',startGame);stopBtn.addEventListener('click',stopGame);
 $('newMission').addEventListener('click',()=>{if(!sessionRunning)prepareRound(true)});groupCount.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});difficulty.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});
@@ -907,7 +825,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){sizeCanvas();matrix(
 buildRails();chooseMission();updateStats();setSessionUI();prepareRound(false);
 
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=9.6').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=9.7').catch(()=>{}));
 }
 
 })();
