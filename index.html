@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HPG">
-<link rel="manifest" href="./manifest.webmanifest?v=9.8">
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=9.8">
-<link rel="apple-touch-icon" href="./icon-192.png?v=9.8">
+<link rel="manifest" href="./manifest.webmanifest?v=9.9">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=9.9">
+<link rel="apple-touch-icon" href="./icon-192.png?v=9.9">
 <style>
 :root{
   --green:#39ff88;--green2:#00d96f;--cyan:#27e8ff;--amber:#ffd34d;--red:#ff4664;
@@ -158,7 +158,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media(max-width:820px){body{padding:9px}.game-layout{grid-template-columns:1fr}.key-rail{display:none}.workspace{padding:14px}.hud{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr 1fr}.controls button{grid-column:auto}.input-inner{flex-direction:column}.progress-row{align-items:flex-start;flex-direction:column}.binary-display{letter-spacing:1px}}
 @media(max-width:480px){.controls{grid-template-columns:1fr}.controls button{width:100%}}
 
-/* BUILD 9.8 // mobile landscape command-center mode */
+/* BUILD 9.9 // mobile landscape command-center mode */
 :root{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
 .rotate-device{display:none;position:fixed;inset:0;z-index:120;background:radial-gradient(circle at 50% 35%,rgba(var(--theme-rgb),.16),transparent 38%),rgba(0,4,3,.97);padding:calc(22px + var(--safe-top)) calc(22px + var(--safe-right)) calc(22px + var(--safe-bottom)) calc(22px + var(--safe-left));place-items:center;text-align:center}
 .rotate-card{max-width:390px;border:1px solid var(--cyan);border-radius:14px;padding:24px 22px;background:#020806;box-shadow:0 0 35px rgba(var(--theme2-rgb),.22),inset 0 0 28px rgba(var(--theme-rgb),.06)}.rotate-logo{width:88px;height:88px;object-fit:cover;border-radius:22%;display:block;margin:0 auto 10px;border:1px solid rgba(var(--theme2-rgb),.45);box-shadow:0 0 24px rgba(var(--theme-rgb),.26),0 0 16px rgba(var(--theme2-rgb),.16)}
@@ -225,7 +225,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media (hover:hover){.key-row:hover{background:rgba(var(--theme-rgb),.14);color:#fff;text-shadow:0 0 9px rgba(var(--theme-rgb),.7);cursor:zoom-in}}
 
 
-/* BUILD 9.8 // mobile rail readability + sliding lens */
+/* BUILD 9.9 // mobile rail readability + sliding lens */
 @media (orientation:landscape) and (pointer:coarse) and (max-height:600px){
   body.launched .key-rail{
     display:block!important;
@@ -261,7 +261,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.8 // mobile mapping rails moved inward */
+/* BUILD 9.9 // mobile mapping rails moved inward */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .game-layout{
     align-items:center;
@@ -296,7 +296,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.8 // mobile mapping-as-controller */
+/* BUILD 9.9 // mobile mapping-as-controller */
 .touch-backspace{display:none}
 @keyframes railCommitPop{
   0%{transform:scale(1)}
@@ -332,7 +332,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.8 // input buffer is the primary mobile action surface */
+/* BUILD 9.9 // input buffer is the primary mobile action surface */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .input-zone{
     margin-top:8px!important;
@@ -380,19 +380,28 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
   }
 }
 
+
+/* BUILD 9.9 // confirmed rail-entry feedback */
+@keyframes bufferCommitPulse{
+  0%{transform:scale(1)}
+  45%{transform:scale(1.035);box-shadow:inset 0 0 18px rgba(var(--theme-rgb),.32),0 0 22px rgba(var(--theme2-rgb),.30)}
+  100%{transform:scale(1)}
+}
+body.launched #decryptInput.buffer-commit{animation:bufferCommitPulse .20s ease}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body class="prelaunch">
 <canvas id="matrix" aria-hidden="true"></canvas>
 <div class="rotate-device" id="rotateDevice" aria-live="polite">
-  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=9.8" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
+  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=9.9" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
 </div>
 <div class="key-magnifier" id="keyMagnifier" aria-hidden="true"><div class="key-mag-char" id="keyMagChar">A</div><div class="key-mag-bits" id="keyMagBits">01000001</div><div class="key-mag-note">MATRIX KEY // LOCAL LENS</div></div>
 <section class="landing" id="landing" aria-labelledby="landingTitle">
   <div class="landing-card">
     <div class="landing-inner">
-      <img class="landing-logo" src="./icon-192.png?v=9.8" alt="Hackers Playground HPG logo">
+      <img class="landing-logo" src="./icon-192.png?v=9.9" alt="Hackers Playground HPG logo">
       <div class="landing-kicker">// FRIEND-SAFE NEON CIPHER SIMULATION</div>
       <h1 class="landing-title" id="landingTitle">HACKERS<br>PLAYGROUND</h1>
       <div class="landing-tagline"><strong>Decode. Outsmart the trace. Own the playground.</strong><br>A browser-based cipher game with themed worlds, adaptive challenges, and a pressure-free trainee mode.</div>
@@ -415,7 +424,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
     <main class="workspace" id="workspace">
       <header class="header">
         <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
-        <div class="subtitle">NEON CIPHER LAB // BUILD 9.8 <span class="blink">█</span></div>
+        <div class="subtitle">NEON CIPHER LAB // BUILD 9.9 <span class="blink">█</span></div>
       </header>
 
       <section class="hud" aria-label="Game stats">
@@ -543,7 +552,7 @@ function updateStats(){scoreEl.textContent=String(score).padStart(4,'0');streakE
 function applyTheme(m){
   currentMission=m;const r=document.documentElement.style,c=m.colors;
   r.setProperty('--green',c.green);r.setProperty('--green2',c.green2);r.setProperty('--cyan',c.cyan);r.setProperty('--amber',c.amber);r.setProperty('--theme-bg1',c.bg1);r.setProperty('--theme-bg2',c.bg2);r.setProperty('--theme-rgb',c.rgb);r.setProperty('--theme2-rgb',c.rgb2);
-  $('themeTag').textContent=m.tag;startBtn.textContent=m.labels.start;stopBtn.textContent=m.labels.stop;$('newMission').textContent=m.labels.new;btn.textContent=m.labels.decrypt;
+  $('themeTag').textContent=m.tag;startBtn.textContent=m.labels.start;stopBtn.textContent=m.labels.stop;$('newMission').textContent=m.labels.new;
   document.body.classList.remove('theme-switching');void document.body.offsetWidth;document.body.classList.add('theme-switching');setTimeout(()=>document.body.classList.remove('theme-switching'),700);
 }
 function themeOntology(){
@@ -647,7 +656,9 @@ function showEffect(type,kicker,title,sub){
 }
 
 function isMobileTouchMode(){
-  return window.matchMedia('(orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse))').matches;
+  const landscapeCompact=window.matchMedia('(orientation:landscape) and (max-height:600px)').matches;
+  const coarse=window.matchMedia('(pointer:coarse)').matches||window.matchMedia('(any-pointer:coarse)').matches;
+  return landscapeCompact&&coarse;
 }
 
 function prepareRound(newMission=true){
@@ -776,6 +787,7 @@ function bindKeyMagnifier(){
     if(!ch)return;
     input.value=(input.value+ch).toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,solution.length);
     activeRow.classList.remove('commit-pop');void activeRow.offsetWidth;activeRow.classList.add('commit-pop');
+    input.classList.remove('buffer-commit');void input.offsetWidth;input.classList.add('buffer-commit');
     playThemeSound('key');proAdaptiveUpdate();
     if(input.value.length===solution.length){
       setTimeout(()=>{if(roundActive&&input.value.length===solution.length)decrypt()},180);
@@ -884,7 +896,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){sizeCanvas();matrix(
 buildRails();chooseMission();updateStats();setSessionUI();prepareRound(false);
 
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=9.8').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=9.9').catch(()=>{}));
 }
 
 })();
