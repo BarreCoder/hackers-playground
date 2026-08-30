@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HPG">
-<link rel="manifest" href="./manifest.webmanifest?v=9.9">
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=9.9">
-<link rel="apple-touch-icon" href="./icon-192.png?v=9.9">
+<link rel="manifest" href="./manifest.webmanifest?v=10.0">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=10.0">
+<link rel="apple-touch-icon" href="./icon-192.png?v=10.0">
 <style>
 :root{
   --green:#39ff88;--green2:#00d96f;--cyan:#27e8ff;--amber:#ffd34d;--red:#ff4664;
@@ -158,7 +158,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media(max-width:820px){body{padding:9px}.game-layout{grid-template-columns:1fr}.key-rail{display:none}.workspace{padding:14px}.hud{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr 1fr}.controls button{grid-column:auto}.input-inner{flex-direction:column}.progress-row{align-items:flex-start;flex-direction:column}.binary-display{letter-spacing:1px}}
 @media(max-width:480px){.controls{grid-template-columns:1fr}.controls button{width:100%}}
 
-/* BUILD 9.9 // mobile landscape command-center mode */
+/* BUILD 10.0 // mobile landscape command-center mode */
 :root{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
 .rotate-device{display:none;position:fixed;inset:0;z-index:120;background:radial-gradient(circle at 50% 35%,rgba(var(--theme-rgb),.16),transparent 38%),rgba(0,4,3,.97);padding:calc(22px + var(--safe-top)) calc(22px + var(--safe-right)) calc(22px + var(--safe-bottom)) calc(22px + var(--safe-left));place-items:center;text-align:center}
 .rotate-card{max-width:390px;border:1px solid var(--cyan);border-radius:14px;padding:24px 22px;background:#020806;box-shadow:0 0 35px rgba(var(--theme2-rgb),.22),inset 0 0 28px rgba(var(--theme-rgb),.06)}.rotate-logo{width:88px;height:88px;object-fit:cover;border-radius:22%;display:block;margin:0 auto 10px;border:1px solid rgba(var(--theme2-rgb),.45);box-shadow:0 0 24px rgba(var(--theme-rgb),.26),0 0 16px rgba(var(--theme2-rgb),.16)}
@@ -225,7 +225,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media (hover:hover){.key-row:hover{background:rgba(var(--theme-rgb),.14);color:#fff;text-shadow:0 0 9px rgba(var(--theme-rgb),.7);cursor:zoom-in}}
 
 
-/* BUILD 9.9 // mobile rail readability + sliding lens */
+/* BUILD 10.0 // mobile rail readability + sliding lens */
 @media (orientation:landscape) and (pointer:coarse) and (max-height:600px){
   body.launched .key-rail{
     display:block!important;
@@ -261,7 +261,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.9 // mobile mapping rails moved inward */
+/* BUILD 10.0 // mobile mapping rails moved inward */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .game-layout{
     align-items:center;
@@ -296,7 +296,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.9 // mobile mapping-as-controller */
+/* BUILD 10.0 // mobile mapping-as-controller */
 .touch-backspace{display:none}
 @keyframes railCommitPop{
   0%{transform:scale(1)}
@@ -332,7 +332,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.9 // input buffer is the primary mobile action surface */
+/* BUILD 10.0 // input buffer is the primary mobile action surface */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .input-zone{
     margin-top:8px!important;
@@ -381,7 +381,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 9.9 // confirmed rail-entry feedback */
+/* BUILD 10.0 // confirmed rail-entry feedback */
 @keyframes bufferCommitPulse{
   0%{transform:scale(1)}
   45%{transform:scale(1.035);box-shadow:inset 0 0 18px rgba(var(--theme-rgb),.32),0 0 22px rgba(var(--theme2-rgb),.30)}
@@ -389,19 +389,110 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 body.launched #decryptInput.buffer-commit{animation:bufferCommitPulse .20s ease}
 
+
+/* BUILD 10.0 // mobile-native How To sheet */
+@media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
+  body.launched .howto{
+    position:relative;
+    overflow:visible!important;
+    z-index:20;
+  }
+
+  body.launched .howto[open]{
+    padding:4px 5px 5px!important;
+    background:rgba(0,7,5,.985)!important;
+    border-style:solid!important;
+    border-color:rgba(var(--theme2-rgb),.62)!important;
+    box-shadow:
+      0 10px 28px rgba(0,0,0,.52),
+      0 0 18px rgba(var(--theme2-rgb),.18)!important;
+  }
+
+  body.launched .howto summary{
+    min-height:28px;
+    display:flex;
+    align-items:center;
+    padding:3px 6px;
+    border-radius:5px;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    user-select:none;
+    -webkit-user-select:none;
+  }
+
+  body.launched .howto[open] summary{
+    position:sticky;
+    top:0;
+    z-index:2;
+    margin-bottom:3px;
+    background:#020806;
+    border-bottom:1px solid rgba(var(--theme2-rgb),.20);
+  }
+
+  body.launched .howto-body{
+    max-height:min(38dvh,150px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+    touch-action:pan-y;
+    padding:3px 6px 7px;
+    scrollbar-width:thin;
+    scrollbar-color:var(--cyan) transparent;
+  }
+
+  body.launched .howto-body::-webkit-scrollbar{width:4px}
+  body.launched .howto-body::-webkit-scrollbar-thumb{
+    background:var(--cyan);
+    border-radius:999px;
+  }
+
+  body.launched .howto-body p{
+    margin:0 0 8px;
+    color:#b8d2c1;
+    font-size:8px!important;
+    line-height:1.45!important;
+  }
+
+  body.launched .howto-body p:last-child{margin-bottom:0}
+  body.launched .howto-body b{color:var(--green)}
+}
+
+/* BUILD 10.0 // active input field attention pulse */
+@keyframes decryptFieldPulse{
+  0%,100%{
+    border-color:rgba(var(--theme-rgb),.58);
+    box-shadow:
+      inset 0 0 14px rgba(var(--theme-rgb),.12),
+      0 0 8px rgba(var(--theme-rgb),.12);
+    filter:brightness(1);
+  }
+  50%{
+    border-color:var(--cyan);
+    box-shadow:
+      inset 0 0 24px rgba(var(--theme-rgb),.26),
+      0 0 24px rgba(var(--theme2-rgb),.42),
+      0 0 38px rgba(var(--theme-rgb),.22);
+    filter:brightness(1.16);
+  }
+}
+
+body.launched #decryptInput.input-attention{
+  animation:decryptFieldPulse 1.15s ease-in-out infinite;
+}
+
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body class="prelaunch">
 <canvas id="matrix" aria-hidden="true"></canvas>
 <div class="rotate-device" id="rotateDevice" aria-live="polite">
-  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=9.9" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
+  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=10.0" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
 </div>
 <div class="key-magnifier" id="keyMagnifier" aria-hidden="true"><div class="key-mag-char" id="keyMagChar">A</div><div class="key-mag-bits" id="keyMagBits">01000001</div><div class="key-mag-note">MATRIX KEY // LOCAL LENS</div></div>
 <section class="landing" id="landing" aria-labelledby="landingTitle">
   <div class="landing-card">
     <div class="landing-inner">
-      <img class="landing-logo" src="./icon-192.png?v=9.9" alt="Hackers Playground HPG logo">
+      <img class="landing-logo" src="./icon-192.png?v=10.0" alt="Hackers Playground HPG logo">
       <div class="landing-kicker">// FRIEND-SAFE NEON CIPHER SIMULATION</div>
       <h1 class="landing-title" id="landingTitle">HACKERS<br>PLAYGROUND</h1>
       <div class="landing-tagline"><strong>Decode. Outsmart the trace. Own the playground.</strong><br>A browser-based cipher game with themed worlds, adaptive challenges, and a pressure-free trainee mode.</div>
@@ -424,7 +515,7 @@ body.launched #decryptInput.buffer-commit{animation:bufferCommitPulse .20s ease}
     <main class="workspace" id="workspace">
       <header class="header">
         <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
-        <div class="subtitle">NEON CIPHER LAB // BUILD 9.9 <span class="blink">█</span></div>
+        <div class="subtitle">NEON CIPHER LAB // BUILD 10.0 <span class="blink">█</span></div>
       </header>
 
       <section class="hud" aria-label="Game stats">
@@ -662,7 +753,7 @@ function isMobileTouchMode(){
 }
 
 function prepareRound(newMission=true){
-  clearInterval(timerId);roundActive=false;resetAnimations();if(newMission)chooseMission();
+  clearInterval(timerId);roundActive=false;input.classList.remove('input-attention');resetAnimations();if(newMission)chooseMission();
   solution=makeSolution(Number(groupCount.value));input.maxLength=solution.length;input.value='';lastProLength=0;
   gate.textContent='LOCKED';gate.style.color='var(--red)';
   timerBar.style.width='100%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';
@@ -673,7 +764,7 @@ function prepareRound(newMission=true){
   startRound();
 }
 function startRound(){
-  if(!sessionRunning)return;clearInterval(timerId);resetAnimations();roundActive=true;input.disabled=false;input.value='';input.placeholder='ENTER '+solution.length+' CHAR KEY';renderBinary(0);
+  if(!sessionRunning)return;clearInterval(timerId);resetAnimations();roundActive=true;input.disabled=false;input.classList.add('input-attention');input.value='';input.placeholder='ENTER '+solution.length+' CHAR KEY';renderBinary(0);
   const total=modes[difficulty.value];timerBar.style.width='100%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';
   status.textContent='CIPHER ARMED // DECODE NOW';status.className='status-msg';
   if(total===null){deadline=performance.now()+60000;timerText.textContent='NO LIMIT';log('Trainee mode armed // unlimited time // visual trace loop active // no rewards or penalties.','hot');tick();timerId=setInterval(tick,100);}
@@ -685,7 +776,7 @@ function startGame(){
   if(sessionRunning)return;clearTimeout(transitionTimer);sessionRunning=true;setSessionUI();playThemeSound('start');log(themeOntology().started+' // CryptoBytes at '+balance+'.','hot');prepareRound(true);
 }
 function stopGame(){
-  if(!sessionRunning)return;playThemeSound('stop');sessionRunning=false;roundActive=false;clearInterval(timerId);clearTimeout(transitionTimer);resetAnimations();
+  if(!sessionRunning)return;playThemeSound('stop');sessionRunning=false;roundActive=false;input.classList.remove('input-attention');clearInterval(timerId);clearTimeout(transitionTimer);resetAnimations();
   const o=themeOntology();input.disabled=true;input.value='';input.placeholder=o.prompt;binaryCode.textContent=o.safe;timerText.textContent='STOPPED';timerBar.style.width='100%';
   gate.textContent='LOCKED';gate.style.color='var(--red)';status.textContent=o.stopped+' // NO CRYPTOBYTES LOST';status.className='status-msg';setSessionUI();log(o.safe+' // wallet frozen at '+balance+' CryptoBytes.','hot');
 }
@@ -713,7 +804,7 @@ function scheduleNextRound(delay,newMission){
   clearTimeout(transitionTimer);transitionTimer=setTimeout(()=>{if(sessionRunning)prepareRound(newMission)},delay);
 }
 function success(){
-  if(!sessionRunning||!roundActive)return;playThemeSound('success');roundActive=false;clearInterval(timerId);const trainee=difficulty.value==='trainee';const left=trainee?0:Math.max(0,(deadline-performance.now())/1000);const reward=50+Math.min((streak+1)*5,50);const gained=trainee?0:Math.round(100+left*8+streak*20);if(!trainee){score+=gained;streak++;balance+=reward}updateStats();
+  if(!sessionRunning||!roundActive)return;playThemeSound('success');roundActive=false;input.classList.remove('input-attention');clearInterval(timerId);const trainee=difficulty.value==='trainee';const left=trainee?0:Math.max(0,(deadline-performance.now())/1000);const reward=50+Math.min((streak+1)*5,50);const gained=trainee?0:Math.round(100+left*8+streak*20);if(!trainee){score+=gained;streak++;balance+=reward}updateStats();
   gate.textContent='UNLOCKED';gate.style.color='var(--green)';status.textContent=trainee?'✔ ACCESS GRANTED // TRAINING COMPLETE':'✔ ACCESS GRANTED // +'+gained+' SCORE';status.className='status-msg success';input.disabled=true;timerText.textContent=trainee?'PRACTICE':'BREACHED';
   statusWrap.classList.remove('success-burst');void statusWrap.offsetWidth;statusWrap.classList.add('success-burst');showEffect('success',currentMission?currentMission.fx.ok[0]:'FIREWALL COLLAPSED',trainee?'TRAINING COMPLETE':(currentMission?currentMission.fx.ok[1]:'ACCESS GRANTED'),trainee?'NO SCORE // NO CRYPTOBYTES // PRACTICE MODE':'+'+gained+' SCORE  //  +'+reward+' CRYPTOBYTES');
   log(trainee?'Training cipher solved // no rewards awarded.':'SYSTEM OVERRIDE COMPLETE // next mission incoming.','hot');burst();scheduleNextRound(1650,true);
@@ -896,7 +987,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){sizeCanvas();matrix(
 buildRails();chooseMission();updateStats();setSessionUI();prepareRound(false);
 
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=9.9').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=10.0').catch(()=>{}));
 }
 
 })();
