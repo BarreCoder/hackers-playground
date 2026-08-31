@@ -948,8 +948,8 @@ body.launched #decryptInput.input-attention{
 <div class="shell">
   <div class="topline"><span>// FRIEND-SAFE TRAINING SIMULATION</span><span class="online">● NODE ONLINE</span></div>
   <div class="game-layout">
-    <aside class="key-rail" id="leftRail" aria-label="Cipher key A through M">
-      <h2>◀ MATRIX KEY // A-M</h2>
+    <aside class="key-rail" id="leftRail" aria-label="Cipher key A through M and numbers 0 through 4">
+      <h2>◀ MATRIX KEY // A-M + 0-4</h2>
     </aside>
 
     <main class="workspace" id="workspace">
@@ -1077,8 +1077,8 @@ body.launched #decryptInput.input-attention{
       </footer>
     </main>
 
-    <aside class="key-rail" id="rightRail" aria-label="Cipher key N through Z and numbers">
-      <h2>MATRIX KEY // N-Z + 0-9 ▶</h2>
+    <aside class="key-rail" id="rightRail" aria-label="Cipher key N through Z and numbers 5 through 9">
+      <h2>MATRIX KEY // N-Z + 5-9 ▶</h2>
     </aside>
   </div>
 </div>
@@ -1401,8 +1401,13 @@ function decrypt(){if(!sessionRunning){status.textContent=themeOntology().ready+
 function burst(){for(let i=0;i<34;i++){const p=document.createElement('i');p.style.cssText='position:absolute;left:50%;top:50%;width:'+(i%3===0?4:2)+'px;height:'+(i%4===0?18:10)+'px;background:'+(i%2?'var(--green)':'var(--cyan)')+';pointer-events:none;z-index:36;transform-origin:50% 0;box-shadow:0 0 8px currentColor;';const a=(360/34)*i;statusWrap.appendChild(p);p.animate([{transform:`rotate(${a}deg) translateY(0) scale(1)`,opacity:1},{transform:`rotate(${a}deg) translateY(-110px) scale(.2)`,opacity:0}],{duration:900,easing:'cubic-bezier(.1,.8,.2,1)'}).onfinish=()=>p.remove()}}
 function buildRails(){
   const left=$('leftRail'),right=$('rightRail');
-  alphabet.slice(0,13).forEach(ch=>left.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${letterBits[ch]}</span></div>`));left.insertAdjacentHTML('beforeend','<div class="key-note">LETTER BLOCK = <b>010</b> + ROW</div>');
-  alphabet.slice(13).forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${letterBits[ch]}</span></div>`));digits.forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${numberBits[ch]}</span></div>`));right.insertAdjacentHTML('beforeend','<div class="key-note">NUMBER BLOCK = <b>1010</b> + ROW</div>');
+  alphabet.slice(0,13).forEach(ch=>left.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${letterBits[ch]}</span></div>`));
+  digits.slice(0,5).forEach(ch=>left.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${numberBits[ch]}</span></div>`));
+  left.insertAdjacentHTML('beforeend','<div class="key-note">LETTERS = <b>010</b> + ROW • NUMBERS = <b>1010</b> + ROW</div>');
+
+  alphabet.slice(13).forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${letterBits[ch]}</span></div>`));
+  digits.slice(5).forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${numberBits[ch]}</span></div>`));
+  right.insertAdjacentHTML('beforeend','<div class="key-note">LETTERS = <b>010</b> + ROW • NUMBERS = <b>1010</b> + ROW</div>');
 
 
 const mobileSettingsTrigger=$('mobileSettingsTrigger');
