@@ -206,7 +206,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
   body.launched .workspace{height:100%;min-height:0;overflow:hidden;padding:4px 6px;border-radius:7px}
   body.launched .header{padding:0 0 2px}.header h1{font-size:14px!important;letter-spacing:2px}.subtitle{font-size:6.5px!important;letter-spacing:.8px;margin-top:0!important}
   body.launched .hud{grid-template-columns:repeat(4,1fr);gap:3px;margin:2px 0 3px}.hud-card{padding:2px 4px!important;border-radius:4px}.hud-label{font-size:5.8px;letter-spacing:.5px}.hud-value{font-size:9.5px!important;margin-top:0}
-  body.launched .mission-panel{padding:3px 5px!important;margin:2px 0!important;border-left-width:2px}.mission-title{font-size:8px}.mission-copy{display:none}.theme-tag{margin-top:1px!important;padding:1px 4px;font-size:5.7px;letter-spacing:.4px}
+  body.launched .mission-panel{position:relative;padding:3px 5px!important;margin:2px 0!important;border-left-width:2px}.mission-title{font-size:8px}.mission-copy{display:none}.theme-tag{margin-top:1px!important;padding:1px 4px;font-size:5.7px;letter-spacing:.4px}
   body.launched .howto{margin:2px 0 3px!important;padding:3px 5px!important}.howto summary{font-size:7px;letter-spacing:.5px}.howto ol{font-size:7px!important;line-height:1.25!important;margin:4px 0 0 13px!important}
   body.launched .controls{grid-template-columns:1fr 1fr auto auto auto;gap:3px;margin:3px 0!important}.field label{font-size:5.8px;margin-bottom:1px;letter-spacing:.4px}body.launched select,body.launched button{min-height:25px!important;padding:3px 5px;font-size:7px;border-radius:4px}.start-btn,.stop-btn,#newMission{white-space:nowrap}
   body.launched .timer-wrap{margin:2px 0!important}.timer-meta{font-size:6px;margin-bottom:1px}.timer-track{height:4px}
@@ -584,30 +584,55 @@ body.launched #decryptInput.input-attention{
     align-items:flex-start;
   }
 
-  body.launched .mobile-mode-badge{
-    display:flex;
-    position:absolute;
-    top:-3px;
-    right:101px;
-    z-index:35;
-    height:28px;
-    min-width:82px;
-    padding:3px 7px;
-    border:1px solid rgba(var(--theme2-rgb),.56);
-    border-radius:20px;
-    background:
-      linear-gradient(180deg,rgba(var(--theme-rgb),.09),rgba(0,7,5,.94));
-    box-shadow:
-      0 0 11px rgba(var(--theme2-rgb),.12),
-      inset 0 0 10px rgba(var(--theme-rgb),.05);
-    align-items:center;
-    justify-content:center;
-    gap:5px;
-    white-space:nowrap;
-    pointer-events:auto;
-    cursor:pointer;
-    transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;
-  }
+body.launched .mobile-mode-badge{
+  display:flex;
+  position:absolute;
+
+  top:50%!important;
+  right:41px!important;
+
+  z-index:35;
+
+  width:82px!important;
+  min-width:82px!important;
+  max-width:82px!important;
+
+  height:28px!important;
+  min-height:28px!important;
+  max-height:28px!important;
+
+  padding:3px 7px!important;
+  margin:0!important;
+
+  border:0!important;
+  border-radius:10px!important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(var(--theme-rgb),.09),
+      rgba(0,7,5,.94)
+    )!important;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:5px;
+
+  white-space:nowrap;
+  box-sizing:border-box;
+
+  flex:none!important;
+  transform:translateY(-50%);
+
+  pointer-events:auto;
+  cursor:pointer;
+
+  transition:
+    border-color .16s ease,
+    box-shadow .16s ease,
+    background .16s ease;
+}
   body.launched .mobile-mode-badge:active{
     border-color:var(--cyan);
     background:rgba(var(--theme2-rgb),.12);
@@ -1083,7 +1108,6 @@ body.launched #decryptInput.input-attention{
           <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
           <div class="subtitle">NEON CIPHER LAB // BUILD 10.9 <span class="blink">█</span></div>
         </div>
-        <button type="button" class="mobile-mode-badge" id="mobileModeBadge" aria-label="Current difficulty mode. Tap to change mode"><span>MODE</span><b id="mobileModeBadgeValue">TRAINEE</b></button>
         <button type="button" class="mobile-settings-trigger" id="mobileSettingsTrigger" aria-label="Open settings" aria-expanded="false">⚙ <span>SETTINGS</span></button>
         <div class="mobile-quick-dock" id="mobileQuickDock" aria-label="Quick game settings">
           <button type="button" class="mobile-quick-btn" id="quickModeBtn" aria-expanded="false" aria-controls="quickModePanel" title="Difficulty mode"><span class="quick-icon">M</span><span class="quick-mini" id="quickModeMini">TRN</span></button>
@@ -1143,6 +1167,7 @@ body.launched #decryptInput.input-attention{
         <div class="mission-title" id="missionTitle">🎯 ACTIVE MISSION: ORBITAL RELAY FIREWALL</div>
         <div class="mission-copy" id="missionCopy">Decode the training cipher before the trace timer expires. No real systems are involved.</div>
         <div class="theme-tag" id="themeTag">ORBITAL // GREEN-CYAN</div>
+        <button type="button" class="mobile-mode-badge" id="mobileModeBadge" aria-label="Current difficulty mode. Tap to change mode"><span>MODE</span><b id="mobileModeBadgeValue">TRAINEE</b></button>
       </section>
 
       <details class="howto">
