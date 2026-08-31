@@ -351,7 +351,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
       inset 0 0 18px rgba(var(--theme-rgb),.10)!important;
   }
   body.launched .input-zone::before{
-    content:"▼ DECRYPTION BUFFER // AUTO-EXECUTES WHEN FULL ▼";
+    content:var(--mobile-buffer-label,"▼ DECRYPTION BUFFER // AUTO-EXECUTES WHEN FULL ▼");
     display:block;
     margin:0 0 5px;
     text-align:center;
@@ -588,10 +588,10 @@ body.launched #decryptInput.input-attention{
 
 body.launched .mobile-mode-badge{
   display:flex;
-  position:absolute;
+  position:relative;
 
-  top:50%!important;
-  right:41px!important;
+  top:auto!important;
+  right:auto!important;
 
   z-index:35;
 
@@ -625,7 +625,7 @@ body.launched .mobile-mode-badge{
   box-sizing:border-box;
 
   flex:none!important;
-  transform:translateY(-50%);
+  transform:none;
 
   pointer-events:auto;
   cursor:pointer;
@@ -905,6 +905,23 @@ body.launched .mobile-mode-badge{
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 
+/* BUILD 10.9 // mobile Lightning Mode */
+.mobile-mission-controls,.mobile-lightning-toggle,.touch-submit{display:none}
+@media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
+  body.launched .mobile-mission-controls{display:flex;position:absolute;top:50%;right:41px;transform:translateY(-50%);z-index:36;align-items:center;gap:4px;white-space:nowrap}
+  body.launched .mobile-lightning-toggle{display:grid;place-items:center;position:relative;top:auto;right:auto;transform:none;z-index:36;width:28px!important;height:28px!important;min-width:28px!important;min-height:28px!important;padding:0!important;border:0!important;border-radius:50%!important;background:transparent!important;color:#66736c!important;font-size:17px!important;line-height:1!important;text-shadow:none;box-shadow:none!important;touch-action:none}
+  body.launched .mobile-lightning-toggle.on{color:var(--amber)!important;text-shadow:0 0 7px rgba(255,211,77,.9),0 0 14px rgba(255,211,77,.45)}
+  body.launched .input-inner.manual-submit{grid-template-columns:minmax(0,1fr) 52px 52px!important}
+  body.launched .touch-submit{display:none;min-width:52px!important;padding:0!important;font-size:20px!important;font-weight:1000!important;color:var(--green)!important;border:2px solid rgba(var(--theme-rgb),.78)!important;background:rgba(0,8,5,.94)!important;box-shadow:0 0 12px rgba(var(--theme-rgb),.16)!important}
+  body.launched .input-inner.manual-submit .touch-submit{display:block}
+  body.launched .touch-submit.ready{box-shadow:0 0 18px rgba(var(--theme-rgb),.45)!important;text-shadow:0 0 8px rgba(var(--theme-rgb),.7)}
+  body.launched .submit-chevrons{display:inline-flex;position:relative;width:22px;height:24px;align-items:center;justify-content:center}
+  body.launched .submit-chevrons i{position:absolute;width:11px;height:11px;border-left:3px solid currentColor;border-top:3px solid currentColor;transform:rotate(45deg);animation:submitChevronRise 1s ease-in-out infinite}
+  body.launched .submit-chevrons i:first-child{top:8px;animation-delay:0s}
+  body.launched .submit-chevrons i:last-child{top:1px;animation-delay:.14s}
+  @keyframes submitChevronRise{0%,100%{transform:translateY(2px) rotate(45deg);opacity:.42}50%{transform:translateY(-2px) rotate(45deg);opacity:1}}
+}
+
 /* BUILD 10.9 // clean mobile UX layer. Existing desktop experience remains untouched. */
 .mobile-settings-trigger,.mobile-settings-overlay,.mobile-block-cursor{display:none}
 @keyframes mobileBlockBlink{0%,46%{opacity:1}47%,100%{opacity:0}}
@@ -1088,7 +1105,7 @@ body.launched .mobile-mode-badge{
       <div class="briefing-step"><div class="briefing-num">1</div><div><strong>CONFIGURE THE MISSION</strong><span>Choose your difficulty, complexity,theme press START, and beat the trace. <b>Trainee mode has no timer pressure.</b>For mobile - see<b> settings.</b></span></div></div>
       <div class="briefing-step"><div class="briefing-num">2</div><div><strong>READ THE CIPHER</strong><span>Each binary block represents a letter or number.</span><span class="briefing-example"><b>Example:</b> <span class="letter-prefix">010</span><span class="payload">00010</span> &nbsp; <span class="number-prefix">1010</span><span class="payload">0001</span> → <b>B1</b></span></div></div>
       <div class="briefing-step"><div class="briefing-num">3</div><div><strong>USE THE MATRIX KEYS</strong><span>Match each binary block against the left and right key rails.</span></div></div>
-      <div class="briefing-step"><div class="briefing-num">4</div><div><strong>ENTER THE KEY</strong><span class="briefing-desktop-only">Type the matching characters into the decryption buffer.</span><span class="briefing-mobile-only">Touch a matrix rail, slide to the character, then <b>lift your finger to enter it</b>. Use ⌫ to correct.</span></div></div>
+      <div class="briefing-step"><div class="briefing-num">4</div><div><strong>ENTER THE KEY</strong><span class="briefing-desktop-only">Type the matching characters into the decryption buffer.</span><span class="briefing-mobile-only">Touch a matrix rail, slide to the character, then <b>lift your finger to enter it</b>. Use ‹ to correct. <b>⚡ Lightning Mode</b> auto-executes when full; when off, press the <b>double-chevron submit button</b>.</span></div></div>
      
     </div>
 
@@ -1143,6 +1160,7 @@ body.launched .mobile-mode-badge{
             <button type="button" class="mobile-settings-option" data-mobile-menu="mode"><strong>MODE</strong><span id="mobileSettingsModeValue">TRAINEE</span><small>Difficulty, timer and adaptive behavior</small></button>
             <button type="button" class="mobile-settings-option" data-mobile-menu="complexity"><strong>COMPLEXITY</strong><span id="mobileSettingsComplexityValue">2 GROUPS // 4 CHARACTERS</span><small>Choose the number of binary groups</small></button>
             <button type="button" class="mobile-settings-option" data-mobile-menu="volume"><strong>VOLUME</strong><span id="mobileSettingsVolumeValue">45%</span><small>Background track and game sound level</small></button>
+            <button type="button" class="mobile-settings-option" id="mobileLightningSetting"><strong>LIGHTNING MODE</strong><span id="mobileSettingsLightningValue">OFF</span><small>Auto-execute when the decryption buffer is full</small></button>
             <button type="button" class="mobile-settings-option" data-mobile-menu="howto"><strong>HOW TO PLAY</strong><span>FIELD BRIEFING</span><small>Touch decoding instructions and controls</small></button>
           </div>
           <div class="mobile-swipe-hint">⇠ SWIPE THE CONSOLE TO CHANGE WORLD ⇢</div>
@@ -1169,16 +1187,20 @@ body.launched .mobile-mode-badge{
         <div class="mission-title" id="missionTitle">🎯 ACTIVE MISSION: ORBITAL RELAY FIREWALL</div>
         <div class="mission-copy" id="missionCopy">Decode the training cipher before the trace timer expires. No real systems are involved.</div>
         <div class="theme-tag" id="themeTag">ORBITAL // GREEN-CYAN</div>
-        <button type="button" class="mobile-mode-badge" id="mobileModeBadge" aria-label="Current difficulty mode. Tap to change mode"><span>MODE</span><b id="mobileModeBadgeValue">TRAINEE</b></button>
+        <div class="mobile-mission-controls">
+          <button type="button" class="mobile-lightning-toggle" id="mobileLightningToggle" aria-label="Lightning Mode off. Tap to toggle; long press for info" aria-pressed="false" title="Lightning Mode">⚡</button>
+          <button type="button" class="mobile-mode-badge" id="mobileModeBadge" aria-label="Current difficulty mode. Tap to change mode"><span>MODE</span><b id="mobileModeBadgeValue">TRAINEE</b></button>
+        </div>
       </section>
 
       <details class="howto">
         <summary>HOW TO PLAY // FIELD BRIEFING</summary>
         <div class="howto-body">
           <p><b>DESKTOP:</b> Decode each binary group using the left/right matrix key, then type the matching characters into the decryption buffer.</p>
-          <p><b>MOBILE:</b> Touch either matrix rail, slide your finger until the magnifier is over the character you want, then <b>lift your finger to enter it</b>. Use <b>⌫</b> to remove the last entry.</p>
+          <p><b>MOBILE:</b> Touch either matrix rail, slide your finger until the magnifier is over the character you want, then <b>lift your finger to enter it</b>. Use <b>‹</b> to remove the last entry.</p>
+          <p><b>⚡ LIGHTNING MODE:</b> When ON, the full decryption buffer auto-executes. When OFF, review your entry and press the <b>double-chevron submit button</b>. Tap ⚡ to toggle; long-press it for info.</p>
           <p>You can enter correct or incorrect characters, but the buffer only accepts <b>one character per binary group</b>.</p>
-          <p><b>No UNLOCK button:</b> when the final required character is entered, the system automatically attempts the decrypt.</p>
+          <p><b>SUBMIT:</b> Desktop keeps its normal behavior. On mobile, Lightning Mode controls whether a full buffer executes automatically or waits for the <b>double-chevron submit button</b>.</p>
           <p>In <b>PRO</b> mode, a correct prefix can mutate the remaining cipher while you work.</p>
         </div>
 </details>
@@ -1205,6 +1227,7 @@ body.launched .mobile-mode-badge{
         <div class="input-inner">
           <input type="text" id="decryptInput" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PRESS START" aria-label="Decryption key" disabled><span class="mobile-block-cursor" id="mobileBlockCursor" aria-hidden="true">█</span>
           <button type="button" class="touch-backspace" id="touchBackspace" aria-label="Backspace" title="Backspace"><span class="backspace-chevron" aria-hidden="true"><i></i></span></button>
+          <button type="button" class="touch-submit" id="touchSubmit" aria-label="Submit decryption" title="Submit"><span class="submit-chevrons" aria-hidden="true"><i></i><i></i></span></button>
         </div>
       </section>
 
@@ -1569,7 +1592,9 @@ const mobileSettingsClose=$('mobileSettingsClose'),mobileDetailClose=$('mobileDe
 const mobileDetailTitle=$('mobileDetailTitle'),mobileDetailEyebrow=$('mobileDetailEyebrow'),mobileDetailBody=$('mobileDetailBody');
 const mobileSettingsModeValue=$('mobileSettingsModeValue'),mobileSettingsComplexityValue=$('mobileSettingsComplexityValue'),mobileSettingsVolumeValue=$('mobileSettingsVolumeValue');
 const mobileModeBadgeValue=$('mobileModeBadgeValue');
+const mobileLightningToggle=$('mobileLightningToggle'),mobileLightningSetting=$('mobileLightningSetting'),mobileSettingsLightningValue=$('mobileSettingsLightningValue'),touchSubmit=$('touchSubmit');
 const mobileBlockCursor=$('mobileBlockCursor');
+let lightningMode=false;
 
 function setMobileOverlay(el,open){
   if(!el)return;
@@ -1584,7 +1609,27 @@ function syncMobileSettingsSummary(){
   if(mobileModeBadgeValue)mobileModeBadgeValue.textContent=currentMode;
   if(mobileSettingsComplexityValue)mobileSettingsComplexityValue.textContent=`${groupCount.value} GROUP${groupCount.value==='1'?'':'S'} // ${Number(groupCount.value)*2} CHARACTERS`;
   if(mobileSettingsVolumeValue)mobileSettingsVolumeValue.textContent=volumeControl.value+'%';
+  if(mobileSettingsLightningValue)mobileSettingsLightningValue.textContent=lightningMode?'ON':'OFF';
 }
+function syncLightningUI(){
+  if(!isMobileTouchMode())return;
+  mobileLightningToggle?.classList.toggle('on',lightningMode);
+  mobileLightningToggle?.setAttribute('aria-pressed',lightningMode?'true':'false');
+  mobileLightningToggle?.setAttribute('aria-label',`Lightning Mode ${lightningMode?'on':'off'}. Tap to toggle; long press for info`);
+  document.querySelector('.input-inner')?.classList.toggle('manual-submit',!lightningMode);
+  document.documentElement.style.setProperty('--mobile-buffer-label',lightningMode?'\"▼ DECRYPTION BUFFER // AUTO-EXECUTES WHEN FULL ▼\"':'\"▼ DECRYPTION BUFFER // PRESS ↑ TO EXECUTE ▼\"');
+  if(touchSubmit)touchSubmit.classList.toggle('ready',!lightningMode&&roundActive&&input.value.length===solution.length);
+  syncMobileSettingsSummary();
+}
+function showLightningInfo(){
+  if(!isMobileTouchMode()||!mobileDetailBody)return;
+  setMobileOverlay(mobileSettingsOverlay,false);mobileDetailBody.innerHTML='';
+  mobileDetailEyebrow.textContent='SPEED PROTOCOL';mobileDetailTitle.textContent='⚡ LIGHTNING MODE';
+  mobileDetailBody.innerHTML='<div class="mobile-howto-panel"><p><b>ON:</b> the decryption buffer executes instantly when the final character is entered.</p><p><b>OFF:</b> the full buffer waits so you can review or correct it. Press the <b>double-chevron submit button</b> to execute.</p></div>';
+  setMobileOverlay(mobileDetailOverlay,true);
+}
+function setLightningMode(value){lightningMode=!!value;syncLightningUI()}
+
 function openMobileDetail(kind){
   if(!isMobileTouchMode()||!mobileDetailBody)return;
   setMobileOverlay(mobileSettingsOverlay,false);
@@ -1633,6 +1678,12 @@ function openMobileDetail(kind){
   }
   setMobileOverlay(mobileDetailOverlay,true);
 }
+let lightningPressTimer=null,longLightningPress=false;
+mobileLightningToggle?.addEventListener('pointerdown',()=>{if(!isMobileTouchMode())return;longLightningPress=false;clearTimeout(lightningPressTimer);lightningPressTimer=setTimeout(()=>{longLightningPress=true;showLightningInfo()},650)});
+['pointerup','pointercancel','pointerleave'].forEach(ev=>mobileLightningToggle?.addEventListener(ev,()=>clearTimeout(lightningPressTimer)));
+mobileLightningToggle?.addEventListener('click',()=>{if(!isMobileTouchMode())return;if(longLightningPress){longLightningPress=false;return}setLightningMode(!lightningMode)});
+mobileLightningSetting?.addEventListener('click',()=>{if(!isMobileTouchMode())return;setLightningMode(!lightningMode)});
+touchSubmit?.addEventListener('click',()=>{if(!isMobileTouchMode()||lightningMode||!roundActive||input.value.length!==solution.length)return;decrypt()});
 mobileModeBadge?.addEventListener('click',()=>{if(!isMobileTouchMode())return;syncMobileSettingsSummary();openMobileDetail('mode')});
 mobileSettingsTrigger?.addEventListener('click',()=>{if(!isMobileTouchMode())return;syncMobileSettingsSummary();setMobileOverlay(mobileSettingsOverlay,true)});
 mobileSettingsClose?.addEventListener('click',()=>setMobileOverlay(mobileSettingsOverlay,false));
@@ -1642,6 +1693,7 @@ document.querySelectorAll('[data-mobile-menu]').forEach(btn=>btn.addEventListene
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenus()});
 difficulty.addEventListener('change',syncMobileSettingsSummary);groupCount.addEventListener('change',syncMobileSettingsSummary);volumeControl.addEventListener('input',syncMobileSettingsSummary);
 syncMobileSettingsSummary();
+if(isMobileTouchMode())syncLightningUI();
 
 [startBtn,stopBtn,$('newMission')].forEach(btn=>{
   if(!btn)return;let t=null;
@@ -1741,7 +1793,8 @@ function bindKeyMagnifier(){
     input.classList.remove('buffer-commit');void input.offsetWidth;input.classList.add('buffer-commit');
     playThemeSound('key');proAdaptiveUpdate();
     if(input.value.length===solution.length){
-      setTimeout(()=>{if(roundActive&&input.value.length===solution.length)decrypt()},180);
+      if(lightningMode)setTimeout(()=>{if(roundActive&&input.value.length===solution.length)decrypt()},180);
+      else syncLightningUI();
     }
   };
 
@@ -1803,7 +1856,8 @@ input.addEventListener('input',()=>{
   if(input.value)playThemeSound('key');
   proAdaptiveUpdate();
   if(roundActive&&input.value.length===solution.length){
-    setTimeout(()=>{if(roundActive&&input.value.length===solution.length)decrypt()},180);
+    if(!isMobileTouchMode()||lightningMode)setTimeout(()=>{if(roundActive&&input.value.length===solution.length)decrypt()},180);
+    else syncLightningUI();
   }
 });
 input.addEventListener('paste',e=>{
@@ -1825,6 +1879,7 @@ touchBackspace.addEventListener('click',()=>{
   input.value=input.value.slice(0,-1);
   playThemeSound('key');
   proAdaptiveUpdate();
+  if(isMobileTouchMode())syncLightningUI();
 });
 startBtn.addEventListener('click',startGame);stopBtn.addEventListener('click',stopGame);
 $('newMission').addEventListener('click',()=>{if(!sessionRunning)prepareRound(true)});groupCount.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});difficulty.addEventListener('change',()=>{if(!sessionRunning)prepareRound(false)});
