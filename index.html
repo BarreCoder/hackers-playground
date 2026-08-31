@@ -9,9 +9,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="HPG">
-<link rel="manifest" href="./manifest.webmanifest?v=10.5">
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=10.5">
-<link rel="apple-touch-icon" href="./icon-192.png?v=10.5">
+<link rel="manifest" href="./manifest.webmanifest?v=10.9">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=10.9">
+<link rel="apple-touch-icon" href="./icon-192.png?v=10.9">
 <style>
 :root{
   --green:#39ff88;--green2:#00d96f;--cyan:#27e8ff;--amber:#ffd34d;--red:#ff4664;
@@ -158,7 +158,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media(max-width:820px){body{padding:9px}.game-layout{grid-template-columns:1fr}.key-rail{display:none}.workspace{padding:14px}.hud{grid-template-columns:1fr 1fr}.controls{grid-template-columns:1fr 1fr}.controls button{grid-column:auto}.input-inner{flex-direction:column}.progress-row{align-items:flex-start;flex-direction:column}.binary-display{letter-spacing:1px}}
 @media(max-width:480px){.controls{grid-template-columns:1fr}.controls button{width:100%}}
 
-/* BUILD 10.5 // mobile landscape command-center mode */
+/* BUILD 10.9 // mobile landscape command-center mode */
 :root{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
 .rotate-device{display:none;position:fixed;inset:0;z-index:120;background:radial-gradient(circle at 50% 35%,rgba(var(--theme-rgb),.16),transparent 38%),rgba(0,4,3,.97);padding:calc(22px + var(--safe-top)) calc(22px + var(--safe-right)) calc(22px + var(--safe-bottom)) calc(22px + var(--safe-left));place-items:center;text-align:center}
 .rotate-card{max-width:390px;border:1px solid var(--cyan);border-radius:14px;padding:24px 22px;background:#020806;box-shadow:0 0 35px rgba(var(--theme2-rgb),.22),inset 0 0 28px rgba(var(--theme-rgb),.06)}.rotate-logo{width:88px;height:88px;object-fit:cover;border-radius:22%;display:block;margin:0 auto 10px;border:1px solid rgba(var(--theme2-rgb),.45);box-shadow:0 0 24px rgba(var(--theme-rgb),.26),0 0 16px rgba(var(--theme2-rgb),.16)}
@@ -225,7 +225,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 @media (hover:hover){.key-row:hover{background:rgba(var(--theme-rgb),.14);color:#fff;text-shadow:0 0 9px rgba(var(--theme-rgb),.7);cursor:zoom-in}}
 
 
-/* BUILD 10.5 // mobile rail readability + sliding lens */
+/* BUILD 10.9 // mobile rail readability + sliding lens */
 @media (orientation:landscape) and (pointer:coarse) and (max-height:600px){
   body.launched .key-rail{
     display:block!important;
@@ -261,7 +261,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 10.5 // mobile mapping rails moved inward */
+/* BUILD 10.9 // mobile mapping rails moved inward */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .game-layout{
     align-items:center;
@@ -296,7 +296,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 10.5 // mobile mapping-as-controller */
+/* BUILD 10.9 // mobile mapping-as-controller */
 .touch-backspace{display:none}
 @keyframes railCommitPop{
   0%{transform:scale(1)}
@@ -332,7 +332,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 10.5 // input buffer is the primary mobile action surface */
+/* BUILD 10.9 // input buffer is the primary mobile action surface */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .input-zone{
     margin-top:8px!important;
@@ -381,7 +381,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 }
 
 
-/* BUILD 10.5 // confirmed rail-entry feedback */
+/* BUILD 10.9 // confirmed rail-entry feedback */
 @keyframes bufferCommitPulse{
   0%{transform:scale(1)}
   45%{transform:scale(1.035);box-shadow:inset 0 0 18px rgba(var(--theme-rgb),.32),0 0 22px rgba(var(--theme2-rgb),.30)}
@@ -390,7 +390,7 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
 body.launched #decryptInput.buffer-commit{animation:bufferCommitPulse .20s ease}
 
 
-/* BUILD 10.5 // mobile-native How To sheet */
+/* BUILD 10.9 // mobile-native How To sheet */
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .howto{
     position:relative;
@@ -457,7 +457,7 @@ body.launched #decryptInput.buffer-commit{animation:bufferCommitPulse .20s ease}
   body.launched .howto-body b{color:var(--green)}
 }
 
-/* BUILD 10.5 // active input field attention pulse */
+/* BUILD 10.9 // active input field attention pulse */
 @keyframes decryptFieldPulse{
   0%,100%{
     border-color:rgba(var(--theme-rgb),.58);
@@ -481,7 +481,7 @@ body.launched #decryptInput.input-attention{
 }
 
 
-/* BUILD 10.5 // semantic cipher prefixes */
+/* BUILD 10.9 // semantic cipher prefixes */
 .legend-prefix{
   display:inline-block;
   padding:1px 4px;
@@ -817,355 +817,108 @@ body.launched #decryptInput.input-attention{
 
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 
-/* BUILD 10.5 // mobile overlay settings + swipe worlds. Desktop unchanged. */
-.mobile-settings-launcher,.mobile-menu-overlay{display:none}
+/* BUILD 10.9 // clean mobile UX layer. Existing desktop experience remains untouched. */
+.mobile-settings-trigger,.mobile-settings-overlay,.mobile-block-cursor{display:none}
+@keyframes mobileBlockBlink{0%,46%{opacity:1}47%,100%{opacity:0}}
+@keyframes mobileMenuBoot{0%{transform:scale(.91);opacity:.2;filter:blur(3px)}100%{transform:scale(1);opacity:1;filter:none}}
+
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
-  body.launched .header{
-    display:block!important;
-    position:relative!important;
-    min-height:34px!important;
-    padding:2px 0 3px!important;
-    text-align:center!important;
-    z-index:32;
-  }
-  body.launched .header-copy{text-align:center!important}
-  body.launched .header h1{
-    text-align:center!important;
-    font-size:13px!important;
-    letter-spacing:1.8px!important;
-    padding:0 72px;
-  }
+  body.launched .workspace{touch-action:pan-y}
+  body.launched .header{display:block!important;position:relative!important;min-height:34px!important;padding:2px 0 3px!important;text-align:center!important}
+  body.launched .header-copy{display:block!important;text-align:center!important}
+  body.launched .header h1{text-align:center!important;padding:0 84px!important;font-size:13px!important;line-height:1.05!important;letter-spacing:1.8px!important}
   body.launched .header .subtitle{text-align:center!important}
-  body.launched .mobile-quick-dock{display:none!important}
-  body.launched .mobile-quick-popover{display:none!important}
 
-  body.launched .mobile-settings-launcher{
-    display:flex;
-    position:absolute;
-    right:2px;top:1px;z-index:36;
-    align-items:center;justify-content:center;gap:3px;
-    min-width:64px!important;min-height:27px!important;
-    padding:3px 6px!important;border-radius:999px!important;
-    border:1px solid rgba(var(--theme2-rgb),.62)!important;
-    background:rgba(0,7,5,.94)!important;color:var(--cyan)!important;
-    font-size:6.5px!important;letter-spacing:.6px!important;
-    box-shadow:0 0 11px rgba(var(--theme2-rgb),.14);
+  body.launched .mobile-quick-dock,body.launched .mobile-quick-popover{display:none!important}
+  body.launched .mobile-settings-trigger{
+    display:flex!important;position:absolute;right:2px;top:1px;z-index:42;align-items:center;justify-content:center;gap:5px;
+    min-width:78px!important;min-height:29px!important;padding:4px 8px!important;border:1px solid rgba(var(--theme2-rgb),.72)!important;
+    border-radius:999px!important;background:rgba(0,7,5,.95)!important;color:var(--cyan)!important;
+    box-shadow:0 0 13px rgba(var(--theme2-rgb),.18),inset 0 0 10px rgba(var(--theme-rgb),.06);
+    font-size:8px!important;font-weight:1000!important;letter-spacing:.7px!important;touch-action:manipulation;
   }
 
-  /* How To moves into settings on mobile, but original details stays untouched in DOM. */
   body.launched .howto{display:none!important}
 
-  body.launched .mobile-menu-overlay{
-    position:fixed;inset:0;z-index:118;
-    align-items:center;justify-content:center;
-    padding:calc(8px + var(--safe-top)) calc(10px + var(--safe-right))
-            calc(8px + var(--safe-bottom)) calc(10px + var(--safe-left));
-    background:rgba(0,3,2,.82);
-    backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
-    opacity:0;visibility:hidden;pointer-events:none;
-    transition:opacity .18s ease,visibility .18s ease;
-  }
-  body.launched .mobile-menu-overlay.show{
-    display:flex;opacity:1;visibility:visible;pointer-events:auto;
-  }
-  body.launched .mobile-menu-card{
-    position:relative;
-    width:min(620px,88vw);max-height:86dvh;overflow:auto;
-    padding:16px 18px 14px;
-    border:1px solid rgba(var(--theme2-rgb),.76);border-radius:14px;
-    background:
-      radial-gradient(circle at 50% 0%,rgba(var(--theme-rgb),.14),transparent 45%),
-      linear-gradient(180deg,rgba(2,12,8,.99),rgba(0,5,3,.995));
-    box-shadow:0 0 38px rgba(var(--theme2-rgb),.20),inset 0 0 32px rgba(var(--theme-rgb),.055);
-    text-align:center;
-    animation:mobileMenuBoot .22s cubic-bezier(.2,.85,.2,1);
-  }
-  @keyframes mobileMenuBoot{
-    from{transform:scale(.90);opacity:.25;filter:blur(3px)}
-    to{transform:scale(1);opacity:1;filter:none}
-  }
-  body.launched .mobile-menu-card::before{
-    content:"";position:absolute;left:8%;right:8%;top:0;height:1px;
-    background:linear-gradient(90deg,transparent,var(--cyan),transparent);
-  }
-  body.launched .mobile-menu-close{
-    position:absolute;right:9px;top:8px;
-    width:30px;min-width:30px!important;height:30px;min-height:30px!important;
-    padding:0!important;border-radius:50%!important;
-    color:var(--cyan)!important;background:rgba(var(--theme2-rgb),.04)!important;
-  }
-  body.launched .mobile-menu-kicker{color:var(--muted);font-size:6px;letter-spacing:1.8px}
-  body.launched .mobile-menu-title{
-    margin:3px 36px 12px;color:var(--green);
-    font-size:17px;font-weight:1000;letter-spacing:2.5px;
-    text-shadow:0 0 14px rgba(var(--theme-rgb),.35);
-  }
-  body.launched .mobile-menu-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:8px;
-  }
-  body.launched .mobile-menu-option{
-    min-height:58px!important;padding:8px!important;border-radius:9px!important;
-    background:rgba(var(--theme-rgb),.035)!important;
-    border-color:rgba(var(--theme-rgb),.28)!important;
-  }
-  body.launched .mobile-menu-option b{
-    display:block;color:var(--cyan);font-size:9px;letter-spacing:1px;
-  }
-  body.launched .mobile-menu-option span{
-    display:block;margin-top:5px;color:var(--green);font-size:7px;letter-spacing:.6px;
-  }
-  body.launched .mobile-menu-hint{
-    margin-top:10px;color:var(--muted);font-size:6px;letter-spacing:.8px;
-  }
-  body.launched .mobile-function-card{width:min(660px,91vw)}
-  body.launched .mobile-function-body{
-    min-height:105px;display:flex;align-items:center;justify-content:center;
-  }
-  body.launched .mobile-function-body .menu-choice-grid{
-    width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;
-  }
-  body.launched .mobile-function-body .menu-choice{
-    min-height:54px!important;padding:8px 5px!important;border-radius:9px!important;
-    background:rgba(var(--theme-rgb),.035)!important;
-  }
-  body.launched .mobile-function-body .menu-choice.selected{
-    border-color:var(--cyan)!important;background:rgba(var(--theme2-rgb),.12)!important;
-    box-shadow:0 0 15px rgba(var(--theme2-rgb),.18);
-  }
-  body.launched .mobile-function-body .menu-choice strong{
-    display:block;color:var(--green);font-size:10px;
-  }
-  body.launched .mobile-function-body .menu-choice span{
-    display:block;margin-top:4px;color:var(--muted);font-size:6px;
-  }
-  body.launched .mobile-function-body .menu-volume{
-    width:min(470px,92%);display:grid;grid-template-columns:44px 1fr 48px;gap:12px;align-items:center;
-  }
-  body.launched .mobile-function-body .menu-volume button{
-    min-width:42px!important;min-height:42px!important;border-radius:50%!important;padding:0!important;
-  }
-  body.launched .mobile-function-body .menu-volume input{width:100%;accent-color:var(--green)}
-  body.launched .mobile-function-body .menu-volume output{color:var(--green);font-size:11px;font-weight:bold}
-  body.launched .mobile-howto-copy{
-    text-align:left;color:#b8d2c1;font-size:8px;line-height:1.55;padding:2px 8px;
-  }
-  body.launched .mobile-howto-copy p{margin:0 0 9px}
-  body.launched .mobile-howto-copy b{color:var(--green)}
-
-  /* Preserve the existing start/stop/new action strip. */
-  body.launched .controls{grid-template-columns:1fr 1fr 1fr!important}
+  body.launched .controls{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:7px!important;margin:5px 0 6px!important}
   body.launched .controls .field{display:none!important}
-}
-
-
-/* BUILD 10.5 // mobile readability + reliable action dock. Desktop untouched. */
-.mobile-action-dock{display:none}
-@media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
-  /* Use the available overlay space instead of micro typography. */
-  body.launched .mobile-menu-card{
-    width:min(700px,92vw)!important;
-    max-height:88dvh!important;
-    padding:20px 24px 18px!important;
-    border-radius:16px!important;
+  body.launched .controls #startBtn,body.launched .controls #stopBtn,body.launched .controls #newMission{
+    display:block!important;width:100%!important;min-width:0!important;min-height:40px!important;padding:7px 6px!important;border-width:2px!important;border-radius:8px!important;
+    font-size:clamp(9px,1.55vw,12px)!important;font-weight:1000!important;letter-spacing:.55px!important;white-space:nowrap!important;
+    overflow:hidden!important;text-overflow:ellipsis!important;transform-origin:center!important;
+    transition:transform .11s ease,filter .11s ease,box-shadow .11s ease!important;touch-action:manipulation;-webkit-tap-highlight-color:transparent;
   }
-  body.launched .mobile-menu-kicker{
-    font-size:9px!important;letter-spacing:2px!important;
-  }
-  body.launched .mobile-menu-title{
-    margin:5px 42px 17px!important;
-    font-size:25px!important;line-height:1!important;letter-spacing:3px!important;
-  }
-  body.launched .mobile-menu-close{
-    right:12px!important;top:11px!important;
-    width:38px!important;height:38px!important;min-width:38px!important;min-height:38px!important;
-    font-size:16px!important;border-width:1px!important;
-  }
-  body.launched .mobile-menu-grid{gap:11px!important}
-  body.launched .mobile-menu-option{
-    min-height:76px!important;padding:12px 10px!important;border-radius:11px!important;
-  }
-  body.launched .mobile-menu-option b{
-    font-size:14px!important;letter-spacing:1.4px!important;
-  }
-  body.launched .mobile-menu-option span{
-    margin-top:7px!important;font-size:10px!important;line-height:1.25!important;
-  }
-  body.launched .mobile-menu-hint{
-    margin-top:14px!important;font-size:8.5px!important;line-height:1.35!important;letter-spacing:1px!important;
-  }
-  body.launched .mobile-function-card{width:min(720px,94vw)!important}
-  body.launched .mobile-function-body{min-height:150px!important}
-  body.launched .mobile-function-body .menu-choice-grid{
-    grid-template-columns:repeat(3,1fr)!important;gap:10px!important;
-  }
-  body.launched .mobile-function-body .menu-choice{
-    min-height:72px!important;padding:11px 7px!important;border-radius:11px!important;
-  }
-  body.launched .mobile-function-body .menu-choice strong{
-    font-size:16px!important;line-height:1!important;
-  }
-  body.launched .mobile-function-body .menu-choice span{
-    margin-top:7px!important;font-size:9px!important;line-height:1.25!important;
-  }
-  body.launched .mobile-function-body .menu-volume{
-    width:min(560px,94%)!important;grid-template-columns:54px 1fr 58px!important;gap:16px!important;
-  }
-  body.launched .mobile-function-body .menu-volume button{
-    min-width:52px!important;min-height:52px!important;font-size:18px!important;
-  }
-  body.launched .mobile-function-body .menu-volume output{font-size:15px!important}
-  body.launched .mobile-howto-copy{
-    max-height:55dvh;overflow-y:auto;padding:4px 14px 8px!important;
-    font-size:12px!important;line-height:1.6!important;
-    -webkit-overflow-scrolling:touch;
-  }
-  body.launched .mobile-howto-copy p{margin:0 0 12px!important}
-
-  /* The original desktop action controls stay in DOM/source-of-truth but
-     mobile uses a dedicated compact action dock so they can never fall below the viewport. */
-  body.launched .controls{display:none!important}
-  body.launched .mobile-action-dock{
-    display:grid!important;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:5px;
-    margin:3px 0 4px;
-    position:relative;z-index:24;
-  }
-  body.launched .mobile-action{
-    display:flex!important;align-items:center;justify-content:center;gap:5px;
-    min-width:0!important;min-height:32px!important;
-    padding:4px 6px!important;border-radius:7px!important;
-    font-size:9px!important;letter-spacing:.8px!important;
-    white-space:nowrap;
-    transform-origin:center;
-    transition:transform .12s ease,filter .12s ease,box-shadow .12s ease;
-    touch-action:manipulation;
-    -webkit-tap-highlight-color:transparent;
-  }
-  body.launched .mobile-action .mobile-action-icon{font-size:10px}
-  body.launched .mobile-action .mobile-action-label{font-size:9px;font-weight:1000}
-  body.launched .mobile-action.start{
-    background:var(--green)!important;color:#001b0d!important;
-    box-shadow:0 0 12px rgba(var(--theme-rgb),.18);
-  }
-  body.launched .mobile-action.stop{border-color:var(--red)!important;color:var(--red)!important}
-  body.launched .mobile-action.new{border-color:var(--cyan)!important;color:var(--cyan)!important}
-  body.launched .mobile-action:active:not(:disabled),
-  body.launched .mobile-action.touch-bloom:not(:disabled){
-    transform:scale(1.16);z-index:28;filter:brightness(1.25);
-    box-shadow:0 0 22px rgba(var(--theme2-rgb),.34),0 0 30px rgba(var(--theme-rgb),.18)!important;
-  }
-  body.launched .mobile-action:disabled{opacity:.30!important}
-}
-
-
-/* BUILD 10.5 // mobile clarity + single-source theme controls. Desktop unchanged. */
-@media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
-  /* Menus now use the space like real game menus, not micro-console labels. */
-  body.launched .mobile-menu-card{
-    width:min(720px,94vw)!important;
-    padding:22px 26px 20px!important;
-  }
-  body.launched .mobile-menu-kicker{
-    font-size:11px!important;
-    line-height:1.2!important;
-    letter-spacing:2px!important;
-  }
-  body.launched .mobile-menu-title{
-    font-size:28px!important;
-    line-height:1.05!important;
-    margin:6px 44px 18px!important;
-  }
-  body.launched .mobile-menu-grid{
-    gap:11px!important;
-  }
-  body.launched .mobile-menu-option{
-    min-height:76px!important;
-    padding:12px 10px!important;
-  }
-  body.launched .mobile-menu-option b{
-    font-size:14px!important;
-    line-height:1.1!important;
-    letter-spacing:1px!important;
-  }
-  body.launched .mobile-menu-option span{
-    margin-top:7px!important;
-    font-size:10px!important;
-    line-height:1.25!important;
-    color:#dfffea!important;
-  }
-  body.launched .mobile-menu-hint{
-    margin-top:14px!important;
-    font-size:8px!important;
-    line-height:1.3!important;
+  body.launched .controls #startBtn.mobile-action-touch,body.launched .controls #stopBtn.mobile-action-touch,body.launched .controls #newMission.mobile-action-touch{
+    transform:scale(1.15)!important;z-index:45!important;overflow:visible!important;filter:brightness(1.22)!important;
+    box-shadow:0 0 24px rgba(var(--theme-rgb),.44),0 0 34px rgba(var(--theme2-rgb),.23)!important;
   }
 
-  body.launched .mobile-function-card{
-    width:min(740px,95vw)!important;
-  }
-  body.launched .mobile-function-body{
-    min-height:150px!important;
-  }
-  body.launched .mobile-function-body .menu-choice-grid{
-    gap:10px!important;
-  }
-  body.launched .mobile-function-body .menu-choice{
-    min-height:72px!important;
-    padding:11px 8px!important;
-  }
-  body.launched .mobile-function-body .menu-choice strong{
-    font-size:14px!important;
-    line-height:1.1!important;
-    letter-spacing:.5px!important;
-  }
-  body.launched .mobile-function-body .menu-choice span{
-    margin-top:7px!important;
-    font-size:9px!important;
-    line-height:1.2!important;
-    color:#b8d2c1!important;
-  }
-  body.launched .mobile-howto-copy{
-    font-size:11px!important;
-    line-height:1.55!important;
-  }
+  body.launched .binary-shell{min-height:58px!important;margin:5px 0!important;padding:7px 8px!important;border-width:2px!important;box-shadow:0 0 16px rgba(var(--theme2-rgb),.13)!important}
+  body.launched .binary-label{font-size:6.5px!important;margin-bottom:4px!important}
+  body.launched .binary-display{font-size:clamp(12px,2.15vw,16px)!important;line-height:1.34!important;letter-spacing:1px!important}
+  body.launched .cipher-token{padding:2px 5px!important;margin:2px 2px!important}
 
-  /* Theme actions are exact world labels. Keep all three readable. */
-  body.launched .mobile-action-dock{
-    gap:6px!important;
-    margin:4px 0 5px!important;
+  body.launched .input-zone{margin:10px auto 5px!important;width:min(560px,98%)!important}
+  body.launched .input-inner{position:relative!important}
+  body.launched #decryptInput{min-height:46px!important;font-size:21px!important;letter-spacing:5px!important;padding-right:28px!important}
+  body.launched .mobile-block-cursor{
+    display:block;position:absolute;top:50%;left:50%;z-index:4;color:var(--cyan);font-size:21px;line-height:1;
+    text-shadow:0 0 9px rgba(var(--theme2-rgb),.78);transform:translate(8px,-50%);pointer-events:none;animation:mobileBlockBlink .82s steps(1,end) infinite;
   }
-  body.launched .mobile-action{
-    min-height:36px!important;
-    padding:5px 7px!important;
-    overflow:visible!important;
+  body.launched #decryptInput:disabled + .mobile-block-cursor{display:none!important}
+
+  body.launched .mobile-settings-overlay{
+    position:fixed;inset:0;z-index:118;align-items:center;justify-content:center;
+    padding:calc(8px + var(--safe-top)) calc(10px + var(--safe-right)) calc(8px + var(--safe-bottom)) calc(10px + var(--safe-left));
+    background:rgba(0,3,2,.84);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    opacity:0;visibility:hidden;pointer-events:none;transition:opacity .16s ease,visibility .16s ease;
   }
-  body.launched .mobile-action .mobile-action-icon{
-    flex:0 0 auto;
-    font-size:11px!important;
+  body.launched .mobile-settings-overlay.show{display:flex!important;opacity:1;visibility:visible;pointer-events:auto}
+  body.launched .mobile-settings-card{
+    position:relative;width:min(720px,94vw);max-height:88dvh;overflow:auto;padding:20px 24px 18px;
+    border:1px solid rgba(var(--theme2-rgb),.80);border-radius:16px;
+    background:radial-gradient(circle at 50% -10%,rgba(var(--theme-rgb),.17),transparent 48%),linear-gradient(180deg,rgba(2,12,8,.995),rgba(0,5,3,.995));
+    box-shadow:0 0 42px rgba(var(--theme2-rgb),.22),inset 0 0 36px rgba(var(--theme-rgb),.055);
+    text-align:center;animation:mobileMenuBoot .19s cubic-bezier(.2,.85,.2,1);scrollbar-width:thin;scrollbar-color:var(--cyan) transparent;
   }
-  body.launched .mobile-action .mobile-action-label{
-    display:block;
-    min-width:0;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space:nowrap;
-    font-size:9px!important;
-    font-weight:1000!important;
-    letter-spacing:.55px!important;
+  body.launched .mobile-menu-x{
+    position:absolute;right:11px;top:10px;width:40px!important;height:40px!important;min-width:40px!important;min-height:40px!important;
+    padding:0!important;border-radius:50%!important;font-size:18px!important;color:var(--cyan)!important;background:rgba(var(--theme2-rgb),.04)!important;
   }
-  body.launched .mobile-action.touch-bloom{
-    position:relative;
-    z-index:45!important;
-    transform:scale(1.16)!important;
-    filter:brightness(1.22);
-    box-shadow:
-      0 0 22px rgba(var(--theme-rgb),.42),
-      0 0 30px rgba(var(--theme2-rgb),.24)!important;
+  body.launched .mobile-menu-eyebrow{color:var(--muted);font-size:10px;font-weight:bold;letter-spacing:2px}
+  body.launched .mobile-settings-card h2{margin:5px 46px 17px;color:var(--green);font-size:27px;line-height:1;letter-spacing:3px;text-shadow:0 0 15px rgba(var(--theme-rgb),.34)}
+  body.launched .mobile-settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  body.launched .mobile-settings-option{
+    min-height:78px!important;padding:11px 12px!important;border-radius:10px!important;background:rgba(var(--theme-rgb),.035)!important;
+    border-color:rgba(var(--theme-rgb),.32)!important;text-align:left;
   }
-  body.launched .mobile-action.touch-bloom .mobile-action-label{
-    overflow:visible!important;
-    text-overflow:clip!important;
+  body.launched .mobile-settings-option strong{display:block;color:var(--cyan);font-size:14px;letter-spacing:1px}
+  body.launched .mobile-settings-option span{display:block;margin-top:5px;color:var(--green);font-size:11px;font-weight:bold}
+  body.launched .mobile-settings-option small{display:block;margin-top:5px;color:#b8d2c1;font-size:8px;line-height:1.3}
+  body.launched .mobile-swipe-hint{margin-top:13px;color:var(--muted);font-size:8px;letter-spacing:1px}
+
+  body.launched .mobile-detail-card{width:min(760px,95vw)}
+  body.launched .mobile-detail-body{min-height:155px}
+  body.launched .mobile-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  body.launched .mobile-choice{
+    min-height:82px!important;padding:12px 9px!important;border-radius:10px!important;background:rgba(var(--theme-rgb),.035)!important;
+    border-color:rgba(var(--theme-rgb),.28)!important;text-align:center;
   }
+  body.launched .mobile-choice strong{display:block;color:var(--green);font-size:14px;line-height:1.1}
+  body.launched .mobile-choice span{display:block;margin-top:7px;color:#dfffea;font-size:9px;line-height:1.28}
+  body.launched .mobile-choice.selected{border-color:var(--cyan)!important;background:rgba(var(--theme2-rgb),.12)!important;box-shadow:0 0 17px rgba(var(--theme2-rgb),.20)}
+  body.launched .mobile-choice:disabled{opacity:.38!important}
+
+  body.launched .mobile-volume-panel{width:min(520px,92%);margin:12px auto 0;text-align:center}
+  body.launched .mobile-volume-panel p{color:#b8d2c1;font-size:10px;line-height:1.4;margin:0 0 15px}
+  body.launched .mobile-volume-controls{display:grid;grid-template-columns:50px minmax(0,1fr) 58px;gap:13px;align-items:center}
+  body.launched .mobile-volume-controls button{min-width:48px!important;min-height:48px!important;padding:0!important;border-radius:50%!important;font-size:19px!important}
+  body.launched .mobile-volume-controls input{width:100%;accent-color:var(--green)}
+  body.launched .mobile-volume-controls output{color:var(--green);font-size:14px;font-weight:1000}
+
+  body.launched .mobile-howto-panel{text-align:left;color:#d1e8d9;font-size:11px;line-height:1.55;padding:2px 8px 4px}
+  body.launched .mobile-howto-panel p{margin:0 0 11px}
+  body.launched .mobile-howto-panel b{color:var(--green)}
 }
 
 </style>
@@ -1173,13 +926,13 @@ body.launched #decryptInput.input-attention{
 <body class="prelaunch">
 <canvas id="matrix" aria-hidden="true"></canvas>
 <div class="rotate-device" id="rotateDevice" aria-live="polite">
-  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=10.5" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
+  <div class="rotate-card"><img class="rotate-logo" src="./icon-192.png?v=10.9" alt="Hackers Playground logo"><div class="rotate-icon">↻</div><div class="rotate-title">ROTATE TO LANDSCAPE</div><div class="rotate-copy">Hackers Playground is built like a <b>command console</b>. Turn the phone sideways to load the full matrix-key view.</div></div>
 </div>
 <div class="key-magnifier" id="keyMagnifier" aria-hidden="true"><div class="key-mag-char" id="keyMagChar">A</div><div class="key-mag-bits" id="keyMagBits">01000001</div><div class="key-mag-note">MATRIX KEY // LOCAL LENS</div></div>
 <section class="landing" id="landing" aria-labelledby="landingTitle">
   <div class="landing-card">
     <div class="landing-inner">
-      <img class="landing-logo" src="./icon-192.png?v=10.5" alt="Hackers Playground HPG logo">
+      <img class="landing-logo" src="./icon-192.png?v=10.9" alt="Hackers Playground HPG logo">
       <div class="landing-kicker">// FRIEND-SAFE NEON CIPHER SIMULATION</div>
       <h1 class="landing-title" id="landingTitle">HACKERS<br>PLAYGROUND</h1>
       <div class="landing-tagline"><strong>Decode. Outsmart the trace. Own the playground.</strong><br>A browser-based cipher game with themed worlds, adaptive challenges, and a pressure-free trainee mode.</div>
@@ -1203,35 +956,13 @@ body.launched #decryptInput.input-attention{
       <header class="header">
         <div class="header-copy">
           <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
-          <div class="subtitle">NEON CIPHER LAB // BUILD 10.5 <span class="blink">█</span></div>
+          <div class="subtitle">NEON CIPHER LAB // BUILD 10.9 <span class="blink">█</span></div>
         </div>
-        <button type="button" class="mobile-settings-launcher" id="mobileSettingsLauncher" aria-expanded="false" aria-controls="mobileSettingsMenu">⚙ <span>SETTINGS</span></button>
+        <button type="button" class="mobile-settings-trigger" id="mobileSettingsTrigger" aria-label="Open settings" aria-expanded="false">⚙ <span>SETTINGS</span></button>
         <div class="mobile-quick-dock" id="mobileQuickDock" aria-label="Quick game settings">
           <button type="button" class="mobile-quick-btn" id="quickModeBtn" aria-expanded="false" aria-controls="quickModePanel" title="Difficulty mode"><span class="quick-icon">M</span><span class="quick-mini" id="quickModeMini">TRN</span></button>
           <button type="button" class="mobile-quick-btn" id="quickComplexityBtn" aria-expanded="false" aria-controls="quickComplexityPanel" title="Security complexity"><span class="quick-icon">#</span><span class="quick-mini" id="quickComplexityMini">2</span></button>
           <button type="button" class="mobile-quick-btn" id="quickVolumeBtn" aria-expanded="false" aria-controls="quickVolumePanel" title="Volume"><span class="quick-icon">◖</span><span class="quick-mini" id="quickVolumeMini">45</span></button>
-        </div>
-        <div class="mobile-menu-overlay" id="mobileSettingsMenu" aria-hidden="true">
-          <div class="mobile-menu-card">
-            <button type="button" class="mobile-menu-close" data-close-mobile-menu aria-label="Close settings">✕</button>
-            <div class="mobile-menu-kicker">SYSTEM CONSOLE</div>
-            <div class="mobile-menu-title">SETTINGS</div>
-            <div class="mobile-menu-grid">
-              <button type="button" class="mobile-menu-option" data-mobile-panel="mode"><b>MODE</b><span id="menuModeValue">TRAINEE</span></button>
-              <button type="button" class="mobile-menu-option" data-mobile-panel="complexity"><b>COMPLEXITY</b><span id="menuComplexityValue">2 GROUPS</span></button>
-              <button type="button" class="mobile-menu-option" data-mobile-panel="volume"><b>VOLUME</b><span id="menuVolumeValue">45%</span></button>
-              <button type="button" class="mobile-menu-option" data-mobile-panel="howto"><b>HOW TO</b><span>FIELD BRIEFING</span></button>
-            </div>
-            <div class="mobile-menu-hint">SWIPE LEFT / RIGHT ON THE CONSOLE TO CHANGE WORLD</div>
-          </div>
-        </div>
-        <div class="mobile-menu-overlay" id="mobileFunctionMenu" aria-hidden="true">
-          <div class="mobile-menu-card mobile-function-card">
-            <button type="button" class="mobile-menu-close" data-close-function-menu aria-label="Close menu">✕</button>
-            <div class="mobile-menu-kicker" id="mobileFunctionKicker">SYSTEM CONTROL</div>
-            <div class="mobile-menu-title" id="mobileFunctionTitle">MODE</div>
-            <div class="mobile-function-body" id="mobileFunctionBody"></div>
-          </div>
         </div>
         <div class="mobile-quick-popover" id="quickModePanel" aria-hidden="true">
           <div class="quick-pop-title">DIFFICULTY PROTOCOL</div>
@@ -1251,6 +982,30 @@ body.launched #decryptInput.input-attention{
         </div>
       </header>
 
+      <div class="mobile-settings-overlay" id="mobileSettingsOverlay" aria-hidden="true">
+        <section class="mobile-settings-card" role="dialog" aria-modal="true" aria-labelledby="mobileSettingsTitle">
+          <button type="button" class="mobile-menu-x" id="mobileSettingsClose" aria-label="Close settings">✕</button>
+          <div class="mobile-menu-eyebrow">NEON CIPHER SYSTEM</div>
+          <h2 id="mobileSettingsTitle">SETTINGS</h2>
+          <div class="mobile-settings-grid">
+            <button type="button" class="mobile-settings-option" data-mobile-menu="mode"><strong>MODE</strong><span id="mobileSettingsModeValue">TRAINEE</span><small>Difficulty, timer and adaptive behavior</small></button>
+            <button type="button" class="mobile-settings-option" data-mobile-menu="complexity"><strong>COMPLEXITY</strong><span id="mobileSettingsComplexityValue">2 GROUPS // 4 CHARACTERS</span><small>Choose the number of binary groups</small></button>
+            <button type="button" class="mobile-settings-option" data-mobile-menu="volume"><strong>VOLUME</strong><span id="mobileSettingsVolumeValue">45%</span><small>Background track and game sound level</small></button>
+            <button type="button" class="mobile-settings-option" data-mobile-menu="howto"><strong>HOW TO PLAY</strong><span>FIELD BRIEFING</span><small>Touch decoding instructions and controls</small></button>
+          </div>
+          <div class="mobile-swipe-hint">⇠ SWIPE THE CONSOLE TO CHANGE WORLD ⇢</div>
+        </section>
+      </div>
+
+      <div class="mobile-settings-overlay" id="mobileDetailOverlay" aria-hidden="true">
+        <section class="mobile-settings-card mobile-detail-card" role="dialog" aria-modal="true" aria-labelledby="mobileDetailTitle">
+          <button type="button" class="mobile-menu-x" id="mobileDetailClose" aria-label="Close menu">✕</button>
+          <div class="mobile-menu-eyebrow" id="mobileDetailEyebrow">SYSTEM CONTROL</div>
+          <h2 id="mobileDetailTitle">MODE</h2>
+          <div class="mobile-detail-body" id="mobileDetailBody"></div>
+        </section>
+      </div>
+
       <section class="hud" aria-label="Game stats">
         <div class="hud-card"><div class="hud-label">SCORE</div><div class="hud-value" id="score">0000</div></div>
         <div class="hud-card"><div class="hud-label">STREAK</div><div class="hud-value" id="streak">x0</div></div>
@@ -1263,12 +1018,6 @@ body.launched #decryptInput.input-attention{
         <div class="mission-copy" id="missionCopy">Decode the training cipher before the trace timer expires. No real systems are involved.</div>
         <div class="theme-tag" id="themeTag">ORBITAL // GREEN-CYAN</div>
       </section>
-
-      <div class="mobile-action-dock" id="mobileActionDock" aria-label="Mission actions">
-        <button type="button" class="mobile-action start" id="mobileStartAction"><span class="mobile-action-icon">▶</span><span class="mobile-action-label">START</span></button>
-        <button type="button" class="mobile-action stop" id="mobileStopAction" disabled><span class="mobile-action-icon">■</span><span class="mobile-action-label">STOP</span></button>
-        <button type="button" class="mobile-action new" id="mobileNewAction"><span class="mobile-action-icon">↻</span><span class="mobile-action-label">NEW</span></button>
-      </div>
 
       <details class="howto">
         <summary>HOW TO PLAY // FIELD BRIEFING</summary>
@@ -1301,7 +1050,7 @@ body.launched #decryptInput.input-attention{
 
       <section class="input-zone" id="inputZone">
         <div class="input-inner">
-          <input type="text" id="decryptInput" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PRESS START" aria-label="Decryption key" disabled>
+          <input type="text" id="decryptInput" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PRESS START" aria-label="Decryption key" disabled><span class="mobile-block-cursor" id="mobileBlockCursor" aria-hidden="true">█</span>
           <button type="button" class="touch-backspace" id="touchBackspace" aria-label="Backspace" title="Backspace">⌫</button>
         </div>
       </section>
@@ -1394,7 +1143,7 @@ function updateStats(){scoreEl.textContent=String(score).padStart(4,'0');streakE
 function applyTheme(m){
   currentMission=m;const r=document.documentElement.style,c=m.colors;
   r.setProperty('--green',c.green);r.setProperty('--green2',c.green2);r.setProperty('--cyan',c.cyan);r.setProperty('--amber',c.amber);r.setProperty('--theme-bg1',c.bg1);r.setProperty('--theme-bg2',c.bg2);r.setProperty('--theme-rgb',c.rgb);r.setProperty('--theme2-rgb',c.rgb2);
-  $('themeTag').textContent=m.tag;startBtn.textContent=m.labels.start;stopBtn.textContent=m.labels.stop;$('newMission').textContent=m.labels.new;if(typeof syncMobileActionDock==='function')syncMobileActionDock();
+  $('themeTag').textContent=m.tag;startBtn.textContent=m.labels.start;stopBtn.textContent=m.labels.stop;$('newMission').textContent=m.labels.new;
   document.body.classList.remove('theme-switching');void document.body.offsetWidth;document.body.classList.add('theme-switching');setTimeout(()=>document.body.classList.remove('theme-switching'),700);
 }
 function themeOntology(){
@@ -1485,7 +1234,7 @@ function syncAudioUI(){
 function chooseMission(){missionIndex=(missionIndex+1)%missions.length;const m=missions[missionIndex];$('missionTitle').textContent='🎯 ACTIVE MISSION: '+m.name;$('missionCopy').textContent=m.copy;applyTheme(m);const panel=document.querySelector('.mission-panel');panel.classList.remove('theme-switch');void panel.offsetWidth;panel.classList.add('theme-switch');if(document.body.classList.contains('launched')){playThemeSound('theme');switchBackgroundMusic();}}
 function setSessionUI(){
   sessionState.textContent=sessionRunning?'LIVE':'OFFLINE';sessionState.className='session-state '+(sessionRunning?'live':'off');
-  startBtn.disabled=sessionRunning;stopBtn.disabled=!sessionRunning;difficulty.disabled=sessionRunning;groupCount.disabled=sessionRunning;$('newMission').disabled=sessionRunning;syncMobileQuickUI();syncMobileActionDock();
+  startBtn.disabled=sessionRunning;stopBtn.disabled=!sessionRunning;difficulty.disabled=sessionRunning;groupCount.disabled=sessionRunning;$('newMission').disabled=sessionRunning;syncMobileQuickUI();
 }
 function resetAnimations(){
   statusWrap.classList.remove('success-burst');workspace.classList.remove('shake-fail','glitch','success-takeover','fail-lockdown');document.body.classList.remove('flash-fail');
@@ -1537,8 +1286,7 @@ function buildMobileQuickControls(){
     quickModeChoices.innerHTML='';
     [...difficulty.options].forEach(opt=>{
       const b=document.createElement('button');b.type='button';b.className='quick-choice';b.dataset.value=opt.value;
-      const parts=opt.textContent.split('//').map(s=>s.trim());
-      b.innerHTML=`<strong>${parts[0]}</strong><span>${parts.slice(1).join(' // ')||'STANDARD MODE'}</span>`;
+      b.innerHTML=`<strong>${mobileModeAbbr(opt.value)}</strong><span>${opt.textContent.replace(/^.*?\/\/\s*/,'')}</span>`;
       b.addEventListener('click',()=>{
         if(sessionRunning)return;
         difficulty.value=opt.value;difficulty.dispatchEvent(new Event('change',{bubbles:true}));
@@ -1657,179 +1405,119 @@ function buildRails(){
   alphabet.slice(13).forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${letterBits[ch]}</span></div>`));digits.forEach(ch=>right.insertAdjacentHTML('beforeend',`<div class="key-row"><b>${ch}</b><span>${numberBits[ch]}</span></div>`));right.insertAdjacentHTML('beforeend','<div class="key-note">NUMBER BLOCK = <b>1010</b> + ROW</div>');
 
 
-const mobileSettingsLauncher=$('mobileSettingsLauncher');
-const mobileSettingsMenu=$('mobileSettingsMenu'),mobileFunctionMenu=$('mobileFunctionMenu');
-const mobileFunctionTitle=$('mobileFunctionTitle'),mobileFunctionKicker=$('mobileFunctionKicker'),mobileFunctionBody=$('mobileFunctionBody');
-const menuModeValue=$('menuModeValue'),menuComplexityValue=$('menuComplexityValue'),menuVolumeValue=$('menuVolumeValue');
-const mobileStartAction=$('mobileStartAction'),mobileStopAction=$('mobileStopAction'),mobileNewAction=$('mobileNewAction');
-
-function compactActionLabel(label,type){
-  const clean=(label||'').replace(/^[^A-Z0-9]+/i,'').trim().toUpperCase();
-  if(type==='start'){
-    if(clean.includes('LAUNCH'))return 'LAUNCH';
-    if(clean.includes('EVA'))return 'EVA';
-    if(clean.includes('POWER'))return 'POWER';
-    if(clean.includes('DIVE'))return 'DIVE';
-    if(clean.includes('DEPLOY'))return 'DEPLOY';
-    if(clean.includes('COIN'))return 'COIN';
-    return 'START';
-  }
-  if(type==='stop'){
-    if(clean.includes('ABORT'))return 'ABORT';
-    if(clean.includes('KILL'))return 'KILL';
-    if(clean.includes('SURFACE'))return 'SURFACE';
-    if(clean.includes('RECALL'))return 'RECALL';
-    if(clean.includes('QUIT'))return 'QUIT';
-    return 'STOP';
-  }
-  return 'NEW';
-}
-function syncMobileActionDock(){
-  const labels=currentMission?.labels||{};
-  if(mobileStartAction){
-    mobileStartAction.disabled=startBtn.disabled;
-    mobileStartAction.querySelector('.mobile-action-label').textContent=(labels.start||startBtn.textContent).replace(/^\s*[▶►]\s*/,'');
-    mobileStartAction.dataset.fullLabel=labels.start||startBtn.textContent;
-  }
-  if(mobileStopAction){
-    mobileStopAction.disabled=stopBtn.disabled;
-    mobileStopAction.querySelector('.mobile-action-label').textContent=(labels.stop||stopBtn.textContent).replace(/^\s*[■]\s*/,'');
-    mobileStopAction.dataset.fullLabel=labels.stop||stopBtn.textContent;
-  }
-  if(mobileNewAction){
-    mobileNewAction.disabled=$('newMission').disabled;
-    mobileNewAction.querySelector('.mobile-action-label').textContent=(labels.new||$('newMission').textContent).replace(/^\s*[↻]\s*/,'');
-    mobileNewAction.dataset.fullLabel=labels.new||$('newMission').textContent;
-  }
-}
-mobileStartAction?.addEventListener('click',()=>startBtn.click());
-mobileStopAction?.addEventListener('click',()=>stopBtn.click());
-mobileNewAction?.addEventListener('click',()=>$('newMission').click());
-[mobileStartAction,mobileStopAction,mobileNewAction].forEach(b=>{
-  if(!b)return;
-  let bloomTimer=null;
-  b.addEventListener('pointerdown',()=>{
-    if(b.disabled)return;
-    clearTimeout(bloomTimer);b.classList.add('touch-bloom');
-  });
-  b.addEventListener('pointerup',()=>{
-    clearTimeout(bloomTimer);bloomTimer=setTimeout(()=>b.classList.remove('touch-bloom'),220);
-  });
-  ['pointercancel','pointerleave'].forEach(ev=>b.addEventListener(ev,()=>{
-    clearTimeout(bloomTimer);bloomTimer=setTimeout(()=>b.classList.remove('touch-bloom'),120);
-  }));
-});
-syncMobileActionDock();
+const mobileSettingsTrigger=$('mobileSettingsTrigger');
+const mobileSettingsOverlay=$('mobileSettingsOverlay'),mobileDetailOverlay=$('mobileDetailOverlay');
+const mobileSettingsClose=$('mobileSettingsClose'),mobileDetailClose=$('mobileDetailClose');
+const mobileDetailTitle=$('mobileDetailTitle'),mobileDetailEyebrow=$('mobileDetailEyebrow'),mobileDetailBody=$('mobileDetailBody');
+const mobileSettingsModeValue=$('mobileSettingsModeValue'),mobileSettingsComplexityValue=$('mobileSettingsComplexityValue'),mobileSettingsVolumeValue=$('mobileSettingsVolumeValue');
+const mobileBlockCursor=$('mobileBlockCursor');
 
 function setMobileOverlay(el,open){
   if(!el)return;
   el.classList.toggle('show',open);
   el.setAttribute('aria-hidden',open?'false':'true');
-  if(el===mobileSettingsMenu&&mobileSettingsLauncher)mobileSettingsLauncher.setAttribute('aria-expanded',open?'true':'false');
+  if(el===mobileSettingsOverlay&&mobileSettingsTrigger)mobileSettingsTrigger.setAttribute('aria-expanded',open?'true':'false');
 }
-function closeMobileMenus(){
-  setMobileOverlay(mobileSettingsMenu,false);
-  setMobileOverlay(mobileFunctionMenu,false);
+function closeMobileMenus(){setMobileOverlay(mobileSettingsOverlay,false);setMobileOverlay(mobileDetailOverlay,false)}
+function syncMobileSettingsSummary(){
+  if(mobileSettingsModeValue)mobileSettingsModeValue.textContent=(difficulty.options[difficulty.selectedIndex]?.textContent||difficulty.value).split('//')[0].trim();
+  if(mobileSettingsComplexityValue)mobileSettingsComplexityValue.textContent=`${groupCount.value} GROUP${groupCount.value==='1'?'':'S'} // ${Number(groupCount.value)*2} CHARACTERS`;
+  if(mobileSettingsVolumeValue)mobileSettingsVolumeValue.textContent=volumeControl.value+'%';
 }
-function syncMobileMenuValues(){
-  const modeText=difficulty.options[difficulty.selectedIndex]?.textContent||difficulty.value.toUpperCase();
-  const modeParts=modeText.split('//').map(s=>s.trim());
-  if(menuModeValue)menuModeValue.textContent=modeParts[0];
-  if(menuComplexityValue)menuComplexityValue.textContent=groupCount.value+' GROUP'+(groupCount.value==='1'?'':'S')+' // '+(Number(groupCount.value)*2)+' CHARACTERS';
-  if(menuVolumeValue)menuVolumeValue.textContent=volumeControl.value+'%';
-}
+function openMobileDetail(kind){
+  if(!isMobileTouchMode()||!mobileDetailBody)return;
+  setMobileOverlay(mobileSettingsOverlay,false);
+  mobileDetailBody.innerHTML='';
 
-function setMobileComplexity(value){
-  if(sessionRunning){
-    status.textContent='STOP SESSION TO CHANGE COMPLEXITY';
-    status.className='status-msg warn';
-    return false;
-  }
-  const normalized=String(Math.max(1,Math.min(6,Number(value)||1)));
-  groupCount.value=normalized;
-  prepareRound(false);
-  syncMobileQuickUI();
-  syncMobileMenuValues();
-  status.textContent=`COMPLEXITY SET // ${normalized} GROUP${normalized==='1'?'':'S'} // ${Number(normalized)*2} CHARACTERS`;
-  status.className='status-msg';
-  log(`Complexity changed // ${normalized} group${normalized==='1'?'':'s'} // ${Number(normalized)*2} characters.`,'hot');
-  return true;
-}
-
-function openMobileFunction(kind){
-  setMobileOverlay(mobileSettingsMenu,false);
-  if(!mobileFunctionBody)return;
-  mobileFunctionBody.innerHTML='';
   if(kind==='mode'){
-    mobileFunctionKicker.textContent='DIFFICULTY PROTOCOL';mobileFunctionTitle.textContent='SELECT MODE';
-    const grid=document.createElement('div');grid.className='menu-choice-grid';
+    mobileDetailEyebrow.textContent='DIFFICULTY PROTOCOL';mobileDetailTitle.textContent='SELECT MODE';
+    const descriptions={
+      trainee:'No timer. Practice decoding without score, streak or CryptoBytes pressure.',
+      beginner:'30 second trace timer. A comfortable first competitive challenge.',
+      intermediate:'25 second trace timer. Faster recognition and quicker decisions.',
+      master:'20 second trace timer. High-pressure decoding for experienced agents.',
+      pro:'35 seconds with adaptive cipher behavior. Correct progress can mutate the remaining stream.'
+    };
+    const grid=document.createElement('div');grid.className='mobile-choice-grid';
     [...difficulty.options].forEach(opt=>{
-      const b=document.createElement('button');b.type='button';b.className='menu-choice'+(opt.value===difficulty.value?' selected':'');
-      const parts=opt.textContent.split('//').map(s=>s.trim());
-      b.innerHTML=`<strong>${parts[0]}</strong><span>${parts.slice(1).join(' // ')||'STANDARD MODE'}</span>`;
-      b.disabled=sessionRunning;b.title=sessionRunning?'Stop the current session to change mode':'';
-      b.addEventListener('click',()=>{if(sessionRunning)return;difficulty.value=opt.value;difficulty.dispatchEvent(new Event('change',{bubbles:true}));syncMobileMenuValues();closeMobileMenus()});
-      grid.appendChild(b);
-    });mobileFunctionBody.appendChild(grid);
-  }else if(kind==='complexity'){
-    mobileFunctionKicker.textContent='CIPHER GENERATOR';mobileFunctionTitle.textContent='COMPLEXITY';
-    const grid=document.createElement('div');grid.className='menu-choice-grid';
-    [...groupCount.options].forEach(opt=>{
-      const b=document.createElement('button');b.type='button';b.className='menu-choice'+(opt.value===groupCount.value?' selected':'');
-      b.innerHTML=`<strong>${opt.value} GROUP${opt.value==='1'?'':'S'}</strong><span>${Number(opt.value)*2} CHARACTERS</span>`;
-      b.disabled=sessionRunning;b.title=sessionRunning?'Stop the current session to change complexity':'';
-      b.addEventListener('click',()=>{if(setMobileComplexity(opt.value))closeMobileMenus()});
-      grid.appendChild(b);
-    });mobileFunctionBody.appendChild(grid);
-  }else if(kind==='volume'){
-    mobileFunctionKicker.textContent='AUDIO CHANNEL';mobileFunctionTitle.textContent='VOLUME';
-    const row=document.createElement('div');row.className='menu-volume';
-    row.innerHTML=`<button type="button" id="menuMute">${audioMuted?'🔇':'🔊'}</button><input id="menuVolumeSlider" type="range" min="0" max="100" value="${volumeControl.value}"><output id="menuVolumeOut">${volumeControl.value}%</output>`;
-    mobileFunctionBody.appendChild(row);
-    const mm=$('menuMute'),ms=$('menuVolumeSlider'),mo=$('menuVolumeOut');
-    mm.addEventListener('click',()=>{muteBtn.click();mm.textContent=audioMuted?'🔇':'🔊'});
-    ms.addEventListener('input',()=>{volumeControl.value=ms.value;volumeControl.dispatchEvent(new Event('input',{bubbles:true}));mo.textContent=ms.value+'%';syncMobileMenuValues()});
-  }else if(kind==='howto'){
-    mobileFunctionKicker.textContent='FIELD BRIEFING';mobileFunctionTitle.textContent='HOW TO PLAY';
-    const copy=document.createElement('div');copy.className='mobile-howto-copy';
-    copy.innerHTML=document.querySelector('.howto-body')?.innerHTML||'<p>Decode the binary stream using the matrix key.</p>';
-    mobileFunctionBody.appendChild(copy);
+      const btn=document.createElement('button');btn.type='button';btn.className='mobile-choice'+(opt.value===difficulty.value?' selected':'');btn.disabled=sessionRunning;
+      btn.innerHTML=`<strong>${opt.textContent.split('//')[0].trim()}</strong><span>${descriptions[opt.value]}</span>`;
+      btn.addEventListener('click',()=>{if(sessionRunning)return;difficulty.value=opt.value;difficulty.dispatchEvent(new Event('change',{bubbles:true}));syncMobileSettingsSummary();closeMobileMenus()});
+      grid.appendChild(btn);
+    });mobileDetailBody.appendChild(grid);
   }
-  setMobileOverlay(mobileFunctionMenu,true);
-}
-mobileSettingsLauncher?.addEventListener('click',()=>{syncMobileMenuValues();setMobileOverlay(mobileSettingsMenu,true)});
-document.querySelectorAll('[data-close-mobile-menu]').forEach(b=>b.addEventListener('click',()=>setMobileOverlay(mobileSettingsMenu,false)));
-document.querySelectorAll('[data-close-function-menu]').forEach(b=>b.addEventListener('click',()=>setMobileOverlay(mobileFunctionMenu,false)));
-document.querySelectorAll('[data-mobile-panel]').forEach(b=>b.addEventListener('click',()=>openMobileFunction(b.dataset.mobilePanel)));
-[mobileSettingsMenu,mobileFunctionMenu].forEach(el=>el?.addEventListener('pointerdown',e=>{if(e.target===el)setMobileOverlay(el,false)}));
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenus()});
-difficulty.addEventListener('change',syncMobileMenuValues);groupCount.addEventListener('change',syncMobileMenuValues);volumeControl.addEventListener('input',syncMobileMenuValues);
-syncMobileMenuValues();
 
-/* Mobile world/skin swipe: horizontal swipe on neutral console areas changes mission/theme.
-   It intentionally ignores controls, cipher input, mapping rails, menus and open How To. */
-let worldSwipeStart=null;
-function swipeWorld(delta){
-  if(sessionRunning||roundActive)return;
-  const currentIndex=Math.max(0,missions.indexOf(currentMission));
-  const nextIndex=(currentIndex+delta+missions.length)%missions.length;
-  currentMission=missions[nextIndex];
-  applyTheme(currentMission);
-  prepareRound(false);
-  log(`World shifted // ${currentMission.name}.`,'hot');
+  if(kind==='complexity'){
+    mobileDetailEyebrow.textContent='SECURITY COMPLEXITY';mobileDetailTitle.textContent='BINARY GROUPS';
+    const grid=document.createElement('div');grid.className='mobile-choice-grid';
+    [...groupCount.options].forEach(opt=>{
+      const n=Number(opt.value),btn=document.createElement('button');btn.type='button';btn.className='mobile-choice'+(opt.value===groupCount.value?' selected':'');btn.disabled=sessionRunning;
+      btn.innerHTML=`<strong>${n} GROUP${n===1?'':'S'}</strong><span>${n*2} characters total — ${n} letter${n===1?'':'s'} + ${n} number${n===1?'':'s'}.</span>`;
+      btn.addEventListener('click',()=>{if(sessionRunning)return;groupCount.value=opt.value;groupCount.dispatchEvent(new Event('change',{bubbles:true}));syncMobileSettingsSummary();closeMobileMenus()});
+      grid.appendChild(btn);
+    });mobileDetailBody.appendChild(grid);
+  }
+
+  if(kind==='volume'){
+    mobileDetailEyebrow.textContent='AUDIO CHANNEL';mobileDetailTitle.textContent='VOLUME';
+    mobileDetailBody.innerHTML=`<div class="mobile-volume-panel"><p>Control the procedural background track and game sound effects. Audio remains fully offline.</p><div class="mobile-volume-controls"><button type="button" id="mobileModalMute">${audioMuted?'🔇':'🔊'}</button><input type="range" id="mobileModalVolume" min="0" max="100" value="${volumeControl.value}" aria-label="Game volume"><output id="mobileModalVolumeValue">${volumeControl.value}%</output></div></div>`;
+    const mm=$('mobileModalMute'),mv=$('mobileModalVolume'),mo=$('mobileModalVolumeValue');
+    mm.addEventListener('click',()=>{muteBtn.click();mm.textContent=audioMuted?'🔇':'🔊';syncMobileSettingsSummary()});
+    mv.addEventListener('input',()=>{volumeControl.value=mv.value;volumeControl.dispatchEvent(new Event('input',{bubbles:true}));mo.textContent=mv.value+'%';syncMobileSettingsSummary()});
+  }
+
+  if(kind==='howto'){
+    mobileDetailEyebrow.textContent='FIELD BRIEFING';mobileDetailTitle.textContent='HOW TO PLAY';
+    const panel=document.createElement('div');panel.className='mobile-howto-panel';panel.innerHTML=document.querySelector('.howto-body')?.innerHTML||'';mobileDetailBody.appendChild(panel);
+  }
+  setMobileOverlay(mobileDetailOverlay,true);
 }
-document.addEventListener('pointerdown',e=>{
-  if(!isMobileTouchMode()||e.pointerType==='mouse')return;
-  if(e.target.closest('button,input,select,.key-rail,.mobile-menu-overlay,.input-zone,.howto'))return;
-  worldSwipeStart={x:e.clientX,y:e.clientY,id:e.pointerId};
+mobileSettingsTrigger?.addEventListener('click',()=>{if(!isMobileTouchMode())return;syncMobileSettingsSummary();setMobileOverlay(mobileSettingsOverlay,true)});
+mobileSettingsClose?.addEventListener('click',()=>setMobileOverlay(mobileSettingsOverlay,false));
+mobileDetailClose?.addEventListener('click',()=>setMobileOverlay(mobileDetailOverlay,false));
+document.querySelectorAll('[data-mobile-menu]').forEach(btn=>btn.addEventListener('click',()=>openMobileDetail(btn.dataset.mobileMenu)));
+[mobileSettingsOverlay,mobileDetailOverlay].forEach(el=>el?.addEventListener('pointerdown',e=>{if(e.target===el)setMobileOverlay(el,false)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenus()});
+difficulty.addEventListener('change',syncMobileSettingsSummary);groupCount.addEventListener('change',syncMobileSettingsSummary);volumeControl.addEventListener('input',syncMobileSettingsSummary);
+syncMobileSettingsSummary();
+
+[startBtn,stopBtn,$('newMission')].forEach(btn=>{
+  if(!btn)return;let t=null;
+  btn.addEventListener('pointerdown',()=>{if(!isMobileTouchMode()||btn.disabled)return;clearTimeout(t);btn.classList.add('mobile-action-touch')});
+  btn.addEventListener('pointerup',()=>{if(!isMobileTouchMode())return;clearTimeout(t);t=setTimeout(()=>btn.classList.remove('mobile-action-touch'),150)});
+  ['pointercancel','pointerleave'].forEach(ev=>btn.addEventListener(ev,()=>{if(!isMobileTouchMode())return;clearTimeout(t);t=setTimeout(()=>btn.classList.remove('mobile-action-touch'),90)}));
+});
+
+let mobileWorldSwipe=null;
+function shiftMobileWorld(delta){
+  if(!isMobileTouchMode()||sessionRunning||roundActive)return;
+  missionIndex=(missionIndex+delta+missions.length)%missions.length;
+  const m=missions[missionIndex];
+  $('missionTitle').textContent='🎯 ACTIVE MISSION: '+m.name;$('missionCopy').textContent=m.copy;applyTheme(m);
+  const panel=document.querySelector('.mission-panel');panel.classList.remove('theme-switch');void panel.offsetWidth;panel.classList.add('theme-switch');
+  prepareRound(false);if(document.body.classList.contains('launched')){playThemeSound('theme');switchBackgroundMusic()}
+}
+workspace.addEventListener('pointerdown',e=>{
+  if(!isMobileTouchMode()||sessionRunning||roundActive||e.pointerType==='mouse')return;
+  if(e.target.closest('button,input,select,.input-zone,.mobile-settings-overlay'))return;
+  mobileWorldSwipe={id:e.pointerId,x:e.clientX,y:e.clientY};
+  try{workspace.setPointerCapture(e.pointerId)}catch{}
 },{passive:true});
-document.addEventListener('pointerup',e=>{
-  if(!worldSwipeStart||e.pointerId!==worldSwipeStart.id)return;
-  const dx=e.clientX-worldSwipeStart.x,dy=e.clientY-worldSwipeStart.y;
-  worldSwipeStart=null;
-  if(Math.abs(dx)<70||Math.abs(dx)<Math.abs(dy)*1.35)return;
-  swipeWorld(dx<0?1:-1);
+workspace.addEventListener('pointerup',e=>{
+  if(!mobileWorldSwipe||mobileWorldSwipe.id!==e.pointerId)return;
+  const dx=e.clientX-mobileWorldSwipe.x,dy=e.clientY-mobileWorldSwipe.y;mobileWorldSwipe=null;
+  try{workspace.releasePointerCapture(e.pointerId)}catch{}
+  if(Math.abs(dx)<72||Math.abs(dx)<Math.abs(dy)*1.35)return;
+  shiftMobileWorld(dx<0?1:-1);
 },{passive:true});
+workspace.addEventListener('pointercancel',e=>{mobileWorldSwipe=null;try{workspace.releasePointerCapture(e.pointerId)}catch{}},{passive:true});
+
+function syncMobileBlockCursor(){
+  if(!mobileBlockCursor||!isMobileTouchMode())return;
+  const x=Math.min(118,(input.value.length*17)/2+9);
+  mobileBlockCursor.style.transform=`translate(${x}px,-50%)`;
+}
+setInterval(syncMobileBlockCursor,90);
 
 function bindKeyMagnifier(){
   const mag=$('keyMagnifier'), magChar=$('keyMagChar'), magBits=$('keyMagBits');
@@ -1997,7 +1685,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){sizeCanvas();matrix(
 buildRails();buildMobileQuickControls();chooseMission();updateStats();setSessionUI();prepareRound(false);
 
 if('serviceWorker' in navigator){
-  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=10.5').catch(()=>{}));
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js?v=10.9').catch(()=>{}));
 }
 
 })();
