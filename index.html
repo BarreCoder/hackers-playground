@@ -921,6 +921,31 @@ body.launched #decryptInput.input-attention{
   body.launched .mobile-howto-panel b{color:var(--green)}
 }
 
+
+
+/* BUILD 10.9 // launch mission briefing */
+.mission-briefing{display:none;position:fixed;inset:0;z-index:140;align-items:center;justify-content:center;padding:calc(16px + var(--safe-top,0px)) calc(16px + var(--safe-right,0px)) calc(16px + var(--safe-bottom,0px)) calc(16px + var(--safe-left,0px))}
+.mission-briefing.show{display:flex}
+.briefing-backdrop{position:absolute;inset:0;background:rgba(0,4,3,.76);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+.briefing-spot{position:fixed;z-index:141;border:2px solid var(--cyan);border-radius:10px;pointer-events:none;box-shadow:0 0 0 3px rgba(var(--theme2-rgb),.08),0 0 24px rgba(var(--theme2-rgb),.58),inset 0 0 20px rgba(var(--theme-rgb),.10);animation:briefingSpotPulse 1.35s ease-in-out infinite}
+.briefing-spot::after{content:attr(data-label);position:absolute;left:8px;top:-10px;padding:2px 6px;border:1px solid rgba(var(--theme2-rgb),.72);border-radius:999px;background:#020806;color:#fff;font-size:7px;font-weight:900;letter-spacing:1px;white-space:nowrap;text-shadow:0 0 7px rgba(var(--theme2-rgb),.72)}
+@keyframes briefingSpotPulse{0%,100%{filter:brightness(.92);box-shadow:0 0 0 2px rgba(var(--theme2-rgb),.06),0 0 16px rgba(var(--theme2-rgb),.38),inset 0 0 14px rgba(var(--theme-rgb),.06)}50%{filter:brightness(1.18);box-shadow:0 0 0 4px rgba(var(--theme2-rgb),.10),0 0 31px rgba(var(--theme2-rgb),.72),inset 0 0 26px rgba(var(--theme-rgb),.14)}}
+.briefing-card{position:relative;z-index:143;width:min(540px,92vw);max-height:min(82dvh,680px);overflow:auto;padding:20px;border:1px solid rgba(var(--theme2-rgb),.78);border-radius:13px;background:radial-gradient(circle at 50% 0%,rgba(var(--theme-rgb),.13),transparent 42%),rgba(0,8,5,.97);box-shadow:0 18px 60px rgba(0,0,0,.62),0 0 34px rgba(var(--theme2-rgb),.20),inset 0 0 35px rgba(var(--theme-rgb),.05);text-align:left}
+.briefing-kicker{color:var(--cyan);font-size:9px;font-weight:900;letter-spacing:2px;text-align:center}.briefing-title{margin:5px 0 4px;color:var(--green);font-size:24px;letter-spacing:2px;text-align:center;text-shadow:0 0 14px rgba(var(--theme-rgb),.42)}
+.briefing-sub{margin:0 0 13px;color:#91b7a3;font-size:10px;line-height:1.45;text-align:center}
+.briefing-steps{display:grid;gap:7px}.briefing-step{display:grid;grid-template-columns:28px minmax(0,1fr);gap:9px;align-items:start;padding:8px 9px;border:1px solid rgba(var(--theme-rgb),.16);border-radius:7px;background:rgba(var(--theme-rgb),.025)}
+.briefing-num{display:grid;place-items:center;width:26px;height:26px;border:1px solid rgba(var(--theme2-rgb),.58);border-radius:50%;color:var(--cyan);font-size:10px;font-weight:900;box-shadow:0 0 10px rgba(var(--theme2-rgb),.12)}
+.briefing-step strong{display:block;color:#f0fff7;font-size:10px;letter-spacing:.75px}.briefing-step span{display:block;margin-top:2px;color:#8eae9d;font-size:9px;line-height:1.4}.briefing-step b{color:var(--green)}
+.briefing-mobile-only{display:none!important}.briefing-action{display:block;width:min(330px,100%);margin:13px auto 0;min-height:42px;background:var(--green);color:#001b0d;border-color:var(--green);font-size:11px;letter-spacing:1.2px;box-shadow:0 0 20px rgba(var(--theme-rgb),.22)}
+.briefing-reopen{margin-top:8px;color:#587869;font-size:7.5px;line-height:1.35;text-align:center;letter-spacing:.4px}
+@media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
+  .briefing-card{width:min(500px,72vw);max-height:calc(100dvh - var(--safe-top,0px) - var(--safe-bottom,0px) - 12px);padding:10px 12px;border-radius:10px}
+  .briefing-kicker{font-size:6px;letter-spacing:1.3px}.briefing-title{margin:2px 0;font-size:15px;letter-spacing:1.3px}.briefing-sub{margin:0 0 6px;font-size:6.5px}
+  .briefing-steps{grid-template-columns:1fr 1fr;gap:4px}.briefing-step{grid-template-columns:19px minmax(0,1fr);gap:5px;padding:5px 6px}.briefing-num{width:18px;height:18px;font-size:7px}.briefing-step strong{font-size:7px}.briefing-step span{font-size:6px;line-height:1.25}
+  .briefing-desktop-only{display:none!important}.briefing-mobile-only{display:block!important}.briefing-action{width:min(250px,72%);min-height:28px!important;margin-top:7px;padding:4px 8px!important;font-size:7px!important}.briefing-reopen{margin-top:4px;font-size:5.3px}
+  .briefing-spot{border-radius:7px}.briefing-spot::after{left:4px;top:-7px;padding:1px 3px;font-size:4.8px;letter-spacing:.4px}
+}
+
 </style>
 </head>
 <body class="prelaunch">
@@ -945,6 +970,28 @@ body.launched #decryptInput.input-attention{
     </div>
   </div>
 </section>
+
+<div class="mission-briefing" id="missionBriefing" aria-hidden="true">
+  <div class="briefing-backdrop" aria-hidden="true"></div>
+  <div class="briefing-spot" id="briefingLeftRail" data-label="MATRIX KEYS" aria-hidden="true"></div>
+  <div class="briefing-spot" id="briefingRightRail" data-label="MATRIX KEYS" aria-hidden="true"></div>
+  <div class="briefing-spot" id="briefingCipher" data-label="READ CIPHER" aria-hidden="true"></div>
+  <div class="briefing-spot" id="briefingBuffer" data-label="ENTER KEY" aria-hidden="true"></div>
+  <section class="briefing-card" role="dialog" aria-modal="true" aria-labelledby="briefingTitle">
+    <div class="briefing-kicker">// FIELD ORIENTATION</div>
+    <h2 class="briefing-title" id="briefingTitle">MISSION BRIEFING</h2>
+    <p class="briefing-sub">Four things to know before you crack your first cipher.</p>
+    <div class="briefing-steps">
+      <div class="briefing-step"><div class="briefing-num">1</div><div><strong>READ THE CIPHER</strong><span>Each binary block represents a letter or number.</span></div></div>
+      <div class="briefing-step"><div class="briefing-num">2</div><div><strong>USE THE MATRIX KEYS</strong><span>Match each binary block against the left and right key rails.</span></div></div>
+      <div class="briefing-step"><div class="briefing-num">3</div><div><strong>ENTER THE KEY</strong><span class="briefing-desktop-only">Type the matching characters into the decryption buffer.</span><span class="briefing-mobile-only">Touch a matrix rail, slide to the character, then <b>lift your finger to enter it</b>. Use ⌫ to correct.</span></div></div>
+      <div class="briefing-step"><div class="briefing-num">4</div><div><strong>START THE MISSION</strong><span>Choose your difficulty and complexity, press START, and beat the trace. <b>Trainee mode has no timer pressure.</b></span></div></div>
+    </div>
+    <button type="button" class="briefing-action" id="briefingContinue">▶ READY // ENTER CONSOLE</button>
+    <div class="briefing-reopen">Need it again? Open HOW TO PLAY // FIELD BRIEFING inside the console.</div>
+  </section>
+</div>
+
 <div class="shell">
   <div class="topline"><span>// FRIEND-SAFE TRAINING SIMULATION</span><span class="online">● NODE ONLINE</span></div>
   <div class="game-layout">
@@ -1675,12 +1722,58 @@ muteBtn.addEventListener('click',()=>{audioMuted=!audioMuted;if(!audioMuted){ens
 volumeControl.addEventListener('input',()=>{audioVolume=Math.max(0,Math.min(1,Number(volumeControl.value)/100));syncAudioUI()});
 syncAudioUI();
 
+
+
+const missionBriefing=$('missionBriefing');
+const briefingContinue=$('briefingContinue');
+const briefingSpots={
+  left:$('briefingLeftRail'),
+  right:$('briefingRightRail'),
+  cipher:$('briefingCipher'),
+  buffer:$('briefingBuffer')
+};
+function placeBriefingSpot(spot,target,pad=5){
+  if(!spot||!target)return;
+  const r=target.getBoundingClientRect();
+  if(r.width<2||r.height<2){spot.style.display='none';return}
+  spot.style.display='block';
+  spot.style.left=Math.max(2,r.left-pad)+'px';
+  spot.style.top=Math.max(2,r.top-pad)+'px';
+  spot.style.width=Math.min(innerWidth-Math.max(2,r.left-pad)-2,r.width+(pad*2))+'px';
+  spot.style.height=Math.min(innerHeight-Math.max(2,r.top-pad)-2,r.height+(pad*2))+'px';
+}
+function positionMissionBriefing(){
+  if(!missionBriefing?.classList.contains('show'))return;
+  placeBriefingSpot(briefingSpots.left,$('leftRail'),isMobileTouchMode()?2:5);
+  placeBriefingSpot(briefingSpots.right,$('rightRail'),isMobileTouchMode()?2:5);
+  placeBriefingSpot(briefingSpots.cipher,document.querySelector('.binary-shell'),isMobileTouchMode()?2:5);
+  placeBriefingSpot(briefingSpots.buffer,document.querySelector('.input-zone'),isMobileTouchMode()?2:5);
+}
+function showMissionBriefing(){
+  if(!missionBriefing)return;
+  missionBriefing.classList.add('show');
+  missionBriefing.setAttribute('aria-hidden','false');
+  document.body.classList.add('briefing-active');
+  requestAnimationFrame(()=>requestAnimationFrame(positionMissionBriefing));
+  setTimeout(()=>briefingContinue?.focus(),80);
+}
+function closeMissionBriefing(){
+  if(!missionBriefing)return;
+  missionBriefing.classList.remove('show');
+  missionBriefing.setAttribute('aria-hidden','true');
+  document.body.classList.remove('briefing-active');
+  startBtn.focus();
+}
+briefingContinue?.addEventListener('click',closeMissionBriefing);
+window.addEventListener('resize',()=>requestAnimationFrame(positionMissionBriefing));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&missionBriefing?.classList.contains('show'))closeMissionBriefing()});
+
 const enterPlayground=$('enterPlayground');
 enterPlayground.addEventListener('click',()=>{
   document.body.classList.remove('prelaunch');document.body.classList.add('launched');
   status.textContent=themeOntology().ready+' // '+themeOntology().prompt;status.className='status-msg';
   log('PLAYGROUND CONSOLE ONLINE // choose protocol and '+themeOntology().prompt+'.','hot');if(!audioMuted)switchBackgroundMusic(true);
-  setTimeout(()=>startBtn.focus(),420);
+  setTimeout(showMissionBriefing,420);
 });
 
 const canvas=$('matrix'),ctx=canvas.getContext&&canvas.getContext('2d');let matrixTimer=null;
