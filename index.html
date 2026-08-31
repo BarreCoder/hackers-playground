@@ -250,6 +250,8 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
   body.launched .key-row:nth-child(even){background:rgba(var(--theme2-rgb),.045)}
   body.launched .key-row b{color:#fff;text-shadow:0 0 7px rgba(var(--theme-rgb),.58)}
   body.launched .key-row span{color:var(--green);text-shadow:0 0 7px rgba(var(--theme-rgb),.38)}
+  /* Mobile only: right rail puts binary first so the character stays clear of the thumb. */
+  body.launched #rightRail .key-row{flex-direction:row-reverse}
   body.launched .key-note{display:none}
   body.launched .key-row.lens-active{
     background:rgba(var(--theme-rgb),.22)!important;
