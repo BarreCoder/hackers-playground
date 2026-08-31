@@ -378,6 +378,11 @@ body.prelaunch .shell{display:none}body.launched .landing{display:none}body.laun
     font-size:23px!important;
     border-width:2px!important;
   }
+  body.launched .touch-backspace .backspace-chevron{
+    color:var(--cyan);
+    filter:drop-shadow(0 0 5px rgba(var(--theme2-rgb),.72));
+  }
+
 }
 
 
@@ -520,6 +525,17 @@ body.launched #decryptInput.input-attention{
   background:transparent;
 }
 
+
+/* BUILD 10.9 // mobile-only current mode indicator + static backspace chevron */
+.mobile-mode-badge{display:none}
+.backspace-chevron{display:inline-flex;align-items:center;justify-content:center;width:28px;height:24px}
+.backspace-chevron i{
+  display:block;
+  width:12px;height:12px;
+  border-left:3px solid currentColor;
+  border-bottom:3px solid currentColor;
+  transform:rotate(45deg);
+}
 /* Mobile quick dock exists only on mobile landscape. */
 .mobile-quick-dock,.mobile-quick-popover{display:none}
 
@@ -567,6 +583,51 @@ body.launched #decryptInput.input-attention{
     gap:4px;
     align-items:flex-start;
   }
+
+  body.launched .mobile-mode-badge{
+    display:flex;
+    position:absolute;
+    top:-3px;
+    right:101px;
+    z-index:35;
+    height:28px;
+    min-width:82px;
+    padding:3px 7px;
+    border:1px solid rgba(var(--theme2-rgb),.56);
+    border-radius:20px;
+    background:
+      linear-gradient(180deg,rgba(var(--theme-rgb),.09),rgba(0,7,5,.94));
+    box-shadow:
+      0 0 11px rgba(var(--theme2-rgb),.12),
+      inset 0 0 10px rgba(var(--theme-rgb),.05);
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    white-space:nowrap;
+    pointer-events:auto;
+    cursor:pointer;
+    transition:border-color .16s ease,box-shadow .16s ease,background .16s ease;
+  }
+  body.launched .mobile-mode-badge:active{
+    border-color:var(--cyan);
+    background:rgba(var(--theme2-rgb),.12);
+    box-shadow:
+      0 0 15px rgba(var(--theme2-rgb),.28),
+      inset 0 0 12px rgba(var(--theme-rgb),.08);
+  }
+  body.launched .mobile-mode-badge span{
+    color:var(--muted);
+    font-size:5px;
+    font-weight:900;
+    letter-spacing:.7px;
+  }
+  body.launched .mobile-mode-badge b{
+    color:var(--green);
+    font-size:7px;
+    letter-spacing:.6px;
+    text-shadow:0 0 8px rgba(var(--theme-rgb),.48);
+  }
+
   body.launched .mobile-quick-btn{
     position:relative;
     width:28px;
@@ -1022,6 +1083,7 @@ body.launched #decryptInput.input-attention{
           <h1>&lt;/ HACKERS PLAYGROUND &gt;</h1>
           <div class="subtitle">NEON CIPHER LAB // BUILD 10.9 <span class="blink">█</span></div>
         </div>
+        <button type="button" class="mobile-mode-badge" id="mobileModeBadge" aria-label="Current difficulty mode. Tap to change mode"><span>MODE</span><b id="mobileModeBadgeValue">TRAINEE</b></button>
         <button type="button" class="mobile-settings-trigger" id="mobileSettingsTrigger" aria-label="Open settings" aria-expanded="false">⚙ <span>SETTINGS</span></button>
         <div class="mobile-quick-dock" id="mobileQuickDock" aria-label="Quick game settings">
           <button type="button" class="mobile-quick-btn" id="quickModeBtn" aria-expanded="false" aria-controls="quickModePanel" title="Difficulty mode"><span class="quick-icon">M</span><span class="quick-mini" id="quickModeMini">TRN</span></button>
@@ -1115,7 +1177,7 @@ body.launched #decryptInput.input-attention{
       <section class="input-zone" id="inputZone">
         <div class="input-inner">
           <input type="text" id="decryptInput" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="PRESS START" aria-label="Decryption key" disabled><span class="mobile-block-cursor" id="mobileBlockCursor" aria-hidden="true">█</span>
-          <button type="button" class="touch-backspace" id="touchBackspace" aria-label="Backspace" title="Backspace">⌫</button>
+          <button type="button" class="touch-backspace" id="touchBackspace" aria-label="Backspace" title="Backspace"><span class="backspace-chevron" aria-hidden="true"><i></i></span></button>
         </div>
       </section>
 
@@ -1479,6 +1541,7 @@ const mobileSettingsOverlay=$('mobileSettingsOverlay'),mobileDetailOverlay=$('mo
 const mobileSettingsClose=$('mobileSettingsClose'),mobileDetailClose=$('mobileDetailClose');
 const mobileDetailTitle=$('mobileDetailTitle'),mobileDetailEyebrow=$('mobileDetailEyebrow'),mobileDetailBody=$('mobileDetailBody');
 const mobileSettingsModeValue=$('mobileSettingsModeValue'),mobileSettingsComplexityValue=$('mobileSettingsComplexityValue'),mobileSettingsVolumeValue=$('mobileSettingsVolumeValue');
+const mobileModeBadgeValue=$('mobileModeBadgeValue');
 const mobileBlockCursor=$('mobileBlockCursor');
 
 function setMobileOverlay(el,open){
@@ -1489,7 +1552,9 @@ function setMobileOverlay(el,open){
 }
 function closeMobileMenus(){setMobileOverlay(mobileSettingsOverlay,false);setMobileOverlay(mobileDetailOverlay,false)}
 function syncMobileSettingsSummary(){
-  if(mobileSettingsModeValue)mobileSettingsModeValue.textContent=(difficulty.options[difficulty.selectedIndex]?.textContent||difficulty.value).split('//')[0].trim();
+  const currentMode=(difficulty.options[difficulty.selectedIndex]?.textContent||difficulty.value).split('//')[0].trim();
+  if(mobileSettingsModeValue)mobileSettingsModeValue.textContent=currentMode;
+  if(mobileModeBadgeValue)mobileModeBadgeValue.textContent=currentMode;
   if(mobileSettingsComplexityValue)mobileSettingsComplexityValue.textContent=`${groupCount.value} GROUP${groupCount.value==='1'?'':'S'} // ${Number(groupCount.value)*2} CHARACTERS`;
   if(mobileSettingsVolumeValue)mobileSettingsVolumeValue.textContent=volumeControl.value+'%';
 }
@@ -1541,6 +1606,7 @@ function openMobileDetail(kind){
   }
   setMobileOverlay(mobileDetailOverlay,true);
 }
+mobileModeBadge?.addEventListener('click',()=>{if(!isMobileTouchMode())return;syncMobileSettingsSummary();openMobileDetail('mode')});
 mobileSettingsTrigger?.addEventListener('click',()=>{if(!isMobileTouchMode())return;syncMobileSettingsSummary();setMobileOverlay(mobileSettingsOverlay,true)});
 mobileSettingsClose?.addEventListener('click',()=>setMobileOverlay(mobileSettingsOverlay,false));
 mobileDetailClose?.addEventListener('click',()=>setMobileOverlay(mobileDetailOverlay,false));
