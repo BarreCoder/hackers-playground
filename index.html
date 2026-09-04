@@ -906,7 +906,7 @@ body.launched .mobile-mode-badge{
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 
 /* BUILD 10.9 // mobile Lightning Mode */
-.mobile-mission-controls,.mobile-lightning-toggle,.touch-submit{display:none}
+.mobile-mission-controls,.mobile-lightning-toggle,.mobile-trace-timer,.touch-submit{display:none}
 @media (orientation:landscape) and (max-height:600px) and ((pointer:coarse) or (any-pointer:coarse)){
   body.launched .mobile-mission-controls{display:flex;position:absolute;top:50%;right:41px;transform:translateY(-50%);z-index:36;align-items:center;gap:4px;white-space:nowrap}
 body.launched .mobile-lightning-toggle{
@@ -939,6 +939,38 @@ body.launched .mobile-lightning-toggle.on{
     0 0 7px rgba(255,211,77,.9),
     0 0 14px rgba(255,211,77,.45);
 }
+
+body.launched .mobile-trace-timer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:28px;
+  min-width:52px;
+  padding:3px 7px;
+  border:1px solid rgba(var(--theme2-rgb),.58);
+  border-radius:9px;
+  background:linear-gradient(180deg,rgba(var(--theme2-rgb),.07),rgba(0,7,5,.94));
+  color:var(--cyan);
+  box-shadow:inset 0 0 10px rgba(var(--theme-rgb),.05),0 0 10px rgba(var(--theme2-rgb),.10);
+  font-size:8px;
+  font-weight:1000;
+  letter-spacing:.45px;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+  text-shadow:0 0 8px rgba(var(--theme2-rgb),.42);
+}
+body.launched .mobile-trace-timer.warn{
+  color:var(--amber);
+  border-color:color-mix(in srgb,var(--amber) 58%,transparent);
+  text-shadow:0 0 8px color-mix(in srgb,var(--amber) 68%,transparent);
+}
+body.launched .mobile-trace-timer.danger{
+  color:var(--red);
+  border-color:rgba(255,70,100,.70);
+  text-shadow:0 0 8px rgba(255,70,100,.70);
+}
+body.launched .timer-meta #timerText{display:none}
 
 body.launched .input-inner.manual-submit{
   grid-template-columns:minmax(0,1fr) 52px 52px!important;
@@ -1222,6 +1254,7 @@ body.launched .input-inner.manual-submit{
         <div class="mobile-mission-controls">
           <button type="button" class="mobile-lightning-toggle" id="mobileLightningToggle" aria-label="Lightning Mode off. Tap to toggle; long press for info" aria-pressed="false" title="Lightning Mode">⚡</button>
           <button type="button" class="mobile-mode-badge" id="mobileModeBadge" aria-label="Current difficulty mode. Tap to change mode"><span>MODE</span><b id="mobileModeBadgeValue">TRAINEE</b></button>
+          <div class="mobile-trace-timer" id="mobileTraceTimer" aria-label="Trace timer"><span id="mobileTimerText">READY</span></div>
         </div>
       </section>
 
@@ -1309,7 +1342,7 @@ const missions=[
 const $=id=>document.getElementById(id);
 const difficulty=$('difficulty'), groupCount=$('groupCount'), binaryCode=$('binaryCode'), input=$('decryptInput'), touchBackspace=$('touchBackspace');
 const startBtn=$('startBtn'), stopBtn=$('stopBtn'), status=$('statusMessage'), statusWrap=$('statusWrap'), gate=$('gateStatus'), balanceEl=$('balance'), scoreEl=$('score'), streakEl=$('streak'), rankEl=$('rank');
-const workspace=$('workspace'), timerText=$('timerText'), timerBar=$('timerBar'), terminal=$('terminal'), sessionState=$('sessionState');
+const workspace=$('workspace'), timerText=$('timerText'), mobileTimerText=$('mobileTimerText'), mobileTraceTimer=$('mobileTraceTimer'), timerBar=$('timerBar'), terminal=$('terminal'), sessionState=$('sessionState');
 const effectOverlay=$('effectOverlay'), effectKicker=$('effectKicker'), effectTitle=$('effectTitle'), effectSub=$('effectSub');
 const muteBtn=$('muteBtn'), volumeControl=$('volumeControl'), volumeValue=$('volumeValue'), soundState=$('soundState'), musicState=$('musicState');
 const quickModeBtn=$('quickModeBtn'),quickComplexityBtn=$('quickComplexityBtn'),quickVolumeBtn=$('quickVolumeBtn');
@@ -1543,13 +1576,33 @@ function isMobileTouchMode(){
   return landscapeCompact&&coarse;
 }
 
+function setTimerDisplay(desktopValue,mobileValue=desktopValue,state='normal'){
+  timerText.textContent=desktopValue;
+  if(mobileTimerText)mobileTimerText.textContent=mobileValue;
+  if(mobileTraceTimer){
+    mobileTraceTimer.classList.toggle('warn',state==='warn');
+    mobileTraceTimer.classList.toggle('danger',state==='danger');
+  }
+}
+function mobileClock(seconds){
+  const whole=Math.max(0,Math.ceil(seconds));
+  const mins=Math.floor(whole/60);
+  const secs=whole%60;
+  return String(mins).padStart(2,'0')+':'+String(secs).padStart(2,'0');
+}
+function setIdleTimerDisplay(){
+  const total=modes[difficulty.value];
+  if(total===null)setTimerDisplay('NO LIMIT','NO LIMIT');
+  else setTimerDisplay(total.toFixed(1)+' SEC',mobileClock(total));
+}
+
 function prepareRound(newMission=true){
   clearInterval(timerId);roundActive=false;input.classList.remove('input-attention');resetAnimations();if(newMission)chooseMission();
   solution=makeSolution(Number(groupCount.value));input.maxLength=solution.length;input.value='';lastProLength=0;
   gate.textContent='LOCKED';gate.style.color='var(--red)';
   timerBar.style.width='100%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';
   if(!sessionRunning){
-    const o=themeOntology();status.textContent=o.ready+' // '+o.prompt;status.className='status-msg';timerText.textContent='READY';binaryCode.textContent=o.prompt+' TO ARM CIPHER';input.placeholder=o.prompt;input.disabled=true;
+    const o=themeOntology();status.textContent=o.ready+' // '+o.prompt;status.className='status-msg';setIdleTimerDisplay();binaryCode.textContent=o.prompt+' TO ARM CIPHER';input.placeholder=o.prompt;input.disabled=true;
     log('Game standing by // wallet protected while stopped.','hot');setSessionUI();return;
   }
   startRound();
@@ -1558,7 +1611,7 @@ function startRound(){
   if(!sessionRunning)return;clearInterval(timerId);resetAnimations();roundActive=true;input.disabled=false;input.classList.add('input-attention');input.value='';input.placeholder='ENTER '+solution.length+' CHAR KEY';renderBinary(0);
   const total=modes[difficulty.value];timerBar.style.width='100%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';
   status.textContent='CIPHER ARMED // DECODE NOW';status.className='status-msg';
-  if(total===null){deadline=performance.now()+60000;timerText.textContent='NO LIMIT';log('Trainee mode armed // unlimited time // visual trace loop active // no rewards or penalties.','hot');tick();timerId=setInterval(tick,100);}
+  if(total===null){deadline=performance.now()+60000;setTimerDisplay('NO LIMIT','NO LIMIT');log('Trainee mode armed // unlimited time // visual trace loop active // no rewards or penalties.','hot');tick();timerId=setInterval(tick,100);}
   else {deadline=performance.now()+total*1000;log('Mission armed // trace timer '+total+' seconds.','warn');tick();timerId=setInterval(tick,100);}
   if(difficulty.value==='pro')log('Adaptive cipher online: correct symbols mutate the future stream.','warn');
   input.readOnly=isMobileTouchMode();if(!isMobileTouchMode())input.focus();
@@ -1568,10 +1621,10 @@ function startGame(){
 }
 function stopGame(){
   if(!sessionRunning)return;playThemeSound('stop');sessionRunning=false;roundActive=false;input.classList.remove('input-attention');clearInterval(timerId);clearTimeout(transitionTimer);resetAnimations();
-  const o=themeOntology();input.disabled=true;input.value='';input.placeholder=o.prompt;binaryCode.textContent=o.safe;timerText.textContent='STOPPED';timerBar.style.width='100%';
+  const o=themeOntology();input.disabled=true;input.value='';input.placeholder=o.prompt;binaryCode.textContent=o.safe;setIdleTimerDisplay();timerBar.style.width='100%';
   gate.textContent='LOCKED';gate.style.color='var(--red)';status.textContent=o.stopped+' // NO CRYPTOBYTES LOST';status.className='status-msg';setSessionUI();log(o.safe+' // wallet frozen at '+balance+' CryptoBytes.','hot');
 }
-function tick(){if(!sessionRunning||!roundActive)return;const total=modes[difficulty.value];if(total===null){const loop=60;let left=Math.max(0,(deadline-performance.now())/1000);if(left<=0){deadline=performance.now()+loop*1000;left=loop;timerBar.style.transition='none';timerBar.style.width='100%';void timerBar.offsetWidth;timerBar.style.transition='width .12s linear,background .2s';log('Training trace visualization recycled // no time penalty.','hot');}timerText.textContent='NO LIMIT';timerBar.style.width=(left/loop*100)+'%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';return}const left=Math.max(0,(deadline-performance.now())/1000);timerText.textContent=left.toFixed(1)+' SEC';timerBar.style.width=(left/total*100)+'%';if(left<total*.3)timerBar.style.background='var(--red)';else if(left<total*.55)timerBar.style.background='var(--amber)';if(left<=0)fail('TRACE COMPLETE // FIREWALL LOCKDOWN',true)}
+function tick(){if(!sessionRunning||!roundActive)return;const total=modes[difficulty.value];if(total===null){const loop=60;let left=Math.max(0,(deadline-performance.now())/1000);if(left<=0){deadline=performance.now()+loop*1000;left=loop;timerBar.style.transition='none';timerBar.style.width='100%';void timerBar.offsetWidth;timerBar.style.transition='width .12s linear,background .2s';log('Training trace visualization recycled // no time penalty.','hot');}setTimerDisplay('NO LIMIT','NO LIMIT');timerBar.style.width=(left/loop*100)+'%';timerBar.style.background='linear-gradient(90deg,var(--green2),var(--green))';return}const left=Math.max(0,(deadline-performance.now())/1000);setTimerDisplay(left.toFixed(1)+' SEC',mobileClock(left),left<=5?'danger':left<=10?'warn':'normal');timerBar.style.width=(left/total*100)+'%';if(left<total*.3)timerBar.style.background='var(--red)';else if(left<total*.55)timerBar.style.background='var(--amber)';if(left<=0)fail('TRACE COMPLETE // FIREWALL LOCKDOWN',true)}
 function proAdaptiveUpdate(){
   if(difficulty.value!=='pro'||!sessionRunning||!roundActive)return;
   const typed=input.value.toUpperCase();let prefix=0;
@@ -1596,12 +1649,12 @@ function scheduleNextRound(delay,newMission){
 }
 function success(){
   if(!sessionRunning||!roundActive)return;playThemeSound('success');roundActive=false;input.classList.remove('input-attention');clearInterval(timerId);const trainee=difficulty.value==='trainee';const left=trainee?0:Math.max(0,(deadline-performance.now())/1000);const reward=50+Math.min((streak+1)*5,50);const gained=trainee?0:Math.round(100+left*8+streak*20);if(!trainee){score+=gained;streak++;balance+=reward}updateStats();
-  gate.textContent='UNLOCKED';gate.style.color='var(--green)';status.textContent=trainee?'✔ ACCESS GRANTED // TRAINING COMPLETE':'✔ ACCESS GRANTED // +'+gained+' SCORE';status.className='status-msg success';input.disabled=true;timerText.textContent=trainee?'PRACTICE':'BREACHED';
+  gate.textContent='UNLOCKED';gate.style.color='var(--green)';status.textContent=trainee?'✔ ACCESS GRANTED // TRAINING COMPLETE':'✔ ACCESS GRANTED // +'+gained+' SCORE';status.className='status-msg success';input.disabled=true;setTimerDisplay(trainee?'PRACTICE':'BREACHED',trainee?'PRACTICE':'CLEAR');
   statusWrap.classList.remove('success-burst');void statusWrap.offsetWidth;statusWrap.classList.add('success-burst');showEffect('success',currentMission?currentMission.fx.ok[0]:'FIREWALL COLLAPSED',trainee?'TRAINING COMPLETE':(currentMission?currentMission.fx.ok[1]:'ACCESS GRANTED'),trainee?'NO SCORE // NO CRYPTOBYTES // PRACTICE MODE':'+'+gained+' SCORE  //  +'+reward+' CRYPTOBYTES');
   log(trainee?'Training cipher solved // no rewards awarded.':'SYSTEM OVERRIDE COMPLETE // next mission incoming.','hot');burst();scheduleNextRound(1650,true);
 }
 function fail(message='DECRYPTION FAILED // ACCESS DENIED',timeout=false){
-  if(!sessionRunning||!roundActive)return;playThemeSound('fail');roundActive=false;clearInterval(timerId);const trainee=difficulty.value==='trainee';let penalty=0;if(!trainee){streak=0;penalty=Math.min(20,balance);balance-=penalty}updateStats();gate.textContent='LOCKED';gate.style.color='var(--red)';status.textContent='✖ '+message;status.className='status-msg error';input.disabled=true;timerText.textContent=trainee?'TRY AGAIN':'LOCKED';
+  if(!sessionRunning||!roundActive)return;playThemeSound('fail');roundActive=false;clearInterval(timerId);const trainee=difficulty.value==='trainee';let penalty=0;if(!trainee){streak=0;penalty=Math.min(20,balance);balance-=penalty}updateStats();gate.textContent='LOCKED';gate.style.color='var(--red)';status.textContent='✖ '+message;status.className='status-msg error';input.disabled=true;setTimerDisplay(trainee?'TRY AGAIN':'LOCKED',trainee?'RETRY':'LOCKED',trainee?'normal':'danger');
   document.body.classList.remove('flash-fail');workspace.classList.remove('shake-fail');void workspace.offsetWidth;document.body.classList.add('flash-fail');workspace.classList.add('shake-fail');showEffect('fail',timeout?(currentMission?currentMission.fx.fail[0]:'TRACE DETECTED'):'KEY REJECTED',trainee?'TRAINING MISS':(currentMission?currentMission.fx.fail[1]:'SYSTEM LOCKDOWN'),trainee?'NO PENALTY // PRACTICE MODE':'-'+penalty+' CRYPTOBYTES  //  NEXT MISSION INCOMING');
   log(trainee?'Practice attempt missed // no CryptoBytes lost.':(timeout?'Trace completed // '+penalty+' CryptoBytes lost.':'Incorrect key // '+penalty+' CryptoBytes lost.'),'warn');scheduleNextRound(trainee?900:1550,false);
 }
